@@ -19,7 +19,7 @@ interface IExecutor is IWorker, ILayerZeroExecutor, IMessageOrigin {
     struct DstConfig {
         uint64 baseGas; // for delivering / fixed calldata overhead
         uint16 multiplierBps;
-        uint128 floorMarginUSD;
+        uint128 floorMarginUSD; // uses priceFeed PRICE_RATIO_DENOMINATOR
         uint128 airdropCap;
     }
 
@@ -28,7 +28,7 @@ interface IExecutor is IWorker, ILayerZeroExecutor, IMessageOrigin {
         MessageOrigin origin;
         bytes32 guid;
         bytes message;
-        bytes callerParams;
+        bytes extraData;
         uint gasLimit;
     }
 
@@ -38,8 +38,9 @@ interface IExecutor is IWorker, ILayerZeroExecutor, IMessageOrigin {
         uint gasLimit;
     }
 
-    event SetDstConfig(DstConfigParam[] params);
-    event AirdropFailed(address indexed receiver, uint amount);
+    event DstConfigSet(DstConfigParam[] params);
+    event AirdropFailed(address receiver, uint amount);
+    event AirdropSucceeded(address receiver, uint amount);
 
     function dstConfig(uint32 _dstEid) external view returns (uint64, uint16, uint128, uint128);
 }

@@ -3,7 +3,7 @@
 pragma solidity >=0.8.0;
 
 interface IMessageLibManager {
-    struct ConfigParam {
+    struct SetConfigParam {
         uint32 configType;
         bytes config;
     }
@@ -46,7 +46,9 @@ interface IMessageLibManager {
     /// ------------------- OApp interfaces -------------------
     function setSendLibrary(uint32 _eid, address _newLib) external;
 
-    function getSendLibrary(address _sender, uint32 _eid) external view returns (address lib, bool isDefault);
+    function getSendLibrary(address _sender, uint32 _eid) external view returns (address lib);
+
+    function isDefaultSendLibrary(address _sender, uint32 _eid) external view returns (bool);
 
     function setReceiveLibrary(uint32 _eid, address _newLib, uint _gracePeriod) external;
 
@@ -56,7 +58,7 @@ interface IMessageLibManager {
 
     function receiveLibraryTimeout(address _receiver, uint32 _eid) external view returns (address lib, uint expiry);
 
-    function setConfig(address _lib, uint32 _eid, ConfigParam[] calldata _params) external;
+    function setConfig(address _lib, uint32 _eid, SetConfigParam[] calldata _params) external;
 
     function getConfig(
         address _oapp,

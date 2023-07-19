@@ -1,16 +1,15 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity >=0.7.0;
+pragma solidity >=0.8.0;
 
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IPacket.sol";
-import "@layerzerolabs/lz-evm-v1-0.7/contracts/interfaces/ILayerZeroMessagingLibraryV2.sol";
+import "@layerzerolabs/lz-evm-v1-0.7/contracts/interfaces/ILayerZeroMessagingLibrary.sol";
 
-interface IMessageLibE1 is ILayerZeroMessagingLibraryV2, IPacket {
+/// extends ILayerZeroMessagingLibrary instead of ILayerZeroMessagingLibraryV2 for reducing the contract size
+interface IMessageLibE1 is ILayerZeroMessagingLibrary, IPacket {
     function setLayerZeroToken(address _treasury) external;
 
     function setTreasury(address _treasury) external;
-
-    function treasury() external view returns (address);
 
     function getDefaultConfig(uint32 _eid, uint32 _configType) external view returns (bytes memory);
 

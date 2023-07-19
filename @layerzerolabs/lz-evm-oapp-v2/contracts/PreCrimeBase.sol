@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.18;
+pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/Strings.sol";
-import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpoint.sol";
+import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol";
 import "./interfaces/IPreCrime.sol";
 
 abstract contract PreCrimeBase is IPreCrime {
@@ -22,7 +22,7 @@ abstract contract PreCrimeBase is IPreCrime {
     // precrime
     uint16 internal constant CODE_MISS_SIMULATE_RESULT = 402; // miss simulation result
 
-    ILayerZeroEndpoint internal immutable lzEndpoint;
+    ILayerZeroEndpointV2 internal immutable lzEndpoint;
     uint32 internal immutable localEid;
 
     address public pAdmin;
@@ -38,7 +38,7 @@ abstract contract PreCrimeBase is IPreCrime {
     }
 
     constructor(address _endpoint) {
-        lzEndpoint = ILayerZeroEndpoint(_endpoint);
+        lzEndpoint = ILayerZeroEndpointV2(_endpoint);
         localEid = lzEndpoint.eid();
         pAdmin = msg.sender;
     }
@@ -76,12 +76,15 @@ abstract contract PreCrimeBase is IPreCrime {
             );
     }
 
+    // TODO packets is a completely optional parameter? it can be empty and doesnt do any validation in that case
     function precrime(
         Packet[] calldata _packets,
         bytes[] calldata _simulation
     ) external view override returns (uint16 code, bytes memory reason) {
         bytes[] memory originSimulateResult = new bytes[](_simulation.length);
         uint32[] memory eids = new uint32[](_simulation.length);
+
+        // extract all of the eids and results from the simulations
         for (uint256 i = 0; i < _simulation.length; i++) {
             (uint32 eid, bytes memory simulateResult) = abi.decode(_simulation[i], (uint32, bytes));
             eids[i] = eid;
@@ -120,7 +123,8 @@ abstract contract PreCrimeBase is IPreCrime {
                 }
             }
         }
-        // check if local resut included
+
+        // check if local result included
         bool localEidResultChecked;
         for (uint256 j = 0; j < _resultEids.length; j++) {
             if (_resultEids[j] == localEid) {
@@ -158,7 +162,7 @@ abstract contract PreCrimeBase is IPreCrime {
                     srcEid = packet.origin.srcEid;
                     sender = packet.origin.sender;
                     nonce = packet.origin.nonce;
-                    uint64 nextInboundNonce = lzEndpoint.getInboundNonce(_receiver(), srcEid, sender) + 1;
+                    uint64 nextInboundNonce = lzEndpoint.inboundNonce(_receiver(), srcEid, sender) + 1;
                     // the first packet's nonce must equal to dst InboundNonce+1
                     if (nonce != nextInboundNonce) {
                         return (

@@ -8,6 +8,6 @@ interface ILayerZeroComposer {
         bytes32 _guid,
         bytes calldata _message,
         address _caller,
-        bytes calldata _callerParams
+        bytes calldata _extraData
     ) external payable;
 }

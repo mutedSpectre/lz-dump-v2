@@ -1,0 +1,368 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IUlnConfig",
+  "sourceName": "contracts/uln/interfaces/IUlnConfig.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_configType",
+          "type": "uint32"
+        }
+      ],
+      "name": "getConfigByType",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_configType",
+          "type": "uint32"
+        }
+      ],
+      "name": "getDefaultConfigByType",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getUlnAndOutboundConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "inboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomOptionalVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "verifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierThreshold",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[]",
+              "name": "verifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "optionalVerifiers",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct UlnConfigStruct",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "maxMessageSize",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "outboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address",
+              "name": "executor",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct OutboundConfigStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getUlnConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "inboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomOptionalVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "verifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierThreshold",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[]",
+              "name": "verifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "optionalVerifiers",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct UlnConfigStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "isSupportedEid",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "_eids",
+          "type": "uint32[]"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        }
+      ],
+      "name": "resetConfig",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_configType",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_config",
+          "type": "bytes"
+        }
+      ],
+      "name": "setConfigByType",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint32",
+                  "name": "maxMessageSize",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "outboundConfirmations",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "address",
+                  "name": "executor",
+                  "type": "address"
+                }
+              ],
+              "internalType": "struct OutboundConfigStruct",
+              "name": "outboundConfig",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint64",
+              "name": "inboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address[]",
+              "name": "verifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "optionalVerifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierThreshold",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct SetDefaultConfigParam[]",
+          "name": "_params",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "setDefaultConfig",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "_eids",
+          "type": "uint32[]"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        }
+      ],
+      "name": "snapshotConfig",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

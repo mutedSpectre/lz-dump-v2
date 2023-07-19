@@ -2,21 +2,12 @@
 
 pragma solidity >=0.8.0;
 
-interface IUltraLightNode {
-    enum DeliveryState {
-        Signing,
-        Deliverable,
-        Delivered,
-        Waiting
-    }
+import "../../interfaces/IMessageLibBase.sol";
 
-    function oracleSign(bytes calldata _packetHeader, bytes32 _payloadHash, uint64 _confirmations) external;
+interface IUltraLightNode is IMessageLibBase {
+    function verify(bytes calldata _packetHeader, bytes32 _payloadHash, uint64 _confirmations) external;
 
     function deliver(bytes calldata _packetHeader, bytes32 _payloadHash) external;
 
-    function deliver(bytes calldata _packet, uint _gasLimit) external;
-
     function deliverable(bytes calldata _packetHeader, bytes32 _payloadHash) external view returns (DeliveryState);
-
-    function deliverable(bytes calldata _packet) external view returns (DeliveryState);
 }

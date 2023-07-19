@@ -1,0 +1,167 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IExecutorFeeLib",
+  "sourceName": "contracts/interfaces/IExecutorFeeLib.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "priceFeed",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "dstEid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "calldataSize",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint16",
+              "name": "defaultMultiplierBps",
+              "type": "uint16"
+            }
+          ],
+          "internalType": "struct IExecutorFeeLib.FeeParams",
+          "name": "_params",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "baseGas",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint16",
+              "name": "multiplierBps",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint128",
+              "name": "floorMarginUSD",
+              "type": "uint128"
+            },
+            {
+              "internalType": "uint128",
+              "name": "airdropCap",
+              "type": "uint128"
+            }
+          ],
+          "internalType": "struct IExecutor.DstConfig",
+          "name": "_dstConfig",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_options",
+          "type": "bytes"
+        }
+      ],
+      "name": "getFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "fee",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "priceFeed",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "dstEid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "calldataSize",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint16",
+              "name": "defaultMultiplierBps",
+              "type": "uint16"
+            }
+          ],
+          "internalType": "struct IExecutorFeeLib.FeeParams",
+          "name": "_params",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "baseGas",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint16",
+              "name": "multiplierBps",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint128",
+              "name": "floorMarginUSD",
+              "type": "uint128"
+            },
+            {
+              "internalType": "uint128",
+              "name": "airdropCap",
+              "type": "uint128"
+            }
+          ],
+          "internalType": "struct IExecutor.DstConfig",
+          "name": "_dstConfig",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_options",
+          "type": "bytes"
+        }
+      ],
+      "name": "getFeeOnSend",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "fee",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

@@ -1,6 +1,6 @@
 {
   "name": "@layerzerolabs/ui-core",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",

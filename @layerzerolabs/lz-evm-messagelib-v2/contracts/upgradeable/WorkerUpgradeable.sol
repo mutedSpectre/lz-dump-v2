@@ -1,19 +1,18 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@layerzerolabs/lz-evm-v1-0.8/contracts/interfaces/ILayerZeroUltraLightNodeV2.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLib.sol";
 import "../interfaces/ILayerZeroPriceFeed.sol";
 import "../interfaces/IWorker.sol";
 
 abstract contract WorkerUpgradeable is Initializable, AccessControlUpgradeable, IWorker {
-    bytes32 public constant MESSAGE_LIB_ROLE = keccak256("MESSAGE_LIB_ROLE");
-    bytes32 public constant ALLOWLIST = keccak256("ALLOWLIST");
-    bytes32 public constant DENYLIST = keccak256("DENYLIST");
-    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
+    bytes32 internal constant MESSAGE_LIB_ROLE = keccak256("MESSAGE_LIB_ROLE");
+    bytes32 internal constant ALLOWLIST = keccak256("ALLOWLIST");
+    bytes32 internal constant DENYLIST = keccak256("DENYLIST");
+    bytes32 internal constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
     address public workerFeeLib;
 
@@ -45,11 +44,11 @@ abstract contract WorkerUpgradeable is Initializable, AccessControlUpgradeable, 
 
         _grantRole(DEFAULT_ADMIN_ROLE, _roleAdmin); // _roleAdmin can grant and revoke all roles
 
-        for (uint i = 0; i < _messageLibs.length; i++) {
+        for (uint i = 0; i < _messageLibs.length; ++i) {
             _grantRole(MESSAGE_LIB_ROLE, _messageLibs[i]);
         }
 
-        for (uint i = 0; i < _admins.length; i++) {
+        for (uint i = 0; i < _admins.length; ++i) {
             _grantRole(ADMIN_ROLE, _admins[i]);
         }
     }
@@ -84,7 +83,6 @@ abstract contract WorkerUpgradeable is Initializable, AccessControlUpgradeable, 
     }
 
     function setWorkerFeeLib(address _workerFeeLib) external onlyRole(ADMIN_ROLE) {
-        _checkWorkerFeeLibInterface(_workerFeeLib);
         workerFeeLib = _workerFeeLib;
         emit SetWorkerLib(_workerFeeLib);
     }
@@ -94,30 +92,29 @@ abstract contract WorkerUpgradeable is Initializable, AccessControlUpgradeable, 
         emit SetDefaultMultiplierBps(_multiplierBps);
     }
 
-    function withdrawFee(address _lib, address payable _to, uint _amount) external virtual onlyRole(ADMIN_ROLE) {
+    // supports uln3 onwards
+    function withdrawFee(address _lib, address _to, uint _amount) external onlyRole(ADMIN_ROLE) {
         require(hasRole(MESSAGE_LIB_ROLE, _lib), "Worker: Invalid message lib");
         IMessageLib(_lib).withdrawFee(_to, _amount);
         emit Withdraw(_lib, _to, _amount);
     }
 
-    function _checkWorkerFeeLibInterface(address _workerFeeLib) internal view virtual;
-
     // -- Override ACL --
     function _grantRole(bytes32 role, address account) internal override {
         if (role == ALLOWLIST && !hasRole(role, account)) {
-            allowlistSize++;
+            ++allowlistSize;
         }
         super._grantRole(role, account);
     }
 
     function _revokeRole(bytes32 role, address account) internal override {
         if (role == ALLOWLIST && hasRole(role, account)) {
-            allowlistSize--;
+            --allowlistSize;
         }
         super._revokeRole(role, account);
     }
 
-    function renounceRole(bytes32 /*role*/, address /*account*/) public virtual override {
+    function renounceRole(bytes32 /*role*/, address /*account*/) public pure override {
         revert("Worker: cannot renounce role");
     }
 

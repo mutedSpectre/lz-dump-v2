@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.18;
+pragma solidity ^0.8.0;
 
 import "./PreCrimeBase.sol";
 
@@ -10,6 +10,10 @@ abstract contract PreCrimeView is PreCrimeBase {
     function simulate(
         Packet[] calldata /*_packets*/
     ) external payable virtual override returns (uint16 /*code*/, bytes memory /*result*/) {
+        revert("not implemented");
+    }
+
+    function simulationCallback() external pure returns (bytes memory) {
         revert("not implemented");
     }
 

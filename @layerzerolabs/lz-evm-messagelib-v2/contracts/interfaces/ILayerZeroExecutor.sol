@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity >=0.7.0;
+pragma solidity >=0.8.0;
 
 interface ILayerZeroExecutor {
     // @notice query price and assign jobs at the same time

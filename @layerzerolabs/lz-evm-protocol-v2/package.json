@@ -1,6 +1,6 @@
 {
   "name": "@layerzerolabs/lz-evm-protocol-v2",
-  "version": "1.5.20",
+  "version": "1.5.27",
   "license": "BUSL-1.1",
   "files": [
     "contracts/**/*"
@@ -15,7 +15,7 @@
     "format": "prettier --ignore-path $(git rev-parse --show-toplevel)/.prettierignore --plugin=prettier-plugin-solidity --write .",
     "lint": "solhint ./contracts/**/*.sol --fix",
     "test": "forge test",
-    "test-static-analyze": "$npm_execpath hardhat clean && $npm_execpath build-hardhat && slither . --ignore-compile"
+    "test-static-analyze": "$npm_execpath hardhat clean && $npm_execpath build-hardhat && python3 -m slither . --ignore-compile --compile-force-framework hardhat --npx-disable"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.1",
@@ -24,16 +24,21 @@
   "devDependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@layerzerolabs-internal/typescript-config": "^1.5.20",
-    "@layerzerolabs/hardhat-collect-outcomes": "^1.5.20",
-    "@layerzerolabs/hardhat-config": "^1.5.20",
-    "@layerzerolabs/lz-definitions": "^1.5.20",
+    "@layerzerolabs-internal/typescript-config": "^1.5.27",
+    "@layerzerolabs/hardhat-collect-outcomes": "^1.5.27",
+    "@layerzerolabs/hardhat-config": "^1.5.27",
+    "@layerzerolabs/lz-definitions": "^1.5.27",
     "@matterlabs/hardhat-zksync-deploy": "^0.6.3",
     "@matterlabs/hardhat-zksync-solc": "^0.3.14",
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
     "@nomiclabs/hardhat-ethers": "^2.2.2",
+    "@nomiclabs/hardhat-etherscan": "^3.1.6",
     "@typechain/ethers-v5": "^10.2.0",
     "@typechain/hardhat": "^6.1.5",
+    "@types/chai": "^4.3.3",
     "@types/node": "^18.15.11",
+    "chai": "^4.3.7",
+    "chai-ethers": "^0.0.1",
     "dotenv": "^16.0.3",
     "eslint": "^8.33.0",
     "ethers": "^5.7.2",

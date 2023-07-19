@@ -46,7 +46,9 @@ declare enum Chain {
     ORDERLY = "orderly",
     NOVA = "nova",
     BLOCKGEN = "blockgen",
-    MERITCIRCLE = "meritcircle"
+    MERITCIRCLE = "meritcircle",
+    MANTLE = "mantle",
+    HUBBLE = "hubble"
 }
 
 declare enum ChainType {
@@ -90,7 +92,11 @@ declare enum MainnetEndpointId {
     TENET_MAINNET = 173,
     NOVA_MAINNET = 175,
     METER_MAINNET = 176,
-    KAVA_MAINNET = 177
+    KAVA_MAINNET = 177,
+    MANTLE_MAINNET = 181,
+    HUBBLE_MAINNET = 182,
+    ZKCONSENSYS_MAINNET = 183,
+    BASE_MAINNET = 184
 }
 declare enum TestnetEndpointId {
     BSC_TESTNET = 10102,
@@ -131,7 +137,9 @@ declare enum TestnetEndpointId {
     ORDERLY_TESTNET = 10174,
     BLOCKGEN_TESTNET = 10177,
     MERITCIRCLE_TESTNET = 10178,
-    AAVEGOTCHI_TESTNET = 10180
+    MANTLE_TESTNET = 10181,
+    HUBBLE_TESTNET = 10182,
+    AAVEGOTCHI_TESTNET = 10190
 }
 declare enum SandboxEndpointId {
     BSC_SANDBOX = 20102,
@@ -174,7 +182,11 @@ declare enum MainnetV2EndpointId {
     TENET_V2_MAINNET = 30173,
     NOVA_V2_MAINNET = 30175,
     METER_V2_MAINNET = 30176,
-    KAVA_V2_MAINNET = 30177
+    KAVA_V2_MAINNET = 30177,
+    MANTLE_V2_MAINNET = 30181,
+    HUBBLE_V2_MAINNET = 30182,
+    ZKCONSENSYS_V2_MAINNET = 30183,
+    BASE_V2_MAINNET = 30184
 }
 declare enum TestnetV2EndpointId {
     AVALANCHE_V2_TESTNET = 40106,
@@ -212,7 +224,9 @@ declare enum TestnetV2EndpointId {
     TENET_V2_TESTNET = 40173,
     ORDERLY_V2_TESTNET = 40174,
     BLOCKGEN_V2_TESTNET = 40177,
-    MERITCIRCLE_V2_TESTNET = 40178
+    MERITCIRCLE_V2_TESTNET = 40178,
+    MANTLE_V2_TESTNET = 40181,
+    HUBBLE_V2_TESTNET = 40182
 }
 declare enum SandboxV2EndpointId {
     ETHEREUM_V2_SANDBOX = 50121,
@@ -264,6 +278,8 @@ declare const EndpointId: {
     ORDERLY_V2_TESTNET: TestnetV2EndpointId.ORDERLY_V2_TESTNET;
     BLOCKGEN_V2_TESTNET: TestnetV2EndpointId.BLOCKGEN_V2_TESTNET;
     MERITCIRCLE_V2_TESTNET: TestnetV2EndpointId.MERITCIRCLE_V2_TESTNET;
+    MANTLE_V2_TESTNET: TestnetV2EndpointId.MANTLE_V2_TESTNET;
+    HUBBLE_V2_TESTNET: TestnetV2EndpointId.HUBBLE_V2_TESTNET;
     ETHEREUM_V2_MAINNET: MainnetV2EndpointId.ETHEREUM_V2_MAINNET;
     BSC_V2_MAINNET: MainnetV2EndpointId.BSC_V2_MAINNET;
     AVALANCHE_V2_MAINNET: MainnetV2EndpointId.AVALANCHE_V2_MAINNET;
@@ -298,6 +314,10 @@ declare const EndpointId: {
     NOVA_V2_MAINNET: MainnetV2EndpointId.NOVA_V2_MAINNET;
     METER_V2_MAINNET: MainnetV2EndpointId.METER_V2_MAINNET;
     KAVA_V2_MAINNET: MainnetV2EndpointId.KAVA_V2_MAINNET;
+    MANTLE_V2_MAINNET: MainnetV2EndpointId.MANTLE_V2_MAINNET;
+    HUBBLE_V2_MAINNET: MainnetV2EndpointId.HUBBLE_V2_MAINNET;
+    ZKCONSENSYS_V2_MAINNET: MainnetV2EndpointId.ZKCONSENSYS_V2_MAINNET;
+    BASE_V2_MAINNET: MainnetV2EndpointId.BASE_V2_MAINNET;
     BSC_SANDBOX: SandboxEndpointId.BSC_SANDBOX;
     AVALANCHE_SANDBOX: SandboxEndpointId.AVALANCHE_SANDBOX;
     POLYGON_SANDBOX: SandboxEndpointId.POLYGON_SANDBOX;
@@ -341,6 +361,8 @@ declare const EndpointId: {
     ORDERLY_TESTNET: TestnetEndpointId.ORDERLY_TESTNET;
     BLOCKGEN_TESTNET: TestnetEndpointId.BLOCKGEN_TESTNET;
     MERITCIRCLE_TESTNET: TestnetEndpointId.MERITCIRCLE_TESTNET;
+    MANTLE_TESTNET: TestnetEndpointId.MANTLE_TESTNET;
+    HUBBLE_TESTNET: TestnetEndpointId.HUBBLE_TESTNET;
     AAVEGOTCHI_TESTNET: TestnetEndpointId.AAVEGOTCHI_TESTNET;
     ETHEREUM_MAINNET: MainnetEndpointId.ETHEREUM_MAINNET;
     BSC_MAINNET: MainnetEndpointId.BSC_MAINNET;
@@ -376,6 +398,10 @@ declare const EndpointId: {
     NOVA_MAINNET: MainnetEndpointId.NOVA_MAINNET;
     METER_MAINNET: MainnetEndpointId.METER_MAINNET;
     KAVA_MAINNET: MainnetEndpointId.KAVA_MAINNET;
+    MANTLE_MAINNET: MainnetEndpointId.MANTLE_MAINNET;
+    HUBBLE_MAINNET: MainnetEndpointId.HUBBLE_MAINNET;
+    ZKCONSENSYS_MAINNET: MainnetEndpointId.ZKCONSENSYS_MAINNET;
+    BASE_MAINNET: MainnetEndpointId.BASE_MAINNET;
 };
 type EndpointId = MainnetEndpointId | TestnetEndpointId | SandboxEndpointId | MainnetV2EndpointId | TestnetV2EndpointId | SandboxV2EndpointId;
 
@@ -406,6 +432,90 @@ declare enum MessageLibVersionV1 {
     ULTRA_LIGHT_NODE_201 = "2.0.1"
 }
 type MessageLibVersion = MessageLibVersionV2 | MessageLibVersionV1;
+
+declare enum ChainKey {
+    ETHEREUM = "ethereum",
+    GOERLI = "goerli",
+    SEPOLIA = "sepolia",
+    BSC = "bsc",
+    BSC_TESTNET = "bsc-testnet",
+    AVALANCHE = "avalanche",
+    FUJI = "fuji",
+    POLYGON = "polygon",
+    MUMBAI = "mumbai",
+    ARBITRUM = "arbitrum",
+    ARBITURM_GOERLI = "arbitrum-goerli",
+    OPTIMISM = "optimism",
+    OPTIMISM_GOERLI = "optimism-goerli",
+    FANTOM = "fantom",
+    FANTOM_TESTNET = "fantom-testnet",
+    SWIMMER = "swimmer",
+    SWIMMER_TESTNET = "swimmer-testnet",
+    DFK = "dfk",
+    DFK_TESTNET = "dfk-testnet",
+    HARMONY = "harmony",
+    HARMONY_TESTNET = "harmony-testnet",
+    DEXALOT = "dexalot",
+    DEVALOT_TESTNET = "dexalot-testnet",
+    CELO = "celo",
+    ALFAJORES = "alfajores",
+    MOONBEAM = "moonbeam",
+    MOONBASE = "moonbase",
+    MOONRIVER = "moonriver",
+    INTAIN = "intain",
+    INTAIN_TESTNET = "intain-testnet",
+    FUSE = "fuse",
+    FUSESPARK = "fusespark",
+    GNOSIS = "gnosis",
+    CHIADO = "chiado",
+    APTOS = "aptos",
+    APTOS_TESTNET = "aptos-testnet",
+    KLAYTN = "klaytn",
+    KLAYTN_BAOBAB = "klaytn-baobab",
+    METIS = "metis",
+    METIS_GOERLI = "metis-goerli",
+    COREDAO = "coredao",
+    COREDAO_TESTNET = "coredao-testnet",
+    METER = "meter",
+    METER_TESTNET = "meter-testnet",
+    OKX = "okx",
+    OKX_TESTNET = "okx-testnet",
+    ZKSYNC = "zksync",
+    ZKSYNC_TESTNET = "zksync-testnet",
+    SHRAPNEL = "shrapnel",
+    SHRAPNEL_TESTNET = "shrapnel-testnet",
+    DOS = "dos",
+    DOS_TESTNET = "dos-testnet",
+    ZKEVM = "zkevm",
+    ZKEVM_TESTNET = "zkevm-testnet",
+    NOVA = "nova",
+    TENET = "tenet",
+    TENET_TESTNET = "tenet-testnet",
+    CANTO = "canto",
+    CANTO_TESTNET = "canto-testnet",
+    KAVA = "kava",
+    KAVA_TESTNET = "kava-testnet",
+    SOLANA = "solana",
+    SOLANA_TESTNET = "solana-testnet",
+    LINEA_GOERLI = "linea-goerli",
+    BASE_GOERLI = "base-goerli",
+    AAVEGOTCHI_TESTNET = "aavegotchi-testnet",
+    SCROLL_TESTNET = "scroll-testnet",
+    CATHAY_TESTNET = "cathay-testnet",
+    ORDERLY_TESTNET = "orderly-testnet",
+    BLOCKGEN_TESTNET = "blockgen-testnet",
+    MERITCIRCLE_TESTNET = "meritcircle-testnet",
+    MANTLE = "mantle",
+    MANTLE_TESTNET = "mantle-testnet",
+    HUBBLE = "hubble",
+    HUBBLE_TESTNET = "hubble-testnet",
+    ZKCONSENSYS = "zkconsensys",
+    BASE = "base"
+}
+
+declare const CHAIN_KEY: {
+    [endpointId in EndpointId]: ChainKey;
+};
 
 declare const ENVIRONMENT: {
     [endpointId in EndpointId]: Environment;
@@ -448,4 +558,4 @@ declare function getNetworkForChainId(targetchainId: number): {
 
 type Network = `${Chain}-${Stage}${'-local' | ''}`;
 
-export { BRIDGE_ADDRESS, Chain, ChainType, ENVIRONMENT, EndpointId, EndpointVersion, Environment, MainnetEndpointId, MainnetV2EndpointId, MessageLibVersion, MessageLibVersionV1, MessageLibVersionV2, Network, STG_ADDRESS, SandboxEndpointId, SandboxV2EndpointId, Stage, TestnetEndpointId, TestnetV2EndpointId, ULN_V1_CHAINS, chainAndStageToEndpointId, chainAndStageToNetwork, endpointIdToChain, endpointIdToChainType, endpointIdToNetwork, endpointIdToStage, endpointIdToVersion, getChainIdForNetwork, getChainType, getEndpointVersionForUlnVersion, getNetworkForChainId, getNetworksForStage, networkToChain, networkToChainType, networkToEndpointId, networkToEnv, networkToStage };
+export { BRIDGE_ADDRESS, CHAIN_KEY, Chain, ChainKey, ChainType, ENVIRONMENT, EndpointId, EndpointVersion, Environment, MainnetEndpointId, MainnetV2EndpointId, MessageLibVersion, MessageLibVersionV1, MessageLibVersionV2, Network, STG_ADDRESS, SandboxEndpointId, SandboxV2EndpointId, Stage, TestnetEndpointId, TestnetV2EndpointId, ULN_V1_CHAINS, chainAndStageToEndpointId, chainAndStageToNetwork, endpointIdToChain, endpointIdToChainType, endpointIdToNetwork, endpointIdToStage, endpointIdToVersion, getChainIdForNetwork, getChainType, getEndpointVersionForUlnVersion, getNetworkForChainId, getNetworksForStage, networkToChain, networkToChainType, networkToEndpointId, networkToEnv, networkToStage };

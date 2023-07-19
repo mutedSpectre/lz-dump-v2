@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity 0.8.18;
+pragma solidity ^0.8.19;
 
 abstract contract MultiSig {
     mapping(address signer => bool active) public signers;
@@ -11,7 +11,7 @@ abstract contract MultiSig {
     event UpdateQuorum(uint64 _quorum);
 
     modifier onlySigner() {
-        require(signers[msg.sender], "MultiSigOracle: caller must be signer");
+        require(signers[msg.sender], "MultiSig: caller must be signer");
         _;
     }
 

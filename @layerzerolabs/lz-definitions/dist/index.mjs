@@ -50,6 +50,8 @@ var Chain = /* @__PURE__ */ ((Chain2) => {
   Chain2["NOVA"] = "nova";
   Chain2["BLOCKGEN"] = "blockgen";
   Chain2["MERITCIRCLE"] = "meritcircle";
+  Chain2["MANTLE"] = "mantle";
+  Chain2["HUBBLE"] = "hubble";
   return Chain2;
 })(Chain || {});
 
@@ -98,6 +100,10 @@ var MainnetEndpointId = /* @__PURE__ */ ((MainnetEndpointId2) => {
   MainnetEndpointId2[MainnetEndpointId2["NOVA_MAINNET"] = 175] = "NOVA_MAINNET";
   MainnetEndpointId2[MainnetEndpointId2["METER_MAINNET"] = 176] = "METER_MAINNET";
   MainnetEndpointId2[MainnetEndpointId2["KAVA_MAINNET"] = 177] = "KAVA_MAINNET";
+  MainnetEndpointId2[MainnetEndpointId2["MANTLE_MAINNET"] = 181] = "MANTLE_MAINNET";
+  MainnetEndpointId2[MainnetEndpointId2["HUBBLE_MAINNET"] = 182] = "HUBBLE_MAINNET";
+  MainnetEndpointId2[MainnetEndpointId2["ZKCONSENSYS_MAINNET"] = 183] = "ZKCONSENSYS_MAINNET";
+  MainnetEndpointId2[MainnetEndpointId2["BASE_MAINNET"] = 184] = "BASE_MAINNET";
   return MainnetEndpointId2;
 })(MainnetEndpointId || {});
 var TestnetEndpointId = /* @__PURE__ */ ((TestnetEndpointId2) => {
@@ -139,7 +145,9 @@ var TestnetEndpointId = /* @__PURE__ */ ((TestnetEndpointId2) => {
   TestnetEndpointId2[TestnetEndpointId2["ORDERLY_TESTNET"] = 10174] = "ORDERLY_TESTNET";
   TestnetEndpointId2[TestnetEndpointId2["BLOCKGEN_TESTNET"] = 10177] = "BLOCKGEN_TESTNET";
   TestnetEndpointId2[TestnetEndpointId2["MERITCIRCLE_TESTNET"] = 10178] = "MERITCIRCLE_TESTNET";
-  TestnetEndpointId2[TestnetEndpointId2["AAVEGOTCHI_TESTNET"] = 10180] = "AAVEGOTCHI_TESTNET";
+  TestnetEndpointId2[TestnetEndpointId2["MANTLE_TESTNET"] = 10181] = "MANTLE_TESTNET";
+  TestnetEndpointId2[TestnetEndpointId2["HUBBLE_TESTNET"] = 10182] = "HUBBLE_TESTNET";
+  TestnetEndpointId2[TestnetEndpointId2["AAVEGOTCHI_TESTNET"] = 10190] = "AAVEGOTCHI_TESTNET";
   return TestnetEndpointId2;
 })(TestnetEndpointId || {});
 var SandboxEndpointId = /* @__PURE__ */ ((SandboxEndpointId2) => {
@@ -185,6 +193,10 @@ var MainnetV2EndpointId = /* @__PURE__ */ ((MainnetV2EndpointId2) => {
   MainnetV2EndpointId2[MainnetV2EndpointId2["NOVA_V2_MAINNET"] = 30175] = "NOVA_V2_MAINNET";
   MainnetV2EndpointId2[MainnetV2EndpointId2["METER_V2_MAINNET"] = 30176] = "METER_V2_MAINNET";
   MainnetV2EndpointId2[MainnetV2EndpointId2["KAVA_V2_MAINNET"] = 30177] = "KAVA_V2_MAINNET";
+  MainnetV2EndpointId2[MainnetV2EndpointId2["MANTLE_V2_MAINNET"] = 30181] = "MANTLE_V2_MAINNET";
+  MainnetV2EndpointId2[MainnetV2EndpointId2["HUBBLE_V2_MAINNET"] = 30182] = "HUBBLE_V2_MAINNET";
+  MainnetV2EndpointId2[MainnetV2EndpointId2["ZKCONSENSYS_V2_MAINNET"] = 30183] = "ZKCONSENSYS_V2_MAINNET";
+  MainnetV2EndpointId2[MainnetV2EndpointId2["BASE_V2_MAINNET"] = 30184] = "BASE_V2_MAINNET";
   return MainnetV2EndpointId2;
 })(MainnetV2EndpointId || {});
 var TestnetV2EndpointId = /* @__PURE__ */ ((TestnetV2EndpointId2) => {
@@ -224,6 +236,8 @@ var TestnetV2EndpointId = /* @__PURE__ */ ((TestnetV2EndpointId2) => {
   TestnetV2EndpointId2[TestnetV2EndpointId2["ORDERLY_V2_TESTNET"] = 40174] = "ORDERLY_V2_TESTNET";
   TestnetV2EndpointId2[TestnetV2EndpointId2["BLOCKGEN_V2_TESTNET"] = 40177] = "BLOCKGEN_V2_TESTNET";
   TestnetV2EndpointId2[TestnetV2EndpointId2["MERITCIRCLE_V2_TESTNET"] = 40178] = "MERITCIRCLE_V2_TESTNET";
+  TestnetV2EndpointId2[TestnetV2EndpointId2["MANTLE_V2_TESTNET"] = 40181] = "MANTLE_V2_TESTNET";
+  TestnetV2EndpointId2[TestnetV2EndpointId2["HUBBLE_V2_TESTNET"] = 40182] = "HUBBLE_V2_TESTNET";
   return TestnetV2EndpointId2;
 })(TestnetV2EndpointId || {});
 var SandboxV2EndpointId = /* @__PURE__ */ ((SandboxV2EndpointId2) => {
@@ -279,6 +293,262 @@ var MessageLibVersionV1 = /* @__PURE__ */ ((MessageLibVersionV12) => {
   return MessageLibVersionV12;
 })(MessageLibVersionV1 || {});
 
+// src/enums/chain-key.ts
+var ChainKey = /* @__PURE__ */ ((ChainKey2) => {
+  ChainKey2["ETHEREUM"] = "ethereum";
+  ChainKey2["GOERLI"] = "goerli";
+  ChainKey2["SEPOLIA"] = "sepolia";
+  ChainKey2["BSC"] = "bsc";
+  ChainKey2["BSC_TESTNET"] = "bsc-testnet";
+  ChainKey2["AVALANCHE"] = "avalanche";
+  ChainKey2["FUJI"] = "fuji";
+  ChainKey2["POLYGON"] = "polygon";
+  ChainKey2["MUMBAI"] = "mumbai";
+  ChainKey2["ARBITRUM"] = "arbitrum";
+  ChainKey2["ARBITURM_GOERLI"] = "arbitrum-goerli";
+  ChainKey2["OPTIMISM"] = "optimism";
+  ChainKey2["OPTIMISM_GOERLI"] = "optimism-goerli";
+  ChainKey2["FANTOM"] = "fantom";
+  ChainKey2["FANTOM_TESTNET"] = "fantom-testnet";
+  ChainKey2["SWIMMER"] = "swimmer";
+  ChainKey2["SWIMMER_TESTNET"] = "swimmer-testnet";
+  ChainKey2["DFK"] = "dfk";
+  ChainKey2["DFK_TESTNET"] = "dfk-testnet";
+  ChainKey2["HARMONY"] = "harmony";
+  ChainKey2["HARMONY_TESTNET"] = "harmony-testnet";
+  ChainKey2["DEXALOT"] = "dexalot";
+  ChainKey2["DEVALOT_TESTNET"] = "dexalot-testnet";
+  ChainKey2["CELO"] = "celo";
+  ChainKey2["ALFAJORES"] = "alfajores";
+  ChainKey2["MOONBEAM"] = "moonbeam";
+  ChainKey2["MOONBASE"] = "moonbase";
+  ChainKey2["MOONRIVER"] = "moonriver";
+  ChainKey2["INTAIN"] = "intain";
+  ChainKey2["INTAIN_TESTNET"] = "intain-testnet";
+  ChainKey2["FUSE"] = "fuse";
+  ChainKey2["FUSESPARK"] = "fusespark";
+  ChainKey2["GNOSIS"] = "gnosis";
+  ChainKey2["CHIADO"] = "chiado";
+  ChainKey2["APTOS"] = "aptos";
+  ChainKey2["APTOS_TESTNET"] = "aptos-testnet";
+  ChainKey2["KLAYTN"] = "klaytn";
+  ChainKey2["KLAYTN_BAOBAB"] = "klaytn-baobab";
+  ChainKey2["METIS"] = "metis";
+  ChainKey2["METIS_GOERLI"] = "metis-goerli";
+  ChainKey2["COREDAO"] = "coredao";
+  ChainKey2["COREDAO_TESTNET"] = "coredao-testnet";
+  ChainKey2["METER"] = "meter";
+  ChainKey2["METER_TESTNET"] = "meter-testnet";
+  ChainKey2["OKX"] = "okx";
+  ChainKey2["OKX_TESTNET"] = "okx-testnet";
+  ChainKey2["ZKSYNC"] = "zksync";
+  ChainKey2["ZKSYNC_TESTNET"] = "zksync-testnet";
+  ChainKey2["SHRAPNEL"] = "shrapnel";
+  ChainKey2["SHRAPNEL_TESTNET"] = "shrapnel-testnet";
+  ChainKey2["DOS"] = "dos";
+  ChainKey2["DOS_TESTNET"] = "dos-testnet";
+  ChainKey2["ZKEVM"] = "zkevm";
+  ChainKey2["ZKEVM_TESTNET"] = "zkevm-testnet";
+  ChainKey2["NOVA"] = "nova";
+  ChainKey2["TENET"] = "tenet";
+  ChainKey2["TENET_TESTNET"] = "tenet-testnet";
+  ChainKey2["CANTO"] = "canto";
+  ChainKey2["CANTO_TESTNET"] = "canto-testnet";
+  ChainKey2["KAVA"] = "kava";
+  ChainKey2["KAVA_TESTNET"] = "kava-testnet";
+  ChainKey2["SOLANA"] = "solana";
+  ChainKey2["SOLANA_TESTNET"] = "solana-testnet";
+  ChainKey2["LINEA_GOERLI"] = "linea-goerli";
+  ChainKey2["BASE_GOERLI"] = "base-goerli";
+  ChainKey2["AAVEGOTCHI_TESTNET"] = "aavegotchi-testnet";
+  ChainKey2["SCROLL_TESTNET"] = "scroll-testnet";
+  ChainKey2["CATHAY_TESTNET"] = "cathay-testnet";
+  ChainKey2["ORDERLY_TESTNET"] = "orderly-testnet";
+  ChainKey2["BLOCKGEN_TESTNET"] = "blockgen-testnet";
+  ChainKey2["MERITCIRCLE_TESTNET"] = "meritcircle-testnet";
+  ChainKey2["MANTLE"] = "mantle";
+  ChainKey2["MANTLE_TESTNET"] = "mantle-testnet";
+  ChainKey2["HUBBLE"] = "hubble";
+  ChainKey2["HUBBLE_TESTNET"] = "hubble-testnet";
+  ChainKey2["ZKCONSENSYS"] = "zkconsensys";
+  ChainKey2["BASE"] = "base";
+  return ChainKey2;
+})(ChainKey || {});
+
+// src/constants/chainKey.ts
+var CHAIN_KEY = {
+  [EndpointId.ETHEREUM_MAINNET]: "ethereum" /* ETHEREUM */,
+  [EndpointId.BSC_MAINNET]: "bsc" /* BSC */,
+  [EndpointId.AVALANCHE_MAINNET]: "avalanche" /* AVALANCHE */,
+  [EndpointId.POLYGON_MAINNET]: "polygon" /* POLYGON */,
+  [EndpointId.ARBITRUM_MAINNET]: "arbitrum" /* ARBITRUM */,
+  [EndpointId.OPTIMISM_MAINNET]: "optimism" /* OPTIMISM */,
+  [EndpointId.FANTOM_MAINNET]: "fantom" /* FANTOM */,
+  [EndpointId.SWIMMER_MAINNET]: "swimmer" /* SWIMMER */,
+  [EndpointId.DFK_MAINNET]: "dfk" /* DFK */,
+  [EndpointId.HARMONY_MAINNET]: "harmony" /* HARMONY */,
+  [EndpointId.DEXALOT_MAINNET]: "dexalot" /* DEXALOT */,
+  [EndpointId.CELO_MAINNET]: "celo" /* CELO */,
+  [EndpointId.MOONBEAM_MAINNET]: "moonbeam" /* MOONBEAM */,
+  [EndpointId.INTAIN_MAINNET]: "intain" /* INTAIN */,
+  [EndpointId.FUSE_MAINNET]: "fuse" /* FUSE */,
+  [EndpointId.GNOSIS_MAINNET]: "gnosis" /* GNOSIS */,
+  [EndpointId.APTOS_MAINNET]: "aptos" /* APTOS */,
+  [EndpointId.KLAYTN_MAINNET]: "klaytn" /* KLAYTN */,
+  [EndpointId.METIS_MAINNET]: "metis" /* METIS */,
+  [EndpointId.COREDAO_MAINNET]: "coredao" /* COREDAO */,
+  [EndpointId.METER_MAINNET]: "meter" /* METER */,
+  [EndpointId.OKX_MAINNET]: "okx" /* OKX */,
+  [EndpointId.GOERLI_MAINNET]: "goerli" /* GOERLI */,
+  [EndpointId.ZKSYNC_MAINNET]: "zksync" /* ZKSYNC */,
+  [EndpointId.SHRAPNEL_MAINNET]: "shrapnel" /* SHRAPNEL */,
+  [EndpointId.DOS_MAINNET]: "dos" /* DOS */,
+  [EndpointId.ZKPOLYGON_MAINNET]: "zkevm" /* ZKEVM */,
+  [EndpointId.SEPOLIA_MAINNET]: "sepolia" /* SEPOLIA */,
+  [EndpointId.MOONRIVER_MAINNET]: "moonriver" /* MOONRIVER */,
+  [EndpointId.NOVA_MAINNET]: "nova" /* NOVA */,
+  [EndpointId.TENET_MAINNET]: "tenet" /* TENET */,
+  [EndpointId.CANTO_MAINNET]: "canto" /* CANTO */,
+  [EndpointId.KAVA_MAINNET]: "kava" /* KAVA */,
+  [EndpointId.MANTLE_MAINNET]: "mantle" /* MANTLE */,
+  [EndpointId.HUBBLE_MAINNET]: "hubble" /* HUBBLE */,
+  [EndpointId.ZKCONSENSYS_MAINNET]: "zkconsensys" /* ZKCONSENSYS */,
+  [EndpointId.BASE_MAINNET]: "base" /* BASE */,
+  [EndpointId.SOLANA_MAINNET]: "solana" /* SOLANA */,
+  // v2 mainnet
+  [EndpointId.ETHEREUM_V2_MAINNET]: "ethereum" /* ETHEREUM */,
+  [EndpointId.BSC_V2_MAINNET]: "bsc" /* BSC */,
+  [EndpointId.AVALANCHE_V2_MAINNET]: "avalanche" /* AVALANCHE */,
+  [EndpointId.POLYGON_V2_MAINNET]: "polygon" /* POLYGON */,
+  [EndpointId.ARBITRUM_V2_MAINNET]: "arbitrum" /* ARBITRUM */,
+  [EndpointId.OPTIMISM_V2_MAINNET]: "optimism" /* OPTIMISM */,
+  [EndpointId.FANTOM_V2_MAINNET]: "fantom" /* FANTOM */,
+  [EndpointId.SWIMMER_V2_MAINNET]: "swimmer" /* SWIMMER */,
+  [EndpointId.DFK_V2_MAINNET]: "dfk" /* DFK */,
+  [EndpointId.HARMONY_V2_MAINNET]: "harmony" /* HARMONY */,
+  [EndpointId.DEXALOT_V2_MAINNET]: "dexalot" /* DEXALOT */,
+  [EndpointId.CELO_V2_MAINNET]: "celo" /* CELO */,
+  [EndpointId.MOONBEAM_V2_MAINNET]: "moonbeam" /* MOONBEAM */,
+  [EndpointId.INTAIN_V2_MAINNET]: "intain" /* INTAIN */,
+  [EndpointId.FUSE_V2_MAINNET]: "fuse" /* FUSE */,
+  [EndpointId.GNOSIS_V2_MAINNET]: "gnosis" /* GNOSIS */,
+  [EndpointId.APTOS_V2_MAINNET]: "aptos" /* APTOS */,
+  [EndpointId.KLAYTN_V2_MAINNET]: "klaytn" /* KLAYTN */,
+  [EndpointId.METIS_V2_MAINNET]: "metis" /* METIS */,
+  [EndpointId.COREDAO_V2_MAINNET]: "coredao" /* COREDAO */,
+  [EndpointId.GOERLI_V2_MAINNET]: "goerli" /* GOERLI */,
+  [EndpointId.OKX_V2_MAINNET]: "okx" /* OKX */,
+  [EndpointId.CANTO_V2_MAINNET]: "canto" /* CANTO */,
+  [EndpointId.ZKSYNC_V2_MAINNET]: "zksync" /* ZKSYNC */,
+  [EndpointId.SHRAPNEL_V2_MAINNET]: "shrapnel" /* SHRAPNEL */,
+  [EndpointId.DOS_V2_MAINNET]: "dos" /* DOS */,
+  [EndpointId.ZKPOLYGON_V2_MAINNET]: "zkevm" /* ZKEVM */,
+  [EndpointId.SEPOLIA_V2_MAINNET]: "sepolia" /* SEPOLIA */,
+  [EndpointId.MOONRIVER_V2_MAINNET]: "moonriver" /* MOONRIVER */,
+  [EndpointId.SOLANA_V2_MAINNET]: "solana" /* SOLANA */,
+  [EndpointId.TENET_V2_MAINNET]: "tenet" /* TENET */,
+  [EndpointId.NOVA_V2_MAINNET]: "nova" /* NOVA */,
+  [EndpointId.METER_V2_MAINNET]: "meter" /* METER */,
+  [EndpointId.KAVA_V2_MAINNET]: "kava" /* KAVA */,
+  [EndpointId.MANTLE_V2_MAINNET]: "mantle" /* MANTLE */,
+  [EndpointId.HUBBLE_V2_MAINNET]: "hubble" /* HUBBLE */,
+  [EndpointId.ZKCONSENSYS_V2_MAINNET]: "zkconsensys" /* ZKCONSENSYS */,
+  [EndpointId.BASE_V2_MAINNET]: "base" /* BASE */,
+  // testnet
+  [EndpointId.ETHEREUM_TESTNET]: "goerli" /* GOERLI */,
+  [EndpointId.BSC_TESTNET]: "bsc-testnet" /* BSC_TESTNET */,
+  [EndpointId.POLYGON_TESTNET]: "mumbai" /* MUMBAI */,
+  [EndpointId.FANTOM_TESTNET]: "fantom-testnet" /* FANTOM_TESTNET */,
+  [EndpointId.HARMONY_TESTNET]: "harmony-testnet" /* HARMONY_TESTNET */,
+  [EndpointId.AVALANCHE_TESTNET]: "fuji" /* FUJI */,
+  [EndpointId.ARBITRUM_TESTNET]: "arbitrum-goerli" /* ARBITURM_GOERLI */,
+  [EndpointId.OPTIMISM_TESTNET]: "optimism-goerli" /* OPTIMISM_GOERLI */,
+  [EndpointId.DFK_TESTNET]: "dfk-testnet" /* DFK_TESTNET */,
+  [EndpointId.SWIMMER_TESTNET]: "swimmer-testnet" /* SWIMMER_TESTNET */,
+  [EndpointId.DEXALOT_TESTNET]: "dexalot-testnet" /* DEVALOT_TESTNET */,
+  [EndpointId.GNOSIS_TESTNET]: "chiado" /* CHIADO */,
+  [EndpointId.CELO_TESTNET]: "alfajores" /* ALFAJORES */,
+  [EndpointId.APTOS_TESTNET]: "aptos-testnet" /* APTOS_TESTNET */,
+  [EndpointId.MOONBEAM_TESTNET]: "moonbase" /* MOONBASE */,
+  [EndpointId.FUSE_TESTNET]: "fusespark" /* FUSESPARK */,
+  [EndpointId.ZKSYNC_TESTNET]: "zksync-testnet" /* ZKSYNC_TESTNET */,
+  [EndpointId.SHRAPNEL_TESTNET]: "shrapnel-testnet" /* SHRAPNEL_TESTNET */,
+  [EndpointId.DOS_TESTNET]: "dos-testnet" /* DOS_TESTNET */,
+  [EndpointId.KLAYTN_TESTNET]: "klaytn-baobab" /* KLAYTN_BAOBAB */,
+  [EndpointId.METIS_TESTNET]: "metis-goerli" /* METIS_GOERLI */,
+  [EndpointId.INTAIN_TESTNET]: "intain-testnet" /* INTAIN_TESTNET */,
+  [EndpointId.COREDAO_TESTNET]: "coredao-testnet" /* COREDAO_TESTNET */,
+  [EndpointId.ZKPOLYGON_TESTNET]: "zkevm-testnet" /* ZKEVM_TESTNET */,
+  [EndpointId.OKX_TESTNET]: "okx-testnet" /* OKX_TESTNET */,
+  [EndpointId.SOLANA_TESTNET]: "solana-testnet" /* SOLANA_TESTNET */,
+  [EndpointId.METER_TESTNET]: "meter-testnet" /* METER_TESTNET */,
+  [EndpointId.ZKCONSENSYS_TESTNET]: "linea-goerli" /* LINEA_GOERLI */,
+  [EndpointId.SEPOLIA_TESTNET]: "sepolia" /* SEPOLIA */,
+  [EndpointId.BASE_TESTNET]: "base-goerli" /* BASE_GOERLI */,
+  [EndpointId.AAVEGOTCHI_TESTNET]: "aavegotchi-testnet" /* AAVEGOTCHI_TESTNET */,
+  [EndpointId.SCROLL_TESTNET]: "scroll-testnet" /* SCROLL_TESTNET */,
+  [EndpointId.CATHAY_TESTNET]: "cathay-testnet" /* CATHAY_TESTNET */,
+  [EndpointId.KAVA_TESTNET]: "kava-testnet" /* KAVA_TESTNET */,
+  [EndpointId.TENET_TESTNET]: "tenet-testnet" /* TENET_TESTNET */,
+  [EndpointId.CANTO_TESTNET]: "canto-testnet" /* CANTO_TESTNET */,
+  [EndpointId.ORDERLY_TESTNET]: "orderly-testnet" /* ORDERLY_TESTNET */,
+  [EndpointId.BLOCKGEN_TESTNET]: "blockgen-testnet" /* BLOCKGEN_TESTNET */,
+  [EndpointId.MERITCIRCLE_TESTNET]: "meritcircle-testnet" /* MERITCIRCLE_TESTNET */,
+  [EndpointId.MANTLE_TESTNET]: "mantle-testnet" /* MANTLE_TESTNET */,
+  [EndpointId.HUBBLE_TESTNET]: "hubble-testnet" /* HUBBLE_TESTNET */,
+  // v2 testnet
+  [EndpointId.ETHEREUM_V2_TESTNET]: "goerli" /* GOERLI */,
+  [EndpointId.POLYGON_V2_TESTNET]: "mumbai" /* MUMBAI */,
+  [EndpointId.SOLANA_V2_TESTNET]: "solana-testnet" /* SOLANA_TESTNET */,
+  [EndpointId.ARBITRUM_V2_TESTNET]: "arbitrum-goerli" /* ARBITURM_GOERLI */,
+  [EndpointId.OPTIMISM_V2_TESTNET]: "optimism-goerli" /* OPTIMISM_GOERLI */,
+  [EndpointId.AVALANCHE_V2_TESTNET]: "fuji" /* FUJI */,
+  [EndpointId.BSC_V2_TESTNET]: "bsc-testnet" /* BSC_TESTNET */,
+  [EndpointId.FANTOM_V2_TESTNET]: "fantom-testnet" /* FANTOM_TESTNET */,
+  [EndpointId.DFK_V2_TESTNET]: "dfk-testnet" /* DFK_TESTNET */,
+  [EndpointId.HARMONY_V2_TESTNET]: "harmony-testnet" /* HARMONY_TESTNET */,
+  [EndpointId.DEXALOT_V2_TESTNET]: "dexalot-testnet" /* DEVALOT_TESTNET */,
+  [EndpointId.CELO_V2_TESTNET]: "alfajores" /* ALFAJORES */,
+  [EndpointId.MOONBEAM_V2_TESTNET]: "moonbase" /* MOONBASE */,
+  [EndpointId.FUSE_V2_TESTNET]: "fusespark" /* FUSESPARK */,
+  [EndpointId.GNOSIS_V2_TESTNET]: "chiado" /* CHIADO */,
+  [EndpointId.ZKSYNC_V2_TESTNET]: "zksync-testnet" /* ZKSYNC_TESTNET */,
+  [EndpointId.SHRAPNEL_V2_TESTNET]: "shrapnel-testnet" /* SHRAPNEL_TESTNET */,
+  [EndpointId.DOS_V2_TESTNET]: "dos-testnet" /* DOS_TESTNET */,
+  [EndpointId.KLAYTN_V2_TESTNET]: "klaytn-baobab" /* KLAYTN_BAOBAB */,
+  [EndpointId.METIS_V2_TESTNET]: "metis-goerli" /* METIS_GOERLI */,
+  [EndpointId.COREDAO_V2_TESTNET]: "coredao-testnet" /* COREDAO_TESTNET */,
+  [EndpointId.OKX_V2_TESTNET]: "okx-testnet" /* OKX_TESTNET */,
+  [EndpointId.METER_V2_TESTNET]: "meter-testnet" /* METER_TESTNET */,
+  [EndpointId.ZKCONSENSYS_V2_TESTNET]: "linea-goerli" /* LINEA_GOERLI */,
+  [EndpointId.ZKPOLYGON_V2_TESTNET]: "zkevm-testnet" /* ZKEVM_TESTNET */,
+  [EndpointId.CANTO_V2_TESTNET]: "canto-testnet" /* CANTO_TESTNET */,
+  [EndpointId.BASE_V2_TESTNET]: "base-goerli" /* BASE_GOERLI */,
+  [EndpointId.SEPOLIA_V2_TESTNET]: "sepolia" /* SEPOLIA */,
+  [EndpointId.AAVEGOTCHI_V2_TESTNET]: "aavegotchi-testnet" /* AAVEGOTCHI_TESTNET */,
+  [EndpointId.SCROLL_V2_TESTNET]: "scroll-testnet" /* SCROLL_TESTNET */,
+  [EndpointId.CATHAY_V2_TESTNET]: "cathay-testnet" /* CATHAY_TESTNET */,
+  [EndpointId.KAVA_V2_TESTNET]: "kava-testnet" /* KAVA_TESTNET */,
+  [EndpointId.TENET_V2_TESTNET]: "tenet-testnet" /* TENET_TESTNET */,
+  [EndpointId.ORDERLY_V2_TESTNET]: "orderly-testnet" /* ORDERLY_TESTNET */,
+  [EndpointId.BLOCKGEN_V2_TESTNET]: "blockgen-testnet" /* BLOCKGEN_TESTNET */,
+  [EndpointId.MERITCIRCLE_V2_TESTNET]: "meritcircle-testnet" /* MERITCIRCLE_TESTNET */,
+  [EndpointId.MANTLE_V2_TESTNET]: "mantle-testnet" /* MANTLE_TESTNET */,
+  [EndpointId.HUBBLE_V2_TESTNET]: "hubble-testnet" /* HUBBLE_TESTNET */,
+  // sandbox
+  [EndpointId.ETHEREUM_SANDBOX]: "goerli" /* GOERLI */,
+  [EndpointId.BSC_SANDBOX]: "bsc-testnet" /* BSC_TESTNET */,
+  [EndpointId.POLYGON_SANDBOX]: "mumbai" /* MUMBAI */,
+  [EndpointId.AVALANCHE_SANDBOX]: "fuji" /* FUJI */,
+  [EndpointId.APTOS_SANDBOX]: "aptos" /* APTOS */,
+  // v2 sandbox
+  [EndpointId.ETHEREUM_V2_SANDBOX]: "goerli" /* GOERLI */,
+  [EndpointId.POLYGON_V2_SANDBOX]: "mumbai" /* MUMBAI */,
+  [EndpointId.SOLANA_V2_SANDBOX]: "solana-testnet" /* SOLANA_TESTNET */,
+  [EndpointId.BSC_V2_SANDBOX]: "bsc-testnet" /* BSC_TESTNET */,
+  [EndpointId.AVALANCHE_V2_SANDBOX]: "fuji" /* FUJI */
+};
+
 // src/constants/environment.ts
 var ENVIRONMENT = {
   [EndpointId.ETHEREUM_MAINNET]: "mainnet" /* MAINNET */,
@@ -310,11 +580,14 @@ var ENVIRONMENT = {
   [EndpointId.ZKPOLYGON_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.SEPOLIA_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.MOONRIVER_MAINNET]: "mainnet" /* MAINNET */,
-  [EndpointId.METER_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.NOVA_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.TENET_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.CANTO_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.KAVA_MAINNET]: "mainnet" /* MAINNET */,
+  [EndpointId.MANTLE_MAINNET]: "mainnet" /* MAINNET */,
+  [EndpointId.HUBBLE_MAINNET]: "mainnet" /* MAINNET */,
+  [EndpointId.ZKCONSENSYS_MAINNET]: "mainnet" /* MAINNET */,
+  [EndpointId.BASE_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.SOLANA_MAINNET]: "mainnet" /* MAINNET */,
   // v2 mainnet
   [EndpointId.ETHEREUM_V2_MAINNET]: "mainnet" /* MAINNET */,
@@ -351,6 +624,10 @@ var ENVIRONMENT = {
   [EndpointId.NOVA_V2_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.METER_V2_MAINNET]: "mainnet" /* MAINNET */,
   [EndpointId.KAVA_V2_MAINNET]: "mainnet" /* MAINNET */,
+  [EndpointId.MANTLE_V2_MAINNET]: "mainnet" /* MAINNET */,
+  [EndpointId.HUBBLE_V2_MAINNET]: "mainnet" /* MAINNET */,
+  [EndpointId.ZKCONSENSYS_V2_MAINNET]: "mainnet" /* MAINNET */,
+  [EndpointId.BASE_V2_MAINNET]: "mainnet" /* MAINNET */,
   // testnet
   [EndpointId.ETHEREUM_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.BSC_TESTNET]: "testnet" /* TESTNET */,
@@ -380,11 +657,9 @@ var ENVIRONMENT = {
   [EndpointId.SOLANA_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.METER_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.ZKCONSENSYS_TESTNET]: "testnet" /* TESTNET */,
-  // [EndpointId.MOONRIVER_TESTNET]: Environment.TESTNET,
   [EndpointId.SEPOLIA_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.BASE_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.AAVEGOTCHI_TESTNET]: "testnet" /* TESTNET */,
-  // [EndpointId.CANTO_TESTNET]: Environment.TESTNET,
   [EndpointId.SCROLL_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.CATHAY_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.KAVA_TESTNET]: "testnet" /* TESTNET */,
@@ -393,6 +668,8 @@ var ENVIRONMENT = {
   [EndpointId.ORDERLY_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.BLOCKGEN_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.MERITCIRCLE_TESTNET]: "testnet" /* TESTNET */,
+  [EndpointId.MANTLE_TESTNET]: "testnet" /* TESTNET */,
+  [EndpointId.HUBBLE_TESTNET]: "testnet" /* TESTNET */,
   // v2 testnet
   [EndpointId.ETHEREUM_V2_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.POLYGON_V2_TESTNET]: "testnet" /* TESTNET */,
@@ -430,6 +707,8 @@ var ENVIRONMENT = {
   [EndpointId.ORDERLY_V2_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.BLOCKGEN_V2_TESTNET]: "testnet" /* TESTNET */,
   [EndpointId.MERITCIRCLE_V2_TESTNET]: "testnet" /* TESTNET */,
+  [EndpointId.MANTLE_V2_TESTNET]: "testnet" /* TESTNET */,
+  [EndpointId.HUBBLE_V2_TESTNET]: "testnet" /* TESTNET */,
   // sandbox
   [EndpointId.ETHEREUM_SANDBOX]: "testnet" /* TESTNET */,
   [EndpointId.BSC_SANDBOX]: "testnet" /* TESTNET */,
@@ -507,10 +786,8 @@ function networkToEndpointId(network, version) {
   const name = network.replace("-local", "");
   const [chain, stage] = name.split("-");
   const key = version === "v1" /* V1 */ ? `${chain.toUpperCase()}_${stage.toUpperCase()}` : `${chain.toUpperCase()}_V2_${stage.toUpperCase()}`;
-  const endpointId = EndpointId[key];
-  invariant(endpointId, `Invalid network name: ${network}, key: ${key}`);
-  invariant(typeof endpointId === "number", `Invalid endpoint ID: ${endpointId}`);
-  return endpointId;
+  invariant(key in EndpointId, `Invalid network name: ${network}, key: ${key}`);
+  return EndpointId[key];
 }
 function networkToEnv(network, version) {
   if (network.includes("local") || network === "hardhat") {
@@ -540,10 +817,8 @@ function endpointIdToVersion(endpointId) {
 }
 function chainAndStageToEndpointId(chain, stage, version) {
   const key = version === "v2" /* V2 */ ? `${chain.toUpperCase()}_V2_${stage.toUpperCase()}` : `${chain.toUpperCase()}_${stage.toUpperCase()}`;
-  const endpointId = EndpointId[key];
-  invariant(endpointId, `Invalid key: ${key}`);
-  invariant(typeof endpointId === "number", `Invalid endpoint ID: ${endpointId}`);
-  return endpointId;
+  invariant(key in EndpointId, `Invalid key: ${key}`);
+  return EndpointId[key];
 }
 function chainAndStageToNetwork(chain, stage, env) {
   if (env === "local" /* LOCAL */) {
@@ -643,6 +918,6 @@ function getNetworkForChainId(targetchainId) {
   };
 }
 
-export { BRIDGE_ADDRESS, Chain, ChainType, ENVIRONMENT, EndpointId, EndpointVersion, Environment, MainnetEndpointId, MainnetV2EndpointId, MessageLibVersionV1, MessageLibVersionV2, STG_ADDRESS, SandboxEndpointId, SandboxV2EndpointId, Stage, TestnetEndpointId, TestnetV2EndpointId, ULN_V1_CHAINS, chainAndStageToEndpointId, chainAndStageToNetwork, endpointIdToChain, endpointIdToChainType, endpointIdToNetwork, endpointIdToStage, endpointIdToVersion, getChainIdForNetwork, getChainType, getEndpointVersionForUlnVersion, getNetworkForChainId, getNetworksForStage, networkToChain, networkToChainType, networkToEndpointId, networkToEnv, networkToStage };
+export { BRIDGE_ADDRESS, CHAIN_KEY, Chain, ChainKey, ChainType, ENVIRONMENT, EndpointId, EndpointVersion, Environment, MainnetEndpointId, MainnetV2EndpointId, MessageLibVersionV1, MessageLibVersionV2, STG_ADDRESS, SandboxEndpointId, SandboxV2EndpointId, Stage, TestnetEndpointId, TestnetV2EndpointId, ULN_V1_CHAINS, chainAndStageToEndpointId, chainAndStageToNetwork, endpointIdToChain, endpointIdToChainType, endpointIdToNetwork, endpointIdToStage, endpointIdToVersion, getChainIdForNetwork, getChainType, getEndpointVersionForUlnVersion, getNetworkForChainId, getNetworksForStage, networkToChain, networkToChainType, networkToEndpointId, networkToEnv, networkToStage };
 //# sourceMappingURL=out.js.map
 //# sourceMappingURL=index.mjs.map

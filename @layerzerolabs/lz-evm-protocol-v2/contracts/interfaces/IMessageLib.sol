@@ -3,7 +3,7 @@
 pragma solidity >=0.8.0;
 
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
-import "./ILayerZeroEndpoint.sol";
+import "./ILayerZeroEndpointV2.sol";
 import "./IPacket.sol";
 
 interface IMessageLib is IERC165, IPacket {
@@ -11,19 +11,17 @@ interface IMessageLib is IERC165, IPacket {
         Packet calldata _packet,
         bytes calldata _options,
         bool _payInLzToken
-    ) external returns (ILayerZeroEndpoint.MessagingReceipt memory, bytes memory encodedPacket, bytes memory options);
+    ) external returns (ILayerZeroEndpointV2.MessagingReceipt memory, bytes memory encodedPacket, bytes memory options);
 
     function quote(
         PacketForQuote calldata _packet,
         bool _payInLzToken,
         bytes calldata _options
-    ) external view returns (ILayerZeroEndpoint.MessagingFee memory);
+    ) external view returns (ILayerZeroEndpointV2.MessagingFee memory);
 
     function setTreasury(address _treasury) external;
 
-    function treasury() external view returns (address);
-
-    function setConfig(address _oapp, uint32 _eid, ILayerZeroEndpoint.ConfigParam[] calldata _config) external;
+    function setConfig(address _oapp, uint32 _eid, ILayerZeroEndpointV2.SetConfigParam[] calldata _config) external;
 
     function snapshotConfig(uint32[] calldata _eids, address _oapp) external;
 

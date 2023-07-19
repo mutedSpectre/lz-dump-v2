@@ -8,7 +8,6 @@ library SafeCall {
     /// @param _target The address to call
     /// @param _gas The amount of gas to forward to the remote contract
     /// @param _value The value in wei to send to the remote contract
-    /// @param _maxCopy The maximum number of bytes of returndata to copy
     /// to memory.
     /// @param _calldata The data to send to the remote contract
     /// @return success and returndata, as `.call()`. Returndata is capped to
@@ -17,12 +16,12 @@ library SafeCall {
         address _target,
         uint256 _gas,
         uint256 _value,
-        uint16 _maxCopy,
         bytes memory _calldata
     ) internal returns (bool, bytes memory) {
         // set up for assembly call
         uint256 _toCopy;
         bool _success;
+        uint16 _maxCopy = 100; // limits the copy size to be 100, 4+96, bytes
         bytes memory _returnData = new bytes(_maxCopy);
         // dispatch message to recipient
         // by assembly calling "handle" function

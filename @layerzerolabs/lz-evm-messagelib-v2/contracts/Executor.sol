@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity 0.8.18;
+pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 import "hardhat-deploy/solc_0.8/proxy/Proxied.sol";
 
 import "./uln/interfaces/IUltraLightNode.sol";
+import "./uln/uln301/interfaces/IUltraLightNode301.sol";
 import "./interfaces/IExecutor.sol";
 import "./interfaces/IExecutorFeeLib.sol";
 import "./upgradeable/WorkerUpgradeable.sol";
@@ -40,7 +41,11 @@ contract Executor is WorkerUpgradeable, ReentrancyGuardUpgradeable, Proxied, IEx
                 param.airdropCap
             );
         }
-        emit SetDstConfig(_params);
+        emit DstConfigSet(_params);
+    }
+
+    function airdrop(AirdropParams calldata _airdropParams) external payable onlyRole(ADMIN_ROLE) nonReentrant {
+        _airdrop(_airdropParams);
     }
 
     function airdropAndExecute301(
@@ -49,7 +54,7 @@ contract Executor is WorkerUpgradeable, ReentrancyGuardUpgradeable, Proxied, IEx
         uint _gasLimit
     ) external payable onlyRole(ADMIN_ROLE) nonReentrant {
         _airdrop(_airdropParams);
-        IUltraLightNode(uln301).deliver(_packet, _gasLimit);
+        IUltraLightNode301(uln301).deliver(_packet, _gasLimit);
     }
 
     function airdropAndExecute302(
@@ -60,12 +65,12 @@ contract Executor is WorkerUpgradeable, ReentrancyGuardUpgradeable, Proxied, IEx
 
         uint value = msg.value - _airdropParams.amount;
         // ignore the execution result
-        ILayerZeroEndpoint(endpoint).lzReceive{value: value, gas: _executionParams.gasLimit}(
+        ILayerZeroEndpointV2(endpoint).lzReceive{value: value, gas: _executionParams.gasLimit}(
             _executionParams.origin,
             _executionParams.receiver,
             _executionParams.guid,
             _executionParams.message,
-            _executionParams.callerParams
+            _executionParams.extraData
         );
     }
 
@@ -75,8 +80,15 @@ contract Executor is WorkerUpgradeable, ReentrancyGuardUpgradeable, Proxied, IEx
         address _sender,
         uint _calldataSize,
         bytes calldata _options
-    ) external payable onlyRole(MESSAGE_LIB_ROLE) returns (uint fee) {
-        fee = getFee(_dstEid, _sender, _calldataSize, _options);
+    ) external payable onlyRole(MESSAGE_LIB_ROLE) onlyAcl(_sender) returns (uint fee) {
+        IExecutorFeeLib.FeeParams memory params = IExecutorFeeLib.FeeParams(
+            priceFeed,
+            _dstEid,
+            _sender,
+            _calldataSize,
+            defaultMultiplierBps
+        );
+        return IExecutorFeeLib(workerFeeLib).getFeeOnSend(params, dstConfig[_dstEid], _options);
     }
 
     // --- Only ACL ---
@@ -96,18 +108,12 @@ contract Executor is WorkerUpgradeable, ReentrancyGuardUpgradeable, Proxied, IEx
         return IExecutorFeeLib(workerFeeLib).getFee(params, dstConfig[_dstEid], _options);
     }
 
-    // --- Internal ---
-    function _checkWorkerFeeLibInterface(address _workerFeeLib) internal view override {
-        require(
-            IERC165(_workerFeeLib).supportsInterface(type(IExecutorFeeLib).interfaceId),
-            "Executor: worker fee lib does not implement IExecutorFeeLib"
-        );
-    }
-
     function _airdrop(AirdropParams calldata _airdropParams) internal {
         (bool sent, ) = _airdropParams.receiver.call{value: _airdropParams.amount, gas: _airdropParams.gasLimit}("");
         if (!sent) {
             emit AirdropFailed(_airdropParams.receiver, _airdropParams.amount);
+        } else {
+            emit AirdropSucceeded(_airdropParams.receiver, _airdropParams.amount);
         }
     }
 }

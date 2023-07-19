@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import "../interfaces/IMessageLib.sol";
+import "../libs/Errors.sol";
 
 contract BlockedMessageLib is ERC165 {
     function supportsInterface(bytes4 interfaceId) public view override returns (bool) {
@@ -15,6 +16,6 @@ contract BlockedMessageLib is ERC165 {
     }
 
     fallback() external {
-        revert("LZC0000");
+        revert(Errors.NOT_IMPLEMENTED);
     }
 }

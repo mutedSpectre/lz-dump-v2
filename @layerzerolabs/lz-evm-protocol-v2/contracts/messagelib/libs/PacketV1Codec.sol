@@ -1,10 +1,14 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity >=0.8.0;
+pragma solidity ^0.8.0;
 
 import "../../interfaces/IPacket.sol";
+import "../../libs/AddressCast.sol";
 
 library PacketV1Codec {
+    using AddressCast for address;
+    using AddressCast for bytes32;
+
     // header (version + nonce + path)
     // version
     uint private constant PACKET_VERSION_OFFSET = 0;
@@ -27,7 +31,7 @@ library PacketV1Codec {
             _version,
             _packet.nonce,
             _packet.srcEid,
-            addressToBytes32(_packet.sender),
+            _packet.sender.toBytes32(),
             _packet.dstEid,
             _packet.receiver,
             _packet.guid,
@@ -40,7 +44,7 @@ library PacketV1Codec {
             _version,
             _packet.nonce,
             _packet.srcEid,
-            addressToBytes32(_packet.sender),
+            _packet.sender.toBytes32(),
             _packet.dstEid,
             _packet.receiver,
             _packet.guid,
@@ -48,7 +52,7 @@ library PacketV1Codec {
         );
     }
 
-    function header(bytes calldata _packet) internal pure returns (bytes memory) {
+    function header(bytes calldata _packet) internal pure returns (bytes calldata) {
         return _packet[0:GUID_OFFSET];
     }
 
@@ -69,7 +73,7 @@ library PacketV1Codec {
     }
 
     function senderAddressB20(bytes calldata _packet) internal pure returns (address) {
-        return bytes32ToAddress(sender(_packet));
+        return sender(_packet).toAddress();
     }
 
     function dstEid(bytes calldata _packet) internal pure returns (uint32) {
@@ -81,7 +85,7 @@ library PacketV1Codec {
     }
 
     function receiverB20(bytes calldata _packet) internal pure returns (address) {
-        return bytes32ToAddress(receiver(_packet));
+        return receiver(_packet).toAddress();
     }
 
     function guid(bytes calldata _packet) internal pure returns (bytes32) {
@@ -96,11 +100,7 @@ library PacketV1Codec {
         return bytes(_packet[GUID_OFFSET:]);
     }
 
-    function addressToBytes32(address _addr) internal pure returns (bytes32) {
-        return bytes32(uint(uint160(_addr)));
-    }
-
-    function bytes32ToAddress(bytes32 _b) internal pure returns (address) {
-        return address(uint160(uint(_b)));
+    function payloadHash(bytes calldata _packet) internal pure returns (bytes32) {
+        return keccak256(payload(_packet));
     }
 }

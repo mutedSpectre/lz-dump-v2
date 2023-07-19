@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity 0.8.18;
+pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
@@ -13,7 +13,7 @@ abstract contract MultiSigUpgradeable is Initializable {
     event UpdateQuorum(uint64 _quorum);
 
     modifier onlySigner() {
-        require(signers[msg.sender], "MultiSigOracle: caller must be signer");
+        require(signers[msg.sender], "MultiSig: caller must be signer");
         _;
     }
 

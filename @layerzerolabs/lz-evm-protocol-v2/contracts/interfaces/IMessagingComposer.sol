@@ -27,10 +27,6 @@ interface IMessagingComposer {
         address _composer,
         bytes32 _guid,
         bytes calldata _message,
-        bytes calldata _callerParams
+        bytes calldata _extraData
     ) external payable returns (bool, bytes memory);
-
-    function isComposingMessage() external view returns (bool);
-
-    function getComposeContext() external view returns (address);
 }

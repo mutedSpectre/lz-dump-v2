@@ -213,6 +213,10 @@ var NETWORK_INFO = [
     ],
     "rpcs": [
       {
+        "url": "https://eth-mainnet.gateway.pokt.network/v1/5f3453978e354ab992c4da79",
+        "weight": 1e6
+      },
+      {
         "url": "https://eth-rpc.gateway.pokt.network",
         "weight": 1e6
       },
@@ -227,6 +231,18 @@ var NETWORK_INFO = [
       {
         "url": "https://cloudflare-eth.com",
         "weight": 1e3
+      },
+      {
+        "url": "https://mainnet.infura.io/v3/${INFURA_API_KEY}",
+        "weight": 1
+      },
+      {
+        "url": "https://eth-mainnet.alchemyapi.io/v2/84tGz8xVIWFkagsaSzNjObh7aSPbxeXD",
+        "weight": 100
+      },
+      {
+        "url": "https://eth-mainnet.alchemyapi.io/v2/VsPzIezK0AtqsnrWAuV0Gew-MS7H_E5E",
+        "weight": 100
       }
     ]
   },
@@ -246,7 +262,11 @@ var NETWORK_INFO = [
         "url": "https://rinkeby.etherscan.io"
       }
     ],
-    "rpcs": []
+    "rpcs": [
+      {
+        "url": "https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_API_KEY}"
+      }
+    ]
   },
   {
     "name": "Goerli",
@@ -370,8 +390,23 @@ var NETWORK_INFO = [
         "weight": 1e6
       },
       {
+        "url": "https://polygon-mainnet.infura.io/v3/${INFURA_API_KEY}"
+      },
+      {
         "url": "https://polygon-rpc.com",
         "weight": 1e6
+      },
+      {
+        "url": "https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+        "weight": 1
+      },
+      {
+        "url": "https://polygon-mainnet.g.alchemy.com/v2/me6Q04fTd2kTT74BUYAp82d_3KL-ObCw",
+        "weight": 100
+      },
+      {
+        "url": "https://polygon-mainnet.g.alchemy.com/v2/q3f-QpPeM_g7rL3G21Cr9tFeuYAquyYl",
+        "weight": 100
       }
     ]
   },
@@ -395,9 +430,9 @@ var NETWORK_INFO = [
       {
         "url": "https://matic-mumbai.chainstacklabs.com"
       },
-      { "url": "https://rpc-mumbai.maticvigil.com" },
-      { "url": "https://endpoints.omniatech.io/v1/matic/mumbai/public" },
-      { "url": "https://rpc.ankr.com/polygon_mumbai" }
+      {
+        "url": "https://rpc-mumbai.maticvigil.com/v1/${MATICVIGIL_API_KEY}"
+      }
     ]
   },
   {
@@ -421,7 +456,10 @@ var NETWORK_INFO = [
         "url": "https://api.avax.network/ext/bc/C/rpc",
         "weight": 1e6
       },
-      { "url": "https://avalanche-c-chain.publicnode.com" }
+      {
+        "url": "https://avalanche--mainnet--rpc.datahub.figment.io/apikey/b1a0d59ba8a5d08049bbfdc174dca1b1/ext/bc/C/rpc",
+        "weight": 100
+      }
     ]
   },
   {
@@ -533,8 +571,18 @@ var NETWORK_INFO = [
         "url": "https://arb1.arbitrum.io/rpc",
         "weight": 1e6
       },
-      { "url": "https://arbitrum-one.publicnode.com" },
-      { "url": "https://arbitrum.meowrpc.com" }
+      {
+        "url": "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+        "weight": 1
+      },
+      {
+        "url": "https://arb-mainnet.g.alchemy.com/v2/N71NRfHZGk2jbnDkW-GiM6fTe6ysJOmp",
+        "weight": 100
+      },
+      {
+        "url": "https://arb-mainnet.g.alchemy.com/v2/KhVdIItVH0ttiQvBYYO5NPL-De-gLWoW",
+        "weight": 100
+      }
     ]
   },
   {
@@ -557,8 +605,9 @@ var NETWORK_INFO = [
       {
         "url": "https://goerli-rollup.arbitrum.io/rpc"
       },
-      { "url": "https://endpoints.omniatech.io/v1/arbitrum/goerli/public" },
-      { "url": "https://arbitrum-goerli.public.blastapi.io" }
+      {
+        "url": "https://arb-goerli.g.alchemy.com/v2/bgFeK0bK5LSFZCyBQAnztWaCUgF_b4fE"
+      }
     ]
   },
   {
@@ -584,6 +633,9 @@ var NETWORK_INFO = [
     "rpcs": [
       {
         "url": "https://rinkeby.arbitrum.io/rpc"
+      },
+      {
+        "url": "https://arb-rinkeby.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
       }
     ]
   },
@@ -610,10 +662,19 @@ var NETWORK_INFO = [
         "weight": 1e6
       },
       {
-        "url": "https://optimism.publicnode.com"
+        "url": "https://optimism-mainnet.infura.io/v3/${INFURA_API_KEY}"
       },
-      { "url": "https://rpc.ankr.com/optimism" },
-      { "url": "https://optimism-mainnet.public.blastapi.io" }
+      {
+        "url": "https://opt-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
+      },
+      {
+        "url": "https://opt-mainnet.g.alchemy.com/v2/3glkhRJRgzHCB2NbDwiQa7G_FTdqn3-T",
+        "weight": 100
+      },
+      {
+        "url": "https://opt-mainnet.g.alchemy.com/v2/7urLa-8k2RR_UYc0exh-b0qg4xySL5KA",
+        "weight": 100
+      }
     ]
   },
   {
@@ -635,6 +696,9 @@ var NETWORK_INFO = [
     "rpcs": [
       {
         "url": "https://kovan.optimism.io/"
+      },
+      {
+        "url": "https://opt-kovan.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
       }
     ]
   },
@@ -754,6 +818,12 @@ var NETWORK_INFO = [
       }
     ],
     "rpcs": [
+      {
+        "url": "https://mainnet.infura.io/v3/${INFURA_API_KEY}"
+      },
+      {
+        "url": "wss://mainnet.infura.io/ws/v3/${INFURA_API_KEY}"
+      },
       {
         "url": "https://api.mycryptoapi.com/eth"
       },
@@ -945,6 +1015,12 @@ var NETWORK_INFO = [
       },
       {
         "url": "http://kovan.poa.network:8545"
+      },
+      {
+        "url": "https://kovan.infura.io/v3/${INFURA_API_KEY}"
+      },
+      {
+        "url": "wss://kovan.infura.io/ws/v3/${INFURA_API_KEY}"
       },
       {
         "url": "ws://kovan.poa.network:8546"
@@ -1372,10 +1448,14 @@ var NETWORK_INFO = [
     ],
     "rpcs": [
       {
-        "url": "https://rpc.goerli.mudit.blog/"
+        "url": "https://goerli.infura.io/v3/${INFURA_API_KEY}"
       },
-      { "url": "https://rpc.ankr.com/eth_goerli" },
-      { "url": "https://eth-goerli.public.blastapi.io" }
+      {
+        "url": "wss://goerli.infura.io/v3/${INFURA_API_KEY}"
+      },
+      {
+        "url": "https://rpc.goerli.mudit.blog/"
+      }
     ]
   },
   {
@@ -1715,6 +1795,86 @@ var NETWORK_INFO = [
     "rpcs": [
       {
         "url": "https://rpc.public.zkevm-test.net"
+      }
+    ]
+  },
+  {
+    "name": "Canto",
+    "symbol": "canto",
+    "chainId": 159,
+    "nativeChainId": 7700,
+    "nativeCurrency": {
+      "decimals": 18,
+      "symbol": "CANTO",
+      "name": "Canto"
+    },
+    "blockExplorers": [
+      {
+        "name": "Canto EVM Explorer (Blockscout)",
+        "url": "https://evm.explorer.canto.io"
+      },
+      {
+        "name": "Canto Cosmos Explorer",
+        "url": "https://cosmos-explorers.neobase.one"
+      },
+      {
+        "name": "Canto EVM Explorer (Blockscout)",
+        "url": "https://tuber.build"
+      }
+    ],
+    "rpcs": [
+      {
+        "url": "https://canto.slingshot.finance"
+      },
+      {
+        "url": "https://canto.neobase.one"
+      },
+      {
+        "url": "https://mainnode.plexnode.org:8545"
+      }
+    ]
+  },
+  {
+    "name": "Canto Testnet",
+    "symbol": "tcanto",
+    "chainId": 10159,
+    "nativeChainId": 740,
+    "nativeCurrency": {
+      "decimals": 18,
+      "symbol": "CANTO",
+      "name": "Canto"
+    },
+    "blockExplorers": [
+      {
+        "name": "Canto Tesnet Explorer (Neobase)",
+        "url": "https://testnet-explorer.canto.neobase.one"
+      }
+    ],
+    "rpcs": [
+      {
+        "url": "https://eth.plexnode.wtf/"
+      }
+    ]
+  },
+  {
+    "name": "Arbitrum Nova",
+    "symbol": "arb-nova",
+    "chainId": 175,
+    "nativeChainId": 42170,
+    "nativeCurrency": {
+      "decimals": 18,
+      "symbol": "ETH",
+      "name": "Ether"
+    },
+    "blockExplorers": [
+      {
+        "name": "Arbitrum Nova Chain Explorer",
+        "url": "https://nova-explorer.arbitrum.io"
+      }
+    ],
+    "rpcs": [
+      {
+        "url": "https://nova.arbitrum.io/rpc"
       }
     ]
   }
@@ -2338,6 +2498,20 @@ function tryParseFraction(value, decimals = 4) {
   }
   return void 0;
 }
+function parsePercent(value, decimals) {
+  const parsed = ethers.utils.parseUnits(value, decimals).toBigInt();
+  const denominator = 100 * 10 ** decimals;
+  return new Percent(parsed, denominator);
+}
+function tryParsePercent(value, decimals = 4) {
+  if (value === void 0)
+    return void 0;
+  try {
+    return parsePercent(value, decimals);
+  } catch (e) {
+  }
+  return void 0;
+}
 
 // src/fraction/utils/sumUnsafe.ts
 function sumUnsafe(amounts, asCurrency) {
@@ -2628,6 +2802,7 @@ exports.isToken = isToken;
 exports.parseCurrencyAmount = parseCurrencyAmount;
 exports.parseFraction = parseFraction;
 exports.parseNumber = parseNumber;
+exports.parsePercent = parsePercent;
 exports.removeDust = removeDust;
 exports.setIconTheme = setIconTheme;
 exports.sumFiat = sumFiat;
@@ -2644,6 +2819,7 @@ exports.tryGetNetwork = tryGetNetwork;
 exports.tryParseCurrencyAmount = tryParseCurrencyAmount;
 exports.tryParseFraction = tryParseFraction;
 exports.tryParseNumber = tryParseNumber;
+exports.tryParsePercent = tryParsePercent;
 exports.validateAndParseAddress = validateAndParseAddress;
 exports.waitFor = waitFor;
 //# sourceMappingURL=out.js.map

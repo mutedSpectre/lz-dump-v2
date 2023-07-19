@@ -12,6 +12,6 @@ interface ILayerZeroReceiver is IMessageOrigin {
         bytes32 _guid,
         bytes memory _message,
         address _executor,
-        bytes calldata _callerParams
+        bytes calldata _extraData
     ) external payable;
 }

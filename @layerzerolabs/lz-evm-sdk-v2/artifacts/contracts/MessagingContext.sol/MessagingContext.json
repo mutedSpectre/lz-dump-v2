@@ -1,0 +1,42 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "MessagingContext",
+  "sourceName": "contracts/MessagingContext.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getSendContext",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isSendingMessage",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080604052600160005534801561001557600080fd5b5060ea806100246000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806314f651a914603757806379624ca9146073575b600080fd5b603d6088565b6040805163ffffffff909316835273ffffffffffffffffffffffffffffffffffffffff9091166020830152015b60405180910390f35b6000546040516001909114158152602001606a565b60008060976000546001141590565b60a15760008060ac565b60a0600054901c6000545b91509150909156fea2646970667358221220b4a71ec410077f8c6960a4bff5cc711cd74c08296ebb0dc91e667c2d830652fe64736f6c63430008130033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806314f651a914603757806379624ca9146073575b600080fd5b603d6088565b6040805163ffffffff909316835273ffffffffffffffffffffffffffffffffffffffff9091166020830152015b60405180910390f35b6000546040516001909114158152602001606a565b60008060976000546001141590565b60a15760008060ac565b60a0600054901c6000545b91509150909156fea2646970667358221220b4a71ec410077f8c6960a4bff5cc711cd74c08296ebb0dc91e667c2d830652fe64736f6c63430008130033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

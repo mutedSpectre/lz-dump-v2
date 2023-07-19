@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity >=0.7.0;
-pragma abicoder v2;
+pragma solidity >=0.8.0;
 
 interface ILayerZeroPriceFeed {
     /**
@@ -36,6 +35,10 @@ interface ILayerZeroPriceFeed {
         ArbitrumPriceExt extend;
     }
 
+    function nativeTokenPriceUSD() external view returns (uint128);
+
+    function getFee(uint32 _dstEid, uint _callDataSize, uint _gas) external returns (uint);
+
     function getPrice(uint32 _dstEid) external view returns (Price memory);
 
     function getPriceRatioDenominator() external view returns (uint128);
@@ -45,4 +48,10 @@ interface ILayerZeroPriceFeed {
         uint _callDataSize,
         uint _gas
     ) external view returns (uint fee, uint128 priceRatio, uint128 priceRatioDenominator, uint128 nativePriceUSD);
+
+    function estimateFeeOnSend(
+        uint32 _dstEid,
+        uint _callDataSize,
+        uint _gas
+    ) external payable returns (uint fee, uint128 priceRatio, uint128 priceRatioDenominator, uint128 nativePriceUSD);
 }

@@ -1,0 +1,1004 @@
+{
+  "address": "0x4Cb410B54A65f0C9cc3F036a5F021eE11762d33e",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "dstEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "defaultOutboundConfig",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "maxMessageSize",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "outboundConfirmations",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "executor",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_configType",
+          "type": "uint32"
+        }
+      ],
+      "name": "getConfigByType",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_configType",
+          "type": "uint32"
+        }
+      ],
+      "name": "getDefaultConfigByType",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_eid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_configType",
+          "type": "uint32"
+        }
+      ],
+      "name": "getDefaultOutboundConfigByType",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getDefaultUlnConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "inboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomOptionalVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "verifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierThreshold",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[]",
+              "name": "verifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "optionalVerifiers",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct UlnConfigStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_dstEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getOutboundConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "maxMessageSize",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "outboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address",
+              "name": "executor",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct OutboundConfigStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_eid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_configType",
+          "type": "uint256"
+        }
+      ],
+      "name": "getOutboundConfigByType",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getRawUlnConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "inboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomOptionalVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "verifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierThreshold",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[]",
+              "name": "verifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "optionalVerifiers",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct UlnConfigStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getUlnAndOutboundConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "inboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomOptionalVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "verifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierThreshold",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[]",
+              "name": "verifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "optionalVerifiers",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct UlnConfigStruct",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "maxMessageSize",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "outboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address",
+              "name": "executor",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct OutboundConfigStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getUlnConfig",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64",
+              "name": "inboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "useCustomOptionalVerifiers",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "verifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierCount",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierThreshold",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address[]",
+              "name": "verifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "optionalVerifiers",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct UlnConfigStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "isSupportedEid",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "dstEid",
+          "type": "uint32"
+        }
+      ],
+      "name": "outboundConfig",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "maxMessageSize",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "outboundConfirmations",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "executor",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "_eids",
+          "type": "uint32[]"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        }
+      ],
+      "name": "resetConfig",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_remoteEid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_configType",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_config",
+          "type": "bytes"
+        }
+      ],
+      "name": "setConfigByType",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint32",
+                  "name": "maxMessageSize",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "outboundConfirmations",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "address",
+                  "name": "executor",
+                  "type": "address"
+                }
+              ],
+              "internalType": "struct OutboundConfigStruct",
+              "name": "outboundConfig",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint64",
+              "name": "inboundConfirmations",
+              "type": "uint64"
+            },
+            {
+              "internalType": "address[]",
+              "name": "verifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "optionalVerifiers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint8",
+              "name": "optionalVerifierThreshold",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct SetDefaultConfigParam[]",
+          "name": "_params",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "setDefaultConfig",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_uln",
+          "type": "address"
+        }
+      ],
+      "name": "setUln",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "_eids",
+          "type": "uint32[]"
+        },
+        {
+          "internalType": "address",
+          "name": "_oapp",
+          "type": "address"
+        }
+      ],
+      "name": "snapshotConfig",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "uln",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xfe18730336bf36795c5994524e0884ea2b5352f61b12448b937e3d4e4c937dda",
+  "receipt": {
+    "to": null,
+    "from": "0xc13b65f7c53Cd6db2EA205a4b574b4a0858720A6",
+    "contractAddress": "0x4Cb410B54A65f0C9cc3F036a5F021eE11762d33e",
+    "transactionIndex": 21,
+    "gasUsed": "3141937",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000080000000000020002000000000400000000000000000000000000000001000001000000000000000000000000000000030000000000000000000800000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xdb8d7e310faf508cc3ea13a45822de6e4bd477e08fd95f7be10c0d4b276e6d27",
+    "transactionHash": "0xfe18730336bf36795c5994524e0884ea2b5352f61b12448b937e3d4e4c937dda",
+    "logs": [
+      {
+        "transactionIndex": 21,
+        "blockNumber": 9366836,
+        "transactionHash": "0xfe18730336bf36795c5994524e0884ea2b5352f61b12448b937e3d4e4c937dda",
+        "address": "0x4Cb410B54A65f0C9cc3F036a5F021eE11762d33e",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000c13b65f7c53cd6db2ea205a4b574b4a0858720a6"
+        ],
+        "data": "0x",
+        "logIndex": 51,
+        "blockHash": "0xdb8d7e310faf508cc3ea13a45822de6e4bd477e08fd95f7be10c0d4b276e6d27"
+      }
+    ],
+    "blockNumber": 9366836,
+    "cumulativeGasUsed": "9508187",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "23618ae04a8987a244e2ff990cbbeac7",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"dstEid\",\"type\":\"uint32\"}],\"name\":\"defaultOutboundConfig\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"maxMessageSize\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"outboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"executor\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_remoteEid\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_configType\",\"type\":\"uint32\"}],\"name\":\"getConfigByType\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_remoteEid\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"_configType\",\"type\":\"uint32\"}],\"name\":\"getDefaultConfigByType\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_eid\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"_configType\",\"type\":\"uint32\"}],\"name\":\"getDefaultOutboundConfigByType\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_remoteEid\",\"type\":\"uint32\"}],\"name\":\"getDefaultUlnConfig\",\"outputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"inboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"bool\",\"name\":\"useCustomVerifiers\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"useCustomOptionalVerifiers\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"verifierCount\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierCount\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierThreshold\",\"type\":\"uint8\"},{\"internalType\":\"address[]\",\"name\":\"verifiers\",\"type\":\"address[]\"},{\"internalType\":\"address[]\",\"name\":\"optionalVerifiers\",\"type\":\"address[]\"}],\"internalType\":\"struct UlnConfigStruct\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_dstEid\",\"type\":\"uint32\"}],\"name\":\"getOutboundConfig\",\"outputs\":[{\"components\":[{\"internalType\":\"uint32\",\"name\":\"maxMessageSize\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"outboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"executor\",\"type\":\"address\"}],\"internalType\":\"struct OutboundConfigStruct\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_eid\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_configType\",\"type\":\"uint256\"}],\"name\":\"getOutboundConfigByType\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_remoteEid\",\"type\":\"uint32\"}],\"name\":\"getRawUlnConfig\",\"outputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"inboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"bool\",\"name\":\"useCustomVerifiers\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"useCustomOptionalVerifiers\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"verifierCount\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierCount\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierThreshold\",\"type\":\"uint8\"},{\"internalType\":\"address[]\",\"name\":\"verifiers\",\"type\":\"address[]\"},{\"internalType\":\"address[]\",\"name\":\"optionalVerifiers\",\"type\":\"address[]\"}],\"internalType\":\"struct UlnConfigStruct\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_remoteEid\",\"type\":\"uint32\"}],\"name\":\"getUlnAndOutboundConfig\",\"outputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"inboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"bool\",\"name\":\"useCustomVerifiers\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"useCustomOptionalVerifiers\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"verifierCount\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierCount\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierThreshold\",\"type\":\"uint8\"},{\"internalType\":\"address[]\",\"name\":\"verifiers\",\"type\":\"address[]\"},{\"internalType\":\"address[]\",\"name\":\"optionalVerifiers\",\"type\":\"address[]\"}],\"internalType\":\"struct UlnConfigStruct\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"uint32\",\"name\":\"maxMessageSize\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"outboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"executor\",\"type\":\"address\"}],\"internalType\":\"struct OutboundConfigStruct\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_remoteEid\",\"type\":\"uint32\"}],\"name\":\"getUlnConfig\",\"outputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"inboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"bool\",\"name\":\"useCustomVerifiers\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"useCustomOptionalVerifiers\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"verifierCount\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierCount\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierThreshold\",\"type\":\"uint8\"},{\"internalType\":\"address[]\",\"name\":\"verifiers\",\"type\":\"address[]\"},{\"internalType\":\"address[]\",\"name\":\"optionalVerifiers\",\"type\":\"address[]\"}],\"internalType\":\"struct UlnConfigStruct\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_remoteEid\",\"type\":\"uint32\"}],\"name\":\"isSupportedEid\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"oapp\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"dstEid\",\"type\":\"uint32\"}],\"name\":\"outboundConfig\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"maxMessageSize\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"outboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"executor\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32[]\",\"name\":\"_eids\",\"type\":\"uint32[]\"},{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"}],\"name\":\"resetConfig\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_remoteEid\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_configType\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"_config\",\"type\":\"bytes\"}],\"name\":\"setConfigByType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint32\",\"name\":\"eid\",\"type\":\"uint32\"},{\"components\":[{\"internalType\":\"uint32\",\"name\":\"maxMessageSize\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"outboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"executor\",\"type\":\"address\"}],\"internalType\":\"struct OutboundConfigStruct\",\"name\":\"outboundConfig\",\"type\":\"tuple\"},{\"internalType\":\"uint64\",\"name\":\"inboundConfirmations\",\"type\":\"uint64\"},{\"internalType\":\"address[]\",\"name\":\"verifiers\",\"type\":\"address[]\"},{\"internalType\":\"address[]\",\"name\":\"optionalVerifiers\",\"type\":\"address[]\"},{\"internalType\":\"uint8\",\"name\":\"optionalVerifierThreshold\",\"type\":\"uint8\"}],\"internalType\":\"struct SetDefaultConfigParam[]\",\"name\":\"_params\",\"type\":\"tuple[]\"}],\"name\":\"setDefaultConfig\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_uln\",\"type\":\"address\"}],\"name\":\"setUln\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32[]\",\"name\":\"_eids\",\"type\":\"uint32[]\"},{\"internalType\":\"address\",\"name\":\"_oapp\",\"type\":\"address\"}],\"name\":\"snapshotConfig\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"uln\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getRawUlnConfig(address,uint32)\":{\"details\":\"Get the uln config without the default config for the given remoteEid.\"},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/uln/UlnConfig.sol\":\"UlnConfig\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":20000},\"remappings\":[]},\"sources\":{\"@layerzerolabs/lz-evm-protocol-v2/contracts/libs/Errors.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity ^0.8.0;\\n\\nlibrary Errors {\\n    // Invalid Argument (http: 400)\\n    string internal constant INVALID_ARGUMENT = \\\"LZ10000\\\";\\n    string internal constant ONLY_REGISTERED = \\\"LZ10001\\\";\\n    string internal constant ONLY_REGISTERED_OR_DEFAULT = \\\"LZ10002\\\";\\n    string internal constant INVALID_AMOUNT = \\\"LZ10003\\\";\\n    string internal constant INVALID_NONCE = \\\"LZ10004\\\";\\n    string internal constant SAME_VALUE = \\\"LZ10005\\\";\\n    string internal constant UNSORTED = \\\"LZ10006\\\";\\n    string internal constant INVALID_VERSION = \\\"LZ10007\\\";\\n    string internal constant INVALID_EID = \\\"LZ10008\\\";\\n    string internal constant INVALID_SIZE = \\\"LZ10009\\\";\\n    string internal constant ONLY_NON_DEFAULT = \\\"LZ10010\\\";\\n    string internal constant INVALID_VERIFIERS = \\\"LZ10011\\\";\\n    string internal constant DUPLICATED = \\\"LZ10012\\\";\\n    string internal constant INVALID_WORKER_ID = \\\"LZ10013\\\";\\n\\n    // Out of Range (http: 400)\\n    string internal constant OUT_OF_RANGE = \\\"LZ20000\\\";\\n\\n    // Invalid State (http: 400)\\n    string internal constant INVALID_STATE = \\\"LZ30000\\\";\\n    string internal constant SEND_REENTRANCY = \\\"LZ30001\\\";\\n    string internal constant RECEIVE_REENTRANCY = \\\"LZ30002\\\";\\n    string internal constant COMPOSE_REENTRANCY = \\\"LZ30003\\\";\\n\\n    // Permission Denied (http: 403)\\n    string internal constant PERMISSION_DENIED = \\\"LZ50000\\\";\\n\\n    // Not Found (http: 404)\\n    string internal constant NOT_FOUND = \\\"LZ60000\\\";\\n\\n    // Already Exists (http: 409)\\n    string internal constant ALREADY_EXISTS = \\\"LZ80000\\\";\\n\\n    // Not Implemented (http: 501)\\n    string internal constant NOT_IMPLEMENTED = \\\"LZC0000\\\";\\n    string internal constant UNSUPPORTED_INTERFACE = \\\"LZC0001\\\";\\n\\n    // Unavailable (http: 503)\\n    string internal constant UNAVAILABLE = \\\"LZD0000\\\";\\n    string internal constant NATIVE_COIN_UNAVAILABLE = \\\"LZD0001\\\";\\n    string internal constant TOKEN_UNAVAILABLE = \\\"LZD0002\\\";\\n    string internal constant DEFAULT_LIBRARY_UNAVAILABLE = \\\"LZD0003\\\";\\n    string internal constant VERIFIERS_UNAVAILABLE = \\\"LZD0004\\\";\\n}\\n\",\"keccak256\":\"0x00c68dee6968a14fa9a120a7447a3f568379c86f2a59d363e902128d4f361a6e\",\"license\":\"BUSL-1.1\"},\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner account will be the one that deploys the contract. This\\n * can later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _transferOwnership(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xba43b97fba0d32eb4254f6a5a297b39a19a247082a02d6e69349e071e2946218\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/math/SafeCast.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.8.0) (utils/math/SafeCast.sol)\\n// This file was procedurally generated from scripts/generate/templates/SafeCast.js.\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Wrappers over Solidity's uintXX/intXX casting operators with added overflow\\n * checks.\\n *\\n * Downcasting from uint256/int256 in Solidity does not revert on overflow. This can\\n * easily result in undesired exploitation or bugs, since developers usually\\n * assume that overflows raise errors. `SafeCast` restores this intuition by\\n * reverting the transaction when such an operation overflows.\\n *\\n * Using this library instead of the unchecked operations eliminates an entire\\n * class of bugs, so it's recommended to use it always.\\n *\\n * Can be combined with {SafeMath} and {SignedSafeMath} to extend it to smaller types, by performing\\n * all math on `uint256` and `int256` and then downcasting.\\n */\\nlibrary SafeCast {\\n    /**\\n     * @dev Returns the downcasted uint248 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint248).\\n     *\\n     * Counterpart to Solidity's `uint248` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 248 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint248(uint256 value) internal pure returns (uint248) {\\n        require(value <= type(uint248).max, \\\"SafeCast: value doesn't fit in 248 bits\\\");\\n        return uint248(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint240 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint240).\\n     *\\n     * Counterpart to Solidity's `uint240` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 240 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint240(uint256 value) internal pure returns (uint240) {\\n        require(value <= type(uint240).max, \\\"SafeCast: value doesn't fit in 240 bits\\\");\\n        return uint240(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint232 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint232).\\n     *\\n     * Counterpart to Solidity's `uint232` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 232 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint232(uint256 value) internal pure returns (uint232) {\\n        require(value <= type(uint232).max, \\\"SafeCast: value doesn't fit in 232 bits\\\");\\n        return uint232(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint224 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint224).\\n     *\\n     * Counterpart to Solidity's `uint224` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 224 bits\\n     *\\n     * _Available since v4.2._\\n     */\\n    function toUint224(uint256 value) internal pure returns (uint224) {\\n        require(value <= type(uint224).max, \\\"SafeCast: value doesn't fit in 224 bits\\\");\\n        return uint224(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint216 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint216).\\n     *\\n     * Counterpart to Solidity's `uint216` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 216 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint216(uint256 value) internal pure returns (uint216) {\\n        require(value <= type(uint216).max, \\\"SafeCast: value doesn't fit in 216 bits\\\");\\n        return uint216(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint208 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint208).\\n     *\\n     * Counterpart to Solidity's `uint208` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 208 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint208(uint256 value) internal pure returns (uint208) {\\n        require(value <= type(uint208).max, \\\"SafeCast: value doesn't fit in 208 bits\\\");\\n        return uint208(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint200 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint200).\\n     *\\n     * Counterpart to Solidity's `uint200` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 200 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint200(uint256 value) internal pure returns (uint200) {\\n        require(value <= type(uint200).max, \\\"SafeCast: value doesn't fit in 200 bits\\\");\\n        return uint200(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint192 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint192).\\n     *\\n     * Counterpart to Solidity's `uint192` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 192 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint192(uint256 value) internal pure returns (uint192) {\\n        require(value <= type(uint192).max, \\\"SafeCast: value doesn't fit in 192 bits\\\");\\n        return uint192(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint184 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint184).\\n     *\\n     * Counterpart to Solidity's `uint184` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 184 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint184(uint256 value) internal pure returns (uint184) {\\n        require(value <= type(uint184).max, \\\"SafeCast: value doesn't fit in 184 bits\\\");\\n        return uint184(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint176 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint176).\\n     *\\n     * Counterpart to Solidity's `uint176` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 176 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint176(uint256 value) internal pure returns (uint176) {\\n        require(value <= type(uint176).max, \\\"SafeCast: value doesn't fit in 176 bits\\\");\\n        return uint176(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint168 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint168).\\n     *\\n     * Counterpart to Solidity's `uint168` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 168 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint168(uint256 value) internal pure returns (uint168) {\\n        require(value <= type(uint168).max, \\\"SafeCast: value doesn't fit in 168 bits\\\");\\n        return uint168(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint160 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint160).\\n     *\\n     * Counterpart to Solidity's `uint160` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 160 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint160(uint256 value) internal pure returns (uint160) {\\n        require(value <= type(uint160).max, \\\"SafeCast: value doesn't fit in 160 bits\\\");\\n        return uint160(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint152 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint152).\\n     *\\n     * Counterpart to Solidity's `uint152` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 152 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint152(uint256 value) internal pure returns (uint152) {\\n        require(value <= type(uint152).max, \\\"SafeCast: value doesn't fit in 152 bits\\\");\\n        return uint152(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint144 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint144).\\n     *\\n     * Counterpart to Solidity's `uint144` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 144 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint144(uint256 value) internal pure returns (uint144) {\\n        require(value <= type(uint144).max, \\\"SafeCast: value doesn't fit in 144 bits\\\");\\n        return uint144(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint136 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint136).\\n     *\\n     * Counterpart to Solidity's `uint136` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 136 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint136(uint256 value) internal pure returns (uint136) {\\n        require(value <= type(uint136).max, \\\"SafeCast: value doesn't fit in 136 bits\\\");\\n        return uint136(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint128 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint128).\\n     *\\n     * Counterpart to Solidity's `uint128` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 128 bits\\n     *\\n     * _Available since v2.5._\\n     */\\n    function toUint128(uint256 value) internal pure returns (uint128) {\\n        require(value <= type(uint128).max, \\\"SafeCast: value doesn't fit in 128 bits\\\");\\n        return uint128(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint120 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint120).\\n     *\\n     * Counterpart to Solidity's `uint120` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 120 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint120(uint256 value) internal pure returns (uint120) {\\n        require(value <= type(uint120).max, \\\"SafeCast: value doesn't fit in 120 bits\\\");\\n        return uint120(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint112 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint112).\\n     *\\n     * Counterpart to Solidity's `uint112` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 112 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint112(uint256 value) internal pure returns (uint112) {\\n        require(value <= type(uint112).max, \\\"SafeCast: value doesn't fit in 112 bits\\\");\\n        return uint112(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint104 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint104).\\n     *\\n     * Counterpart to Solidity's `uint104` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 104 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint104(uint256 value) internal pure returns (uint104) {\\n        require(value <= type(uint104).max, \\\"SafeCast: value doesn't fit in 104 bits\\\");\\n        return uint104(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint96 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint96).\\n     *\\n     * Counterpart to Solidity's `uint96` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 96 bits\\n     *\\n     * _Available since v4.2._\\n     */\\n    function toUint96(uint256 value) internal pure returns (uint96) {\\n        require(value <= type(uint96).max, \\\"SafeCast: value doesn't fit in 96 bits\\\");\\n        return uint96(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint88 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint88).\\n     *\\n     * Counterpart to Solidity's `uint88` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 88 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint88(uint256 value) internal pure returns (uint88) {\\n        require(value <= type(uint88).max, \\\"SafeCast: value doesn't fit in 88 bits\\\");\\n        return uint88(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint80 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint80).\\n     *\\n     * Counterpart to Solidity's `uint80` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 80 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint80(uint256 value) internal pure returns (uint80) {\\n        require(value <= type(uint80).max, \\\"SafeCast: value doesn't fit in 80 bits\\\");\\n        return uint80(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint72 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint72).\\n     *\\n     * Counterpart to Solidity's `uint72` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 72 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint72(uint256 value) internal pure returns (uint72) {\\n        require(value <= type(uint72).max, \\\"SafeCast: value doesn't fit in 72 bits\\\");\\n        return uint72(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint64 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint64).\\n     *\\n     * Counterpart to Solidity's `uint64` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 64 bits\\n     *\\n     * _Available since v2.5._\\n     */\\n    function toUint64(uint256 value) internal pure returns (uint64) {\\n        require(value <= type(uint64).max, \\\"SafeCast: value doesn't fit in 64 bits\\\");\\n        return uint64(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint56 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint56).\\n     *\\n     * Counterpart to Solidity's `uint56` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 56 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint56(uint256 value) internal pure returns (uint56) {\\n        require(value <= type(uint56).max, \\\"SafeCast: value doesn't fit in 56 bits\\\");\\n        return uint56(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint48 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint48).\\n     *\\n     * Counterpart to Solidity's `uint48` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 48 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint48(uint256 value) internal pure returns (uint48) {\\n        require(value <= type(uint48).max, \\\"SafeCast: value doesn't fit in 48 bits\\\");\\n        return uint48(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint40 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint40).\\n     *\\n     * Counterpart to Solidity's `uint40` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 40 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint40(uint256 value) internal pure returns (uint40) {\\n        require(value <= type(uint40).max, \\\"SafeCast: value doesn't fit in 40 bits\\\");\\n        return uint40(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint32 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint32).\\n     *\\n     * Counterpart to Solidity's `uint32` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 32 bits\\n     *\\n     * _Available since v2.5._\\n     */\\n    function toUint32(uint256 value) internal pure returns (uint32) {\\n        require(value <= type(uint32).max, \\\"SafeCast: value doesn't fit in 32 bits\\\");\\n        return uint32(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint24 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint24).\\n     *\\n     * Counterpart to Solidity's `uint24` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 24 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toUint24(uint256 value) internal pure returns (uint24) {\\n        require(value <= type(uint24).max, \\\"SafeCast: value doesn't fit in 24 bits\\\");\\n        return uint24(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint16 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint16).\\n     *\\n     * Counterpart to Solidity's `uint16` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 16 bits\\n     *\\n     * _Available since v2.5._\\n     */\\n    function toUint16(uint256 value) internal pure returns (uint16) {\\n        require(value <= type(uint16).max, \\\"SafeCast: value doesn't fit in 16 bits\\\");\\n        return uint16(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint8 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint8).\\n     *\\n     * Counterpart to Solidity's `uint8` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 8 bits\\n     *\\n     * _Available since v2.5._\\n     */\\n    function toUint8(uint256 value) internal pure returns (uint8) {\\n        require(value <= type(uint8).max, \\\"SafeCast: value doesn't fit in 8 bits\\\");\\n        return uint8(value);\\n    }\\n\\n    /**\\n     * @dev Converts a signed int256 into an unsigned uint256.\\n     *\\n     * Requirements:\\n     *\\n     * - input must be greater than or equal to 0.\\n     *\\n     * _Available since v3.0._\\n     */\\n    function toUint256(int256 value) internal pure returns (uint256) {\\n        require(value >= 0, \\\"SafeCast: value must be positive\\\");\\n        return uint256(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int248 from int256, reverting on\\n     * overflow (when the input is less than smallest int248 or\\n     * greater than largest int248).\\n     *\\n     * Counterpart to Solidity's `int248` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 248 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt248(int256 value) internal pure returns (int248 downcasted) {\\n        downcasted = int248(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 248 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int240 from int256, reverting on\\n     * overflow (when the input is less than smallest int240 or\\n     * greater than largest int240).\\n     *\\n     * Counterpart to Solidity's `int240` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 240 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt240(int256 value) internal pure returns (int240 downcasted) {\\n        downcasted = int240(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 240 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int232 from int256, reverting on\\n     * overflow (when the input is less than smallest int232 or\\n     * greater than largest int232).\\n     *\\n     * Counterpart to Solidity's `int232` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 232 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt232(int256 value) internal pure returns (int232 downcasted) {\\n        downcasted = int232(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 232 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int224 from int256, reverting on\\n     * overflow (when the input is less than smallest int224 or\\n     * greater than largest int224).\\n     *\\n     * Counterpart to Solidity's `int224` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 224 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt224(int256 value) internal pure returns (int224 downcasted) {\\n        downcasted = int224(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 224 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int216 from int256, reverting on\\n     * overflow (when the input is less than smallest int216 or\\n     * greater than largest int216).\\n     *\\n     * Counterpart to Solidity's `int216` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 216 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt216(int256 value) internal pure returns (int216 downcasted) {\\n        downcasted = int216(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 216 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int208 from int256, reverting on\\n     * overflow (when the input is less than smallest int208 or\\n     * greater than largest int208).\\n     *\\n     * Counterpart to Solidity's `int208` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 208 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt208(int256 value) internal pure returns (int208 downcasted) {\\n        downcasted = int208(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 208 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int200 from int256, reverting on\\n     * overflow (when the input is less than smallest int200 or\\n     * greater than largest int200).\\n     *\\n     * Counterpart to Solidity's `int200` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 200 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt200(int256 value) internal pure returns (int200 downcasted) {\\n        downcasted = int200(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 200 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int192 from int256, reverting on\\n     * overflow (when the input is less than smallest int192 or\\n     * greater than largest int192).\\n     *\\n     * Counterpart to Solidity's `int192` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 192 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt192(int256 value) internal pure returns (int192 downcasted) {\\n        downcasted = int192(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 192 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int184 from int256, reverting on\\n     * overflow (when the input is less than smallest int184 or\\n     * greater than largest int184).\\n     *\\n     * Counterpart to Solidity's `int184` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 184 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt184(int256 value) internal pure returns (int184 downcasted) {\\n        downcasted = int184(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 184 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int176 from int256, reverting on\\n     * overflow (when the input is less than smallest int176 or\\n     * greater than largest int176).\\n     *\\n     * Counterpart to Solidity's `int176` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 176 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt176(int256 value) internal pure returns (int176 downcasted) {\\n        downcasted = int176(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 176 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int168 from int256, reverting on\\n     * overflow (when the input is less than smallest int168 or\\n     * greater than largest int168).\\n     *\\n     * Counterpart to Solidity's `int168` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 168 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt168(int256 value) internal pure returns (int168 downcasted) {\\n        downcasted = int168(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 168 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int160 from int256, reverting on\\n     * overflow (when the input is less than smallest int160 or\\n     * greater than largest int160).\\n     *\\n     * Counterpart to Solidity's `int160` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 160 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt160(int256 value) internal pure returns (int160 downcasted) {\\n        downcasted = int160(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 160 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int152 from int256, reverting on\\n     * overflow (when the input is less than smallest int152 or\\n     * greater than largest int152).\\n     *\\n     * Counterpart to Solidity's `int152` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 152 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt152(int256 value) internal pure returns (int152 downcasted) {\\n        downcasted = int152(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 152 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int144 from int256, reverting on\\n     * overflow (when the input is less than smallest int144 or\\n     * greater than largest int144).\\n     *\\n     * Counterpart to Solidity's `int144` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 144 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt144(int256 value) internal pure returns (int144 downcasted) {\\n        downcasted = int144(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 144 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int136 from int256, reverting on\\n     * overflow (when the input is less than smallest int136 or\\n     * greater than largest int136).\\n     *\\n     * Counterpart to Solidity's `int136` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 136 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt136(int256 value) internal pure returns (int136 downcasted) {\\n        downcasted = int136(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 136 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int128 from int256, reverting on\\n     * overflow (when the input is less than smallest int128 or\\n     * greater than largest int128).\\n     *\\n     * Counterpart to Solidity's `int128` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 128 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt128(int256 value) internal pure returns (int128 downcasted) {\\n        downcasted = int128(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 128 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int120 from int256, reverting on\\n     * overflow (when the input is less than smallest int120 or\\n     * greater than largest int120).\\n     *\\n     * Counterpart to Solidity's `int120` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 120 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt120(int256 value) internal pure returns (int120 downcasted) {\\n        downcasted = int120(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 120 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int112 from int256, reverting on\\n     * overflow (when the input is less than smallest int112 or\\n     * greater than largest int112).\\n     *\\n     * Counterpart to Solidity's `int112` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 112 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt112(int256 value) internal pure returns (int112 downcasted) {\\n        downcasted = int112(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 112 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int104 from int256, reverting on\\n     * overflow (when the input is less than smallest int104 or\\n     * greater than largest int104).\\n     *\\n     * Counterpart to Solidity's `int104` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 104 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt104(int256 value) internal pure returns (int104 downcasted) {\\n        downcasted = int104(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 104 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int96 from int256, reverting on\\n     * overflow (when the input is less than smallest int96 or\\n     * greater than largest int96).\\n     *\\n     * Counterpart to Solidity's `int96` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 96 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt96(int256 value) internal pure returns (int96 downcasted) {\\n        downcasted = int96(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 96 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int88 from int256, reverting on\\n     * overflow (when the input is less than smallest int88 or\\n     * greater than largest int88).\\n     *\\n     * Counterpart to Solidity's `int88` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 88 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt88(int256 value) internal pure returns (int88 downcasted) {\\n        downcasted = int88(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 88 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int80 from int256, reverting on\\n     * overflow (when the input is less than smallest int80 or\\n     * greater than largest int80).\\n     *\\n     * Counterpart to Solidity's `int80` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 80 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt80(int256 value) internal pure returns (int80 downcasted) {\\n        downcasted = int80(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 80 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int72 from int256, reverting on\\n     * overflow (when the input is less than smallest int72 or\\n     * greater than largest int72).\\n     *\\n     * Counterpart to Solidity's `int72` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 72 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt72(int256 value) internal pure returns (int72 downcasted) {\\n        downcasted = int72(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 72 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int64 from int256, reverting on\\n     * overflow (when the input is less than smallest int64 or\\n     * greater than largest int64).\\n     *\\n     * Counterpart to Solidity's `int64` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 64 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt64(int256 value) internal pure returns (int64 downcasted) {\\n        downcasted = int64(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 64 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int56 from int256, reverting on\\n     * overflow (when the input is less than smallest int56 or\\n     * greater than largest int56).\\n     *\\n     * Counterpart to Solidity's `int56` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 56 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt56(int256 value) internal pure returns (int56 downcasted) {\\n        downcasted = int56(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 56 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int48 from int256, reverting on\\n     * overflow (when the input is less than smallest int48 or\\n     * greater than largest int48).\\n     *\\n     * Counterpart to Solidity's `int48` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 48 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt48(int256 value) internal pure returns (int48 downcasted) {\\n        downcasted = int48(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 48 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int40 from int256, reverting on\\n     * overflow (when the input is less than smallest int40 or\\n     * greater than largest int40).\\n     *\\n     * Counterpart to Solidity's `int40` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 40 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt40(int256 value) internal pure returns (int40 downcasted) {\\n        downcasted = int40(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 40 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int32 from int256, reverting on\\n     * overflow (when the input is less than smallest int32 or\\n     * greater than largest int32).\\n     *\\n     * Counterpart to Solidity's `int32` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 32 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt32(int256 value) internal pure returns (int32 downcasted) {\\n        downcasted = int32(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 32 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int24 from int256, reverting on\\n     * overflow (when the input is less than smallest int24 or\\n     * greater than largest int24).\\n     *\\n     * Counterpart to Solidity's `int24` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 24 bits\\n     *\\n     * _Available since v4.7._\\n     */\\n    function toInt24(int256 value) internal pure returns (int24 downcasted) {\\n        downcasted = int24(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 24 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int16 from int256, reverting on\\n     * overflow (when the input is less than smallest int16 or\\n     * greater than largest int16).\\n     *\\n     * Counterpart to Solidity's `int16` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 16 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt16(int256 value) internal pure returns (int16 downcasted) {\\n        downcasted = int16(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 16 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int8 from int256, reverting on\\n     * overflow (when the input is less than smallest int8 or\\n     * greater than largest int8).\\n     *\\n     * Counterpart to Solidity's `int8` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 8 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt8(int256 value) internal pure returns (int8 downcasted) {\\n        downcasted = int8(value);\\n        require(downcasted == value, \\\"SafeCast: value doesn't fit in 8 bits\\\");\\n    }\\n\\n    /**\\n     * @dev Converts an unsigned uint256 into a signed int256.\\n     *\\n     * Requirements:\\n     *\\n     * - input must be less than or equal to maxInt256.\\n     *\\n     * _Available since v3.0._\\n     */\\n    function toInt256(uint256 value) internal pure returns (int256) {\\n        // Note: Unsafe cast below is okay because `type(int256).max` is guaranteed to be positive\\n        require(value <= uint256(type(int256).max), \\\"SafeCast: value doesn't fit in an int256\\\");\\n        return int256(value);\\n    }\\n}\\n\",\"keccak256\":\"0x52a8cfb0f5239d11b457dcdd1b326992ef672714ca8da71a157255bddd13f3ad\",\"license\":\"MIT\"},\"contracts/OutboundConfig.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity ^0.8.19;\\n\\nimport \\\"@layerzerolabs/lz-evm-protocol-v2/contracts/libs/Errors.sol\\\";\\nimport \\\"./interfaces/ILayerZeroExecutor.sol\\\";\\n\\nstruct OutboundConfigStruct {\\n    uint32 maxMessageSize;\\n    uint64 outboundConfirmations;\\n    address executor;\\n}\\n\\n/// extract it because it might be reused by future non-ULN msglibs\\ncontract OutboundConfig {\\n    // Derived MessageLibs should never use this as config type\\n    uint32 internal constant CONFIG_TYPE_MAX_MESSAGE_SIZE = 1;\\n    uint32 internal constant CONFIG_TYPE_OUTBOUND_CONFIRMATIONS = 2;\\n    uint32 internal constant CONFIG_TYPE_EXECUTOR = 3;\\n\\n    mapping(uint32 dstEid => OutboundConfigStruct) public defaultOutboundConfig;\\n    mapping(address oapp => mapping(uint32 dstEid => OutboundConfigStruct)) public outboundConfig;\\n\\n    // ============================ View ===================================\\n    function getOutboundConfigByType(\\n        uint32 _eid,\\n        address _oapp,\\n        uint _configType\\n    ) public view returns (bytes memory, bool) {\\n        if (_configType == CONFIG_TYPE_MAX_MESSAGE_SIZE) {\\n            OutboundConfigStruct storage config = outboundConfig[_oapp][_eid];\\n            if (config.maxMessageSize == 0) {\\n                OutboundConfigStruct storage defaultConfig = defaultOutboundConfig[_eid];\\n                return (abi.encode(defaultConfig.maxMessageSize), true);\\n            }\\n            return (abi.encode(config.maxMessageSize), false);\\n        } else if (_configType == CONFIG_TYPE_OUTBOUND_CONFIRMATIONS) {\\n            OutboundConfigStruct storage config = outboundConfig[_oapp][_eid];\\n            if (config.outboundConfirmations == 0) {\\n                OutboundConfigStruct storage defaultConfig = defaultOutboundConfig[_eid];\\n                return (abi.encode(defaultConfig.outboundConfirmations), true);\\n            }\\n            return (abi.encode(config.outboundConfirmations), false);\\n        } else if (_configType == CONFIG_TYPE_EXECUTOR) {\\n            OutboundConfigStruct storage config = outboundConfig[_oapp][_eid];\\n            if (config.executor == address(0x0)) {\\n                OutboundConfigStruct storage defaultConfig = defaultOutboundConfig[_eid];\\n                return (abi.encode(defaultConfig.executor), true);\\n            }\\n            return (abi.encode(config.executor), false);\\n        } else {\\n            revert(Errors.NOT_IMPLEMENTED);\\n        }\\n    }\\n\\n    function getDefaultOutboundConfigByType(uint32 _eid, uint32 _configType) public view returns (bytes memory) {\\n        if (_configType == CONFIG_TYPE_MAX_MESSAGE_SIZE) {\\n            OutboundConfigStruct storage config = defaultOutboundConfig[_eid];\\n            return abi.encode(config.maxMessageSize);\\n        } else if (_configType == CONFIG_TYPE_OUTBOUND_CONFIRMATIONS) {\\n            OutboundConfigStruct storage config = defaultOutboundConfig[_eid];\\n            return abi.encode(config.outboundConfirmations);\\n        } else if (_configType == CONFIG_TYPE_EXECUTOR) {\\n            OutboundConfigStruct storage config = defaultOutboundConfig[_eid];\\n            return abi.encode(config.executor);\\n        } else {\\n            revert(Errors.NOT_IMPLEMENTED);\\n        }\\n    }\\n\\n    function getOutboundConfig(address _oapp, uint32 _dstEid) public view returns (OutboundConfigStruct memory) {\\n        OutboundConfigStruct memory config = outboundConfig[_oapp][_dstEid];\\n        OutboundConfigStruct memory defaultConfig = defaultOutboundConfig[_dstEid];\\n        require(defaultConfig.maxMessageSize > 0, Errors.INVALID_EID); // available remote eid\\n\\n        if (config.maxMessageSize == 0) {\\n            config.maxMessageSize = defaultConfig.maxMessageSize;\\n        }\\n        if (config.outboundConfirmations == 0) {\\n            config.outboundConfirmations = defaultConfig.outboundConfirmations;\\n        }\\n        if (config.executor == address(0x0)) {\\n            config.executor = defaultConfig.executor;\\n        }\\n        return config;\\n    }\\n\\n    // ============================ Internal ===================================\\n    function _setDefaultOutboundConfig(uint32 _eid, OutboundConfigStruct calldata _config) internal {\\n        require(_config.outboundConfirmations > 0 && _config.executor != address(0x0), Errors.INVALID_ARGUMENT);\\n        require(_config.maxMessageSize > 0, Errors.INVALID_SIZE);\\n\\n        OutboundConfigStruct storage config = defaultOutboundConfig[_eid];\\n        config.executor = _config.executor;\\n        config.maxMessageSize = _config.maxMessageSize;\\n        config.outboundConfirmations = _config.outboundConfirmations;\\n    }\\n\\n    function _setOutboundConfigByType(address _oapp, uint32 _eid, uint32 _configType, bytes calldata _config) internal {\\n        OutboundConfigStruct storage config = outboundConfig[_oapp][_eid];\\n        if (_configType == CONFIG_TYPE_MAX_MESSAGE_SIZE) {\\n            uint32 maxMessageSize = abi.decode(_config, (uint32));\\n            config.maxMessageSize = maxMessageSize;\\n        } else if (_configType == CONFIG_TYPE_OUTBOUND_CONFIRMATIONS) {\\n            uint64 outboundConfirmations = abi.decode(_config, (uint64));\\n            config.outboundConfirmations = outboundConfirmations;\\n        } else if (_configType == CONFIG_TYPE_EXECUTOR) {\\n            address executor = abi.decode(_config, (address));\\n            config.executor = executor;\\n        } else {\\n            revert(Errors.NOT_IMPLEMENTED);\\n        }\\n    }\\n\\n    function _snapshotOutboundConfig(uint32 _eid, address _oapp) internal {\\n        outboundConfig[_oapp][_eid] = getOutboundConfig(_oapp, _eid);\\n    }\\n\\n    function _resetOutboundConfig(uint32 _eid, address _oapp) internal {\\n        delete outboundConfig[_oapp][_eid];\\n    }\\n}\\n\",\"keccak256\":\"0x1e325445c96141785106ee0211c0cbbfb0d474b53900478d3bf6273216d3e11d\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/ILayerZeroExecutor.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity >=0.8.0;\\n\\ninterface ILayerZeroExecutor {\\n    // @notice query price and assign jobs at the same time\\n    // @param _dstEid - the destination endpoint identifier\\n    // @param _sender - the source sending contract address. executors may apply price discrimination to senders\\n    // @param _calldataSize - dynamic data size of message + caller params\\n    // @param _options - optional parameters for extra service plugins, e.g. sending dust tokens at the destination chain\\n    function assignJob(\\n        uint32 _dstEid,\\n        address _sender,\\n        uint _calldataSize,\\n        bytes calldata _options\\n    ) external payable returns (uint price);\\n\\n    // @notice query the executor price for relaying the payload and its proof to the destination chain\\n    // @param _dstEid - the destination endpoint identifier\\n    // @param _sender - the source sending contract address. executors may apply price discrimination to senders\\n    // @param _calldataSize - dynamic data size of message + caller params\\n    // @param _options - optional parameters for extra service plugins, e.g. sending dust tokens at the destination chain\\n    function getFee(\\n        uint32 _dstEid,\\n        address _sender,\\n        uint _calldataSize,\\n        bytes calldata _options\\n    ) external view returns (uint price);\\n}\\n\",\"keccak256\":\"0x66a3a562e86d3c78c3b4d940a7c8ba57be12abe38fb423d8134a104ba3a830f6\",\"license\":\"BUSL-1.1\"},\"contracts/uln/UlnConfig.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity ^0.8.19;\\n\\nimport \\\"@openzeppelin/contracts/utils/math/SafeCast.sol\\\";\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\nimport \\\"@layerzerolabs/lz-evm-protocol-v2/contracts/libs/Errors.sol\\\";\\nimport \\\"./interfaces/IUlnConfig.sol\\\";\\nimport {OutboundConfig} from \\\"../OutboundConfig.sol\\\";\\n\\ncontract UlnConfig is OutboundConfig, IUlnConfig, Ownable {\\n    using SafeCast for uint;\\n\\n    // Application config, extending from OutboundConfig\\n    uint32 private constant CONFIG_TYPE_INBOUND_CONFIRMATIONS = 4;\\n    uint32 private constant CONFIG_TYPE_VERIFIERS = 5;\\n    uint32 private constant CONFIG_TYPE_OPTIONAL_VERIFIERS = 6;\\n\\n    mapping(address oapp => mapping(uint32 eid => UlnConfigStruct)) internal ulnConfig;\\n    mapping(uint32 eid => UlnConfigStruct) internal defaultUlnConfig;\\n    address public uln;\\n\\n    modifier onlyUln() {\\n        require(msg.sender == uln, Errors.PERMISSION_DENIED);\\n        _;\\n    }\\n\\n    // ============================ OnlyOwner ===================================\\n\\n    function setUln(address _uln) external onlyOwner {\\n        require(uln == address(0), Errors.ALREADY_EXISTS); // only set once\\n        uln = _uln;\\n    }\\n\\n    function setDefaultConfig(SetDefaultConfigParam[] calldata _params) external onlyOwner {\\n        for (uint i = 0; i < _params.length; ++i) {\\n            SetDefaultConfigParam calldata param = _params[i];\\n\\n            uint verifierCount = param.verifiers.length;\\n            uint optionalVerifierCount = param.optionalVerifiers.length;\\n\\n            require(param.inboundConfirmations > 0, Errors.INVALID_ARGUMENT);\\n            require(verifierCount + optionalVerifierCount <= type(uint8).max, Errors.INVALID_SIZE);\\n            require(param.optionalVerifierThreshold <= optionalVerifierCount, Errors.INVALID_SIZE);\\n            require(verifierCount > 0 || param.optionalVerifierThreshold > 0, Errors.INVALID_VERIFIERS);\\n            // we can only assert the nonce duplication in each list respectively. the two lists might have duplicated ones\\n            // should do sanity check before submitting to the config here\\n            _assertNoDuplicates(param.verifiers, verifierCount);\\n            _assertNoDuplicates(param.optionalVerifiers, optionalVerifierCount);\\n\\n            defaultUlnConfig[param.eid] = UlnConfigStruct(\\n                param.inboundConfirmations,\\n                false, // unused for default config\\n                false, // unused for default config\\n                uint8(verifierCount),\\n                uint8(optionalVerifierCount),\\n                param.optionalVerifierThreshold,\\n                param.verifiers,\\n                param.optionalVerifiers\\n            );\\n\\n            _setDefaultOutboundConfig(param.eid, param.outboundConfig);\\n        }\\n    }\\n\\n    // ============================ OnlyUln =====================================\\n\\n    function setConfigByType(\\n        uint32 _remoteEid,\\n        address _oapp,\\n        uint32 _configType,\\n        bytes calldata _config\\n    ) external onlyUln {\\n        UlnConfigStruct storage config = ulnConfig[_oapp][_remoteEid];\\n        if (_configType <= CONFIG_TYPE_EXECUTOR) {\\n            _setOutboundConfigByType(_oapp, _remoteEid, _configType, _config);\\n        } else if (_configType == CONFIG_TYPE_INBOUND_CONFIRMATIONS) {\\n            uint64 blockConfirmations = abi.decode(_config, (uint64));\\n            config.inboundConfirmations = blockConfirmations;\\n        } else if (_configType == CONFIG_TYPE_VERIFIERS) {\\n            // verifiers list must be sorted by ascending order and contain no duplicates\\n            (bool useCustomVerifiers, address[] memory verifiers) = abi.decode(_config, (bool, address[]));\\n\\n            uint8 verifierCount = verifiers.length.toUint8();\\n            _assertNoDuplicates(verifiers, verifierCount);\\n\\n            config.useCustomVerifiers = useCustomVerifiers;\\n            config.verifierCount = verifierCount;\\n            config.verifiers = verifiers;\\n\\n            _assertVerifierList(_remoteEid, _oapp);\\n        } else if (_configType == CONFIG_TYPE_OPTIONAL_VERIFIERS) {\\n            // verifiers list must be sorted by ascending order and contain no duplicates\\n            (bool useCustomOptionalVerifiers, address[] memory optionalVerifiers, uint8 threshold) = abi.decode(\\n                _config,\\n                (bool, address[], uint8)\\n            );\\n\\n            uint8 optionalVerifierCount = optionalVerifiers.length.toUint8();\\n            require(threshold <= optionalVerifierCount, Errors.INVALID_ARGUMENT);\\n            _assertNoDuplicates(optionalVerifiers, optionalVerifierCount);\\n\\n            config.useCustomOptionalVerifiers = useCustomOptionalVerifiers;\\n            config.optionalVerifierCount = optionalVerifierCount;\\n            config.optionalVerifiers = optionalVerifiers;\\n            config.optionalVerifierThreshold = threshold;\\n\\n            _assertVerifierList(_remoteEid, _oapp);\\n        } else {\\n            revert(Errors.NOT_IMPLEMENTED);\\n        }\\n    }\\n\\n    function snapshotConfig(uint32[] calldata _eids, address _oapp) external onlyUln {\\n        for (uint i = 0; i < _eids.length; i++) {\\n            uint32 eid = _eids[i];\\n            UlnConfigStruct memory config = getUlnConfig(_oapp, eid);\\n            config.useCustomVerifiers = true;\\n            config.useCustomOptionalVerifiers = true;\\n            ulnConfig[_oapp][eid] = config;\\n\\n            _snapshotOutboundConfig(eid, _oapp);\\n        }\\n    }\\n\\n    function resetConfig(uint32[] calldata _eids, address _oapp) external onlyUln {\\n        for (uint i = 0; i < _eids.length; i++) {\\n            uint32 eid = _eids[i];\\n            delete ulnConfig[_oapp][eid];\\n\\n            _resetOutboundConfig(eid, _oapp);\\n        }\\n    }\\n\\n    // ============================ View =====================================\\n\\n    function getUlnConfig(address _oapp, uint32 _remoteEid) public view returns (UlnConfigStruct memory) {\\n        UlnConfigStruct memory config = ulnConfig[_oapp][_remoteEid];\\n        UlnConfigStruct storage defaultConfig = defaultUlnConfig[_remoteEid];\\n\\n        uint64 inboundConfirmations = defaultConfig.inboundConfirmations;\\n        require(inboundConfirmations > 0, Errors.INVALID_EID); // available remote eid\\n\\n        if (config.inboundConfirmations == 0) {\\n            config.inboundConfirmations = inboundConfirmations;\\n        }\\n\\n        if (!config.useCustomVerifiers) {\\n            config.verifiers = defaultConfig.verifiers;\\n            config.verifierCount = defaultConfig.verifierCount;\\n        }\\n\\n        if (!config.useCustomOptionalVerifiers) {\\n            config.optionalVerifiers = defaultConfig.optionalVerifiers;\\n            config.optionalVerifierCount = defaultConfig.optionalVerifierCount;\\n            config.optionalVerifierThreshold = defaultConfig.optionalVerifierThreshold;\\n        }\\n\\n        return config;\\n    }\\n\\n    function getUlnAndOutboundConfig(\\n        address _oapp,\\n        uint32 _remoteEid\\n    ) public view returns (UlnConfigStruct memory, OutboundConfigStruct memory) {\\n        return (getUlnConfig(_oapp, _remoteEid), getOutboundConfig(_oapp, _remoteEid));\\n    }\\n\\n    function getConfigByType(\\n        uint32 _remoteEid,\\n        address _oapp,\\n        uint32 _configType\\n    ) external view returns (bytes memory, bool) {\\n        UlnConfigStruct storage config = ulnConfig[_oapp][_remoteEid];\\n        UlnConfigStruct storage defaultConfig = defaultUlnConfig[_remoteEid];\\n\\n        // type 1/2/3 are for the outboundConfig\\n        if (_configType <= CONFIG_TYPE_EXECUTOR) {\\n            return getOutboundConfigByType(_remoteEid, _oapp, _configType);\\n        } else if (_configType == CONFIG_TYPE_INBOUND_CONFIRMATIONS) {\\n            if (config.inboundConfirmations == 0) {\\n                return (abi.encode(defaultConfig.inboundConfirmations), true);\\n            }\\n            return (abi.encode(config.inboundConfirmations), false);\\n        } else if (_configType == CONFIG_TYPE_VERIFIERS) {\\n            if (config.useCustomVerifiers) {\\n                return (abi.encode(config.verifiers), false);\\n            }\\n            return (abi.encode(defaultConfig.verifiers), true);\\n        } else if (_configType == CONFIG_TYPE_OPTIONAL_VERIFIERS) {\\n            if (config.useCustomOptionalVerifiers) {\\n                return (abi.encode(config.optionalVerifiers, config.optionalVerifierThreshold), false);\\n            }\\n            return (abi.encode(defaultConfig.optionalVerifiers, defaultConfig.optionalVerifierThreshold), true);\\n        }\\n        revert(Errors.NOT_IMPLEMENTED);\\n    }\\n\\n    function getDefaultConfigByType(uint32 _remoteEid, uint32 _configType) external view returns (bytes memory) {\\n        if (_configType <= CONFIG_TYPE_EXECUTOR) {\\n            return getDefaultOutboundConfigByType(_remoteEid, _configType);\\n        } else if (_configType == CONFIG_TYPE_INBOUND_CONFIRMATIONS) {\\n            UlnConfigStruct storage config = defaultUlnConfig[_remoteEid];\\n            return abi.encode(config.inboundConfirmations);\\n        } else if (_configType == CONFIG_TYPE_VERIFIERS) {\\n            UlnConfigStruct storage config = defaultUlnConfig[_remoteEid];\\n            return abi.encode(config.verifiers);\\n        } else if (_configType == CONFIG_TYPE_OPTIONAL_VERIFIERS) {\\n            UlnConfigStruct storage config = defaultUlnConfig[_remoteEid];\\n            return abi.encode(config.optionalVerifiers, config.optionalVerifierThreshold);\\n        }\\n        revert(Errors.NOT_IMPLEMENTED);\\n    }\\n\\n    function isSupportedEid(uint32 _remoteEid) external view returns (bool) {\\n        return defaultUlnConfig[_remoteEid].inboundConfirmations > 0;\\n    }\\n\\n    /// @dev Get the uln config without the default config for the given remoteEid.\\n    function getRawUlnConfig(address _oapp, uint32 _remoteEid) external view returns (UlnConfigStruct memory) {\\n        return ulnConfig[_oapp][_remoteEid];\\n    }\\n\\n    function getDefaultUlnConfig(uint32 _remoteEid) external view returns (UlnConfigStruct memory) {\\n        return defaultUlnConfig[_remoteEid];\\n    }\\n\\n    // ============================ Internal =====================================\\n\\n    function _assertNoDuplicates(address[] memory _verifiers, uint _verifierCount) internal pure {\\n        address lastVerifier = address(0);\\n        for (uint i = 0; i < _verifierCount; i++) {\\n            address verifier = _verifiers[i];\\n            require(verifier > lastVerifier, Errors.UNSORTED); // to ensure no duplicates\\n            lastVerifier = verifier;\\n        }\\n    }\\n\\n    function _assertVerifierList(uint32 _remoteEid, address _oapp) internal view {\\n        UlnConfigStruct memory config = getUlnConfig(_oapp, _remoteEid);\\n        // it is possible for sender to configure nil verifiers\\n        require(config.verifierCount > 0 || config.optionalVerifierThreshold > 0, Errors.VERIFIERS_UNAVAILABLE);\\n        // verifier options restricts total verifiers to 255\\n        require(config.verifierCount + config.optionalVerifierCount <= type(uint8).max, Errors.INVALID_SIZE);\\n    }\\n}\\n\",\"keccak256\":\"0x1ebd713af6b738848c5ddc05ae2c184e12720c2fbe99275d91bb2a8bf792ad70\",\"license\":\"BUSL-1.1\"},\"contracts/uln/interfaces/IUlnConfig.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity >=0.8.0;\\n\\nimport {OutboundConfigStruct} from \\\"../../OutboundConfig.sol\\\";\\n\\nstruct SetDefaultConfigParam {\\n    uint32 eid;\\n    OutboundConfigStruct outboundConfig;\\n    uint64 inboundConfirmations;\\n    address[] verifiers;\\n    address[] optionalVerifiers;\\n    uint8 optionalVerifierThreshold;\\n}\\n\\nstruct UlnConfigStruct {\\n    uint64 inboundConfirmations;\\n    bool useCustomVerifiers; // unused for default config\\n    bool useCustomOptionalVerifiers; // unused for default config\\n    uint8 verifierCount;\\n    uint8 optionalVerifierCount;\\n    uint8 optionalVerifierThreshold;\\n    address[] verifiers; // allowed overlap with optionalVerifiers\\n    address[] optionalVerifiers; // allowed overlap with verifiers\\n}\\n\\ninterface IUlnConfig {\\n    function setConfigByType(uint32 _remoteEid, address _oapp, uint32 _configType, bytes calldata _config) external;\\n\\n    function snapshotConfig(uint32[] calldata _eids, address _oapp) external;\\n\\n    function resetConfig(uint32[] calldata _eids, address _oapp) external;\\n\\n    function isSupportedEid(uint32 _remoteEid) external view returns (bool);\\n\\n    function getUlnConfig(address _oapp, uint32 _remoteEid) external view returns (UlnConfigStruct memory);\\n\\n    function getUlnAndOutboundConfig(\\n        address _oapp,\\n        uint32 _remoteEid\\n    ) external view returns (UlnConfigStruct memory, OutboundConfigStruct memory);\\n\\n    function getConfigByType(\\n        uint32 _remoteEid,\\n        address _oapp,\\n        uint32 _configType\\n    ) external view returns (bytes memory, bool);\\n\\n    function getDefaultConfigByType(uint32 _remoteEid, uint32 _configType) external view returns (bytes memory);\\n\\n    function setDefaultConfig(SetDefaultConfigParam[] calldata _params) external;\\n}\\n\",\"keccak256\":\"0x0d936967be7325cb89e2be087baa624a6b83b92ae5a7913e6b93aef85be7cfd3\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b506200001d3362000023565b62000075565b600280546001600160a01b038381166001600160a01b0319831681179093556040519116919082907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a35050565b6137c480620000856000396000f3fe608060405234801561001057600080fd5b50600436106101775760003560e01c806381fa12a1116100d8578063d0f9ffb51161008c578063d59104ed11610066578063d59104ed14610469578063ef7027f21461047c578063f2fde38b1461048f57600080fd5b8063d0f9ffb514610430578063d2d287f014610443578063d2f759851461045657600080fd5b80638fd061fc116100bd5780638fd061fc146103ea578063c4c37246146103fd578063cd84b89d1461041d57600080fd5b806381fa12a1146103ab5780638da5cb5b146103cc57600080fd5b8063560042df1161012f5780636c473aff116101145780636c473aff146102fd578063715018a61461034257806375b5152a1461034a57600080fd5b8063560042df1461029b5780636750cd4c146102bb57600080fd5b80633563876b116101605780633563876b146101ba57806343ea4fa9146101db578063545d1efa146101ee57600080fd5b80630e3751b91461017c5780631c63e3b6146101a5575b600080fd5b61018f61018a366004612ec8565b6104a2565b60405161019c9190612ffa565b60405180910390f35b6101b86101b3366004613059565b610688565b005b6101cd6101c8366004612ec8565b610819565b60405161019c9291906130b0565b61018f6101e9366004612ec8565b610890565b61025a6101fc366004612ec8565b600160209081526000928352604080842090915290825290205463ffffffff811690640100000000810467ffffffffffffffff16906c01000000000000000000000000900473ffffffffffffffffffffffffffffffffffffffff1683565b6040805163ffffffff909416845267ffffffffffffffff909216602084015273ffffffffffffffffffffffffffffffffffffffff169082015260600161019c565b6102ae6102a936600461310c565b610c6a565b60405161019c919061318b565b6102ed6102c936600461319e565b63ffffffff1660009081526004602052604090205467ffffffffffffffff16151590565b604051901515815260200161019c565b60055461031d9073ffffffffffffffffffffffffffffffffffffffff1681565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200161019c565b6101b8610e2e565b61025a61035836600461319e565b60006020819052908152604090205463ffffffff811690640100000000810467ffffffffffffffff16906c01000000000000000000000000900473ffffffffffffffffffffffffffffffffffffffff1683565b6103be6103b93660046131b9565b610e42565b60405161019c9291906131f8565b60025473ffffffffffffffffffffffffffffffffffffffff1661031d565b6103be6103f836600461321c565b611105565b61041061040b366004612ec8565b611305565b60405161019c9190613261565b6101b861042b3660046132a8565b6114bc565b61018f61043e36600461319e565b611592565b6101b8610451366004613059565b611758565b6101b86104643660046132c5565b611a02565b6101b8610477366004613307565b611fd8565b6102ae61048a36600461310c565b6123bb565b6101b861049d3660046132a8565b6124fc565b604080516101008101825260008082526020820181905291810182905260608082018390526080820183905260a082019290925260c0810182905260e081019190915273ffffffffffffffffffffffffffffffffffffffff8316600090815260036020908152604080832063ffffffff86168452825291829020825161010081018452815467ffffffffffffffff8116825260ff68010000000000000000820481161515838601526901000000000000000000820481161515838701526a01000000000000000000008204811660608401526b0100000000000000000000008204811660808401526c010000000000000000000000009091041660a08201526001820180548551818602810186019096528086529194929360c0860193929083018282801561060757602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff1681526001909101906020018083116105dc575b505050505081526020016002820180548060200260200160405190810160405280929190818152602001828054801561067657602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff16815260019091019060200180831161064b575b50505050508152505090505b92915050565b60055460408051808201909152600781527f4c5a35303030300000000000000000000000000000000000000000000000000060208201529073ffffffffffffffffffffffffffffffffffffffff163314610718576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b60405180910390fd5b5060005b82811015610813576000848483818110610738576107386133ab565b905060200201602081019061074d919061319e565b73ffffffffffffffffffffffffffffffffffffffff8416600090815260036020908152604080832063ffffffff85168452909152812080547fffffffffffffffffffffffffffffffffffffff000000000000000000000000001681559192506107b96001830182612dcd565b6107c7600283016000612dcd565b505073ffffffffffffffffffffffffffffffffffffffff8316600090815260016020908152604080832063ffffffff85168452909152812055508061080b81613409565b91505061071c565b50505050565b60408051610100810182526000808252602080830182905282840182905260608084018390526080840183905260a0840183905260c0840181905260e0840181905284519081018552828152908101829052928301529061087a8484610890565b6108848585611305565b915091505b9250929050565b604080516101008101825260008082526020820181905291810182905260608082018390526080820183905260a082019290925260c0810182905260e081019190915273ffffffffffffffffffffffffffffffffffffffff8316600090815260036020908152604080832063ffffffff861684528252808320815161010081018352815467ffffffffffffffff8116825260ff68010000000000000000820481161515838701526901000000000000000000820481161515838601526a01000000000000000000008204811660608401526b0100000000000000000000008204811660808401526c010000000000000000000000009091041660a08201526001820180548451818702810187019095528085529194929360c08601939092908301828280156109f557602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff1681526001909101906020018083116109ca575b5050505050815260200160028201805480602002602001604051908101604052809291908181526020018280548015610a6457602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff168152600190910190602001808311610a39575b5050509190925250505063ffffffff841660009081526004602090815260409182902080548351808501909452600784527f4c5a3130303038000000000000000000000000000000000000000000000000009284019290925292935067ffffffffffffffff169081610b03576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50825167ffffffffffffffff16600003610b255767ffffffffffffffff811683525b8260200151610bb65781600101805480602002602001604051908101604052809291908181526020018280548015610b9357602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff168152600190910190602001808311610b68575b505050505060c084015281546a0100000000000000000000900460ff1660608401525b8260400151610c605781600201805480602002602001604051908101604052809291908181526020018280548015610c2457602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff168152600190910190602001808311610bf9575b505050505060e0840152815460ff6b0100000000000000000000008204811660808601526c010000000000000000000000009091041660a08401525b5090949350505050565b6060600363ffffffff831611610c8b57610c8483836123bb565b9050610682565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc63ffffffff831601610d025763ffffffff83166000908152600460209081526040918290208054835167ffffffffffffffff9091169281019290925291015b604051602081830303815290604052915050610682565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb63ffffffff831601610d595763ffffffff83166000908152600460209081526040918290209151610ceb9160018401910161348c565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa63ffffffff831601610dc95763ffffffff8316600090815260046020908152604091829020805492519092610ceb9260028501926c0100000000000000000000000090920460ff16910161349f565b604080518082018252600781527f4c5a433030303000000000000000000000000000000000000000000000000000602082015290517f08c379a000000000000000000000000000000000000000000000000000000000815261070f919060040161318b565b610e366125b3565b610e406000612634565b565b606060007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8301610f235773ffffffffffffffffffffffffffffffffffffffff8416600090815260016020908152604080832063ffffffff808a168552925282208054909291169003610ef35763ffffffff868116600090815260208181526040918290208054835194169184019190915291015b60405160208183030381529060405260019350935050506110fd565b80546040805163ffffffff9092166020830152015b604051602081830303815290604052600092509250506110fd565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe8301610ffd5773ffffffffffffffffffffffffffffffffffffffff8416600090815260016020908152604080832063ffffffff8916845290915281208054909164010000000090910467ffffffffffffffff169003610fd95763ffffffff8616600090815260208181526040918290208054835164010000000090910467ffffffffffffffff16928101929092529101610ed7565b80546040805164010000000090920467ffffffffffffffff16602083015201610f08565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd8301610dc95773ffffffffffffffffffffffffffffffffffffffff808516600090815260016020908152604080832063ffffffff8a1684529091529020805490916c01000000000000000000000000909104166110c55763ffffffff861660009081526020818152604091829020805483516c0100000000000000000000000090910473ffffffffffffffffffffffffffffffffffffffff16928101929092529101610ed7565b8054604080516c0100000000000000000000000090920473ffffffffffffffffffffffffffffffffffffffff16602083015201610f08565b935093915050565b73ffffffffffffffffffffffffffffffffffffffff8216600090815260036020818152604080842063ffffffff8089168652908352818520600490935290842060609493909186161161116e5761116387878763ffffffff16610e42565b9350935050506110fd565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc63ffffffff86160161120057815467ffffffffffffffff166000036111cb5780546040805167ffffffffffffffff909216602083015201610ed7565b81546040805167ffffffffffffffff9092166020830152015b60405160208183030381529060405260009350935050506110fd565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb63ffffffff86160161126b57815468010000000000000000900460ff161561125757816001016040516020016111e4919061348c565b80600101604051602001610ed7919061348c565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa63ffffffff861601610dc95781546901000000000000000000900460ff16156112da5781546040516111e49160028501916c0100000000000000000000000090910460ff169060200161349f565b8054604051610ed79160028401916c0100000000000000000000000090910460ff169060200161349f565b60408051606080820183526000808352602080840182905283850182905273ffffffffffffffffffffffffffffffffffffffff87811683526001825285832063ffffffff88811680865291845287852088518088018a529054808316825264010000000080820467ffffffffffffffff908116848901526c01000000000000000000000000928390048716848d0152948852878752968a90208a519889018b525492831680895296830490931687860152919004909116848701528551808701909652600786527f4c5a3130303038000000000000000000000000000000000000000000000000009186019190915292939061142e576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50815163ffffffff1660000361144957805163ffffffff1682525b816020015167ffffffffffffffff166000036114745760208082015167ffffffffffffffff16908301525b604082015173ffffffffffffffffffffffffffffffffffffffff166114b45760408082015173ffffffffffffffffffffffffffffffffffffffff16908301525b509392505050565b6114c46125b3565b60055460408051808201909152600781527f4c5a38303030300000000000000000000000000000000000000000000000000060208201529073ffffffffffffffffffffffffffffffffffffffff161561154a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50600580547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff92909216919091179055565b604080516101008101825260008082526020820181905291810182905260608082018390526080820183905260a082019290925260c0810182905260e081019190915263ffffffff8216600090815260046020908152604091829020825161010081018452815467ffffffffffffffff8116825260ff68010000000000000000820481161515838601526901000000000000000000820481161515838701526a01000000000000000000008204811660608401526b0100000000000000000000008204811660808401526c010000000000000000000000009091041660a08201526001820180548551818602810186019096528086529194929360c086019392908301828280156116d957602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff1681526001909101906020018083116116ae575b505050505081526020016002820180548060200260200160405190810160405280929190818152602001828054801561174857602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff16815260019091019060200180831161171d575b5050505050815250509050919050565b60055460408051808201909152600781527f4c5a35303030300000000000000000000000000000000000000000000000000060208201529073ffffffffffffffffffffffffffffffffffffffff1633146117df576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5060005b828110156108135760008484838181106117ff576117ff6133ab565b9050602002016020810190611814919061319e565b905060006118228483610890565b60016020808301828152604080850184815273ffffffffffffffffffffffffffffffffffffffff8a1660009081526003855282812063ffffffff8a16825285529190912085518154935192516060880151608089015160a08a015160ff9081166c01000000000000000000000000027fffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffffffff9282166b01000000000000000000000002929092167fffffffffffffffffffffffffffffffffffffff0000ffffffffffffffffffffff939091166a0100000000000000000000027fffffffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffff941515690100000000000000000002949094167fffffffffffffffffffffffffffffffffffffffffff0000ffffffffffffffffff97151568010000000000000000027fffffffffffffffffffffffffffffffffffffffffffffff00000000000000000090991667ffffffffffffffff9096169590951797909717959095169290921717169290921717815560c08401518051949550859491936119c39390850192910190612deb565b5060e082015180516119df916002840191602090910190612deb565b509050506119ed82856126ab565b505080806119fa90613409565b9150506117e3565b611a0a6125b3565b60005b81811015611fd35736838383818110611a2857611a286133ab565b9050602002810190611a3a91906134c4565b90506000611a4b60a0830183613502565b915060009050611a5e60c0840184613502565b915060009050611a7460a085016080860161356a565b67ffffffffffffffff16116040518060400160405280600781526020017f4c5a31303030300000000000000000000000000000000000000000000000000081525090611aed576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5060ff611afa8284613594565b11156040518060400160405280600781526020017f4c5a31303030390000000000000000000000000000000000000000000000000081525090611b6a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5080611b7d610100850160e086016135b8565b60ff1611156040518060400160405280600781526020017f4c5a31303030390000000000000000000000000000000000000000000000000081525090611bf0576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b506000821180611c1357506000611c0e610100850160e086016135b8565b60ff16115b6040518060400160405280600781526020017f4c5a31303031310000000000000000000000000000000000000000000000000081525090611c81576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50611ccb611c9260a0850185613502565b80806020026020016040519081016040528093929190818152602001838360200280828437600092019190915250869250612763915050565b611d14611cdb60c0850185613502565b80806020026020016040519081016040528093929190818152602001838360200280828437600092019190915250859250612763915050565b60408051610100810190915280611d3160a086016080870161356a565b67ffffffffffffffff168152600060208201819052604082015260ff80851660608301528316608082015260a001611d70610100860160e087016135b8565b60ff168152602001611d8560a0860186613502565b80806020026020016040519081016040528093929190818152602001838360200280828437600092019190915250505090825250602001611dc960c0860186613502565b808060200260200160405190810160405280939291908181526020018383602002808284376000920182905250939094525060049250611e0e9050602087018761319e565b63ffffffff16815260208082019290925260409081016000208351815485850151938601516060870151608088015160a089015167ffffffffffffffff9095167fffffffffffffffffffffffffffffffffffffffffffffff000000000000000000909416939093176801000000000000000096151596909602959095177fffffffffffffffffffffffffffffffffffffffffff0000ffffffffffffffffff166901000000000000000000911515919091027fffffffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffff16176a010000000000000000000060ff95861602177fffffffffffffffffffffffffffffffffffffff0000ffffffffffffffffffffff166b010000000000000000000000918516919091027fffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffffffff16176c01000000000000000000000000939091169290920291909117815560c083015180519192611f8592600185019290910190612deb565b5060e08201518051611fa1916002840191602090910190612deb565b50611fbf9150611fb69050602085018561319e565b8460200161283f565b50505080611fcc90613409565b9050611a0d565b505050565b60055460408051808201909152600781527f4c5a35303030300000000000000000000000000000000000000000000000000060208201529073ffffffffffffffffffffffffffffffffffffffff16331461205f576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5073ffffffffffffffffffffffffffffffffffffffff8416600090815260036020818152604080842063ffffffff808b1686529252909220918516116120b1576120ac8587868686612a75565b6123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc63ffffffff8516016121265760006120ec8385018561356a565b82547fffffffffffffffffffffffffffffffffffffffffffffffff00000000000000001667ffffffffffffffff91909116178255506123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb63ffffffff85160161221257600080612162848601866136d2565b9150915060006121728251612c13565b9050612181828260ff16612763565b83547fffffffffffffffffffffffffffffffffffffffffff00ff00ffffffffffffffff1668010000000000000000841515027fffffffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffff16176a010000000000000000000060ff83160217845581516121ff9060018601906020850190612deb565b5061220a8989612caa565b5050506123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa63ffffffff851601610dc9576000808061224f85870187613720565b92509250925060006122618351612c13565b90508060ff168260ff1611156040518060400160405280600781526020017f4c5a313030303000000000000000000000000000000000000000000000000000815250906122db576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b506122e9838260ff16612763565b84547fffffffffffffffffffffffffffffffffffffffff00ff00ffffffffffffffffff166901000000000000000000851515027fffffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffffff16176b01000000000000000000000060ff83160217855582516123699060028701906020860190612deb565b5084547fffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffffffff166c0100000000000000000000000060ff8416021785556123ae8a8a612caa565b505050505b505050505050565b60607fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff63ffffffff8316016124165763ffffffff83811660009081526020818152604091829020805483519416918401919091529101610ceb565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe63ffffffff83160161247f5763ffffffff8316600090815260208181526040918290208054835164010000000090910467ffffffffffffffff16928101929092529101610ceb565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd63ffffffff831601610dc95763ffffffff831660009081526020818152604091829020805483516c0100000000000000000000000090910473ffffffffffffffffffffffffffffffffffffffff16928101929092529101610ceb565b6125046125b3565b73ffffffffffffffffffffffffffffffffffffffff81166125a7576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201527f6464726573730000000000000000000000000000000000000000000000000000606482015260840161070f565b6125b081612634565b50565b60025473ffffffffffffffffffffffffffffffffffffffff163314610e40576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015260640161070f565b6002805473ffffffffffffffffffffffffffffffffffffffff8381167fffffffffffffffffffffffff0000000000000000000000000000000000000000831681179093556040519116919082907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a35050565b6126b58183611305565b73ffffffffffffffffffffffffffffffffffffffff918216600090815260016020908152604080832063ffffffff9687168452825291829020835181549285015194909301519094166c01000000000000000000000000026bffffffffffffffffffffffff67ffffffffffffffff909416640100000000027fffffffffffffffffffffffffffffffffffffffff00000000000000000000000090921692909516919091171716919091179055565b6000805b82811015610813576000848281518110612783576127836133ab565b602002602001015190508273ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16116040518060400160405280600781526020017f4c5a3130303036000000000000000000000000000000000000000000000000008152509061282a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5091508061283781613409565b915050612767565b6000612851604083016020840161356a565b67ffffffffffffffff1611801561288e5750600061287560608301604084016132a8565b73ffffffffffffffffffffffffffffffffffffffff1614155b6040518060400160405280600781526020017f4c5a313030303000000000000000000000000000000000000000000000000000815250906128fc576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50600061290c602083018361319e565b63ffffffff16116040518060400160405280600781526020017f4c5a31303030390000000000000000000000000000000000000000000000000081525090612981576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5063ffffffff821660009081526020819052604090819020906129aa90606084019084016132a8565b815473ffffffffffffffffffffffffffffffffffffffff919091166c01000000000000000000000000026bffffffffffffffffffffffff9091161781556129f4602083018361319e565b81547fffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000001663ffffffff91909116178155612a34604083016020840161356a565b815467ffffffffffffffff91909116640100000000027fffffffffffffffffffffffffffffffffffffffff0000000000000000ffffffff9091161790555050565b73ffffffffffffffffffffffffffffffffffffffff8516600090815260016020908152604080832063ffffffff888116855292529091209084167fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff01612b19576000612ae38385018561319e565b82547fffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000001663ffffffff91909116178255506123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe63ffffffff851601612b96576000612b548385018561356a565b825467ffffffffffffffff909116640100000000027fffffffffffffffffffffffffffffffffffffffff0000000000000000ffffffff909116178255506123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd63ffffffff851601610dc9576000612bd1838501856132a8565b825473ffffffffffffffffffffffffffffffffffffffff9091166c01000000000000000000000000026bffffffffffffffffffffffff909116178255506123b3565b600060ff821115612ca6576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152602560248201527f53616665436173743a2076616c756520646f65736e27742066697420696e203860448201527f2062697473000000000000000000000000000000000000000000000000000000606482015260840161070f565b5090565b6000612cb68284610890565b90506000816060015160ff161180612cd5575060008160a0015160ff16115b6040518060400160405280600781526020017f4c5a44303030340000000000000000000000000000000000000000000000000081525090612d43576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b506080810151606082015160ff91612d5a91613775565b60ff1611156040518060400160405280600781526020017f4c5a31303030390000000000000000000000000000000000000000000000000081525090610813576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50805460008255906000526020600020908101906125b09190612e6d565b828054828255906000526020600020908101928215612e65579160200282015b82811115612e6557825182547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff909116178255602090920191600190910190612e0b565b50612ca69291505b5b80821115612ca65760008155600101612e6e565b73ffffffffffffffffffffffffffffffffffffffff811681146125b057600080fd5b8035612eaf81612e82565b919050565b803563ffffffff81168114612eaf57600080fd5b60008060408385031215612edb57600080fd5b8235612ee681612e82565b9150612ef460208401612eb4565b90509250929050565b600081518084526020808501945080840160005b83811015612f4357815173ffffffffffffffffffffffffffffffffffffffff1687529582019590820190600101612f11565b509495945050505050565b600061010067ffffffffffffffff83511684526020830151151560208501526040830151612f80604086018215159052565b506060830151612f95606086018260ff169052565b506080830151612faa608086018260ff169052565b5060a0830151612fbf60a086018260ff169052565b5060c08301518160c0860152612fd782860182612efd565b91505060e083015184820360e0860152612ff18282612efd565b95945050505050565b60208152600061300d6020830184612f4e565b9392505050565b60008083601f84011261302657600080fd5b50813567ffffffffffffffff81111561303e57600080fd5b6020830191508360208260051b850101111561088957600080fd5b60008060006040848603121561306e57600080fd5b833567ffffffffffffffff81111561308557600080fd5b61309186828701613014565b90945092505060208401356130a581612e82565b809150509250925092565b6080815260006130c36080830185612f4e565b905061300d6020830184805163ffffffff16825260208082015167ffffffffffffffff169083015260409081015173ffffffffffffffffffffffffffffffffffffffff16910152565b6000806040838503121561311f57600080fd5b612ee683612eb4565b60008151808452602060005b8281101561314f578481018201518682018301528101613134565b506000858301820152601f9091017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe01690930190920192915050565b60208152600061300d6020830184613128565b6000602082840312156131b057600080fd5b61300d82612eb4565b6000806000606084860312156131ce57600080fd5b6131d784612eb4565b925060208401356131e781612e82565b929592945050506040919091013590565b60408152600061320b6040830185613128565b905082151560208301529392505050565b60008060006060848603121561323157600080fd5b61323a84612eb4565b9250602084013561324a81612e82565b915061325860408501612eb4565b90509250925092565b815163ffffffff16815260208083015167ffffffffffffffff169082015260408083015173ffffffffffffffffffffffffffffffffffffffff169082015260608101610682565b6000602082840312156132ba57600080fd5b813561300d81612e82565b600080602083850312156132d857600080fd5b823567ffffffffffffffff8111156132ef57600080fd5b6132fb85828601613014565b90969095509350505050565b60008060008060006080868803121561331f57600080fd5b61332886612eb4565b9450602086013561333881612e82565b935061334660408701612eb4565b9250606086013567ffffffffffffffff8082111561336357600080fd5b818801915088601f83011261337757600080fd5b81358181111561338657600080fd5b89602082850101111561339857600080fd5b9699959850939650602001949392505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff820361343a5761343a6133da565b5060010190565b6000815480845260208085019450836000528060002060005b83811015612f4357815473ffffffffffffffffffffffffffffffffffffffff168752958201956001918201910161345a565b60208152600061300d6020830184613441565b6040815260006134b26040830185613441565b905060ff831660208301529392505050565b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff018336030181126134f857600080fd5b9190910192915050565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe184360301811261353757600080fd5b83018035915067ffffffffffffffff82111561355257600080fd5b6020019150600581901b360382131561088957600080fd5b60006020828403121561357c57600080fd5b813567ffffffffffffffff8116811461300d57600080fd5b80820180821115610682576106826133da565b803560ff81168114612eaf57600080fd5b6000602082840312156135ca57600080fd5b61300d826135a7565b80358015158114612eaf57600080fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b600082601f83011261362357600080fd5b8135602067ffffffffffffffff80831115613640576136406135e3565b8260051b6040517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0603f83011681018181108482111715613683576136836135e3565b6040529384528581018301938381019250878511156136a157600080fd5b83870191505b848210156136c7576136b882612ea4565b835291830191908301906136a7565b979650505050505050565b600080604083850312156136e557600080fd5b6136ee836135d3565b9150602083013567ffffffffffffffff81111561370a57600080fd5b61371685828601613612565b9150509250929050565b60008060006060848603121561373557600080fd5b61373e846135d3565b9250602084013567ffffffffffffffff81111561375a57600080fd5b61376686828701613612565b925050613258604085016135a7565b60ff8181168382160190811115610682576106826133da56fea264697066735822122089c74b792c1ef0e1b98d245fe87770f3207c4bc5477174d1840d19f83893c66c64736f6c63430008130033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101775760003560e01c806381fa12a1116100d8578063d0f9ffb51161008c578063d59104ed11610066578063d59104ed14610469578063ef7027f21461047c578063f2fde38b1461048f57600080fd5b8063d0f9ffb514610430578063d2d287f014610443578063d2f759851461045657600080fd5b80638fd061fc116100bd5780638fd061fc146103ea578063c4c37246146103fd578063cd84b89d1461041d57600080fd5b806381fa12a1146103ab5780638da5cb5b146103cc57600080fd5b8063560042df1161012f5780636c473aff116101145780636c473aff146102fd578063715018a61461034257806375b5152a1461034a57600080fd5b8063560042df1461029b5780636750cd4c146102bb57600080fd5b80633563876b116101605780633563876b146101ba57806343ea4fa9146101db578063545d1efa146101ee57600080fd5b80630e3751b91461017c5780631c63e3b6146101a5575b600080fd5b61018f61018a366004612ec8565b6104a2565b60405161019c9190612ffa565b60405180910390f35b6101b86101b3366004613059565b610688565b005b6101cd6101c8366004612ec8565b610819565b60405161019c9291906130b0565b61018f6101e9366004612ec8565b610890565b61025a6101fc366004612ec8565b600160209081526000928352604080842090915290825290205463ffffffff811690640100000000810467ffffffffffffffff16906c01000000000000000000000000900473ffffffffffffffffffffffffffffffffffffffff1683565b6040805163ffffffff909416845267ffffffffffffffff909216602084015273ffffffffffffffffffffffffffffffffffffffff169082015260600161019c565b6102ae6102a936600461310c565b610c6a565b60405161019c919061318b565b6102ed6102c936600461319e565b63ffffffff1660009081526004602052604090205467ffffffffffffffff16151590565b604051901515815260200161019c565b60055461031d9073ffffffffffffffffffffffffffffffffffffffff1681565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200161019c565b6101b8610e2e565b61025a61035836600461319e565b60006020819052908152604090205463ffffffff811690640100000000810467ffffffffffffffff16906c01000000000000000000000000900473ffffffffffffffffffffffffffffffffffffffff1683565b6103be6103b93660046131b9565b610e42565b60405161019c9291906131f8565b60025473ffffffffffffffffffffffffffffffffffffffff1661031d565b6103be6103f836600461321c565b611105565b61041061040b366004612ec8565b611305565b60405161019c9190613261565b6101b861042b3660046132a8565b6114bc565b61018f61043e36600461319e565b611592565b6101b8610451366004613059565b611758565b6101b86104643660046132c5565b611a02565b6101b8610477366004613307565b611fd8565b6102ae61048a36600461310c565b6123bb565b6101b861049d3660046132a8565b6124fc565b604080516101008101825260008082526020820181905291810182905260608082018390526080820183905260a082019290925260c0810182905260e081019190915273ffffffffffffffffffffffffffffffffffffffff8316600090815260036020908152604080832063ffffffff86168452825291829020825161010081018452815467ffffffffffffffff8116825260ff68010000000000000000820481161515838601526901000000000000000000820481161515838701526a01000000000000000000008204811660608401526b0100000000000000000000008204811660808401526c010000000000000000000000009091041660a08201526001820180548551818602810186019096528086529194929360c0860193929083018282801561060757602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff1681526001909101906020018083116105dc575b505050505081526020016002820180548060200260200160405190810160405280929190818152602001828054801561067657602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff16815260019091019060200180831161064b575b50505050508152505090505b92915050565b60055460408051808201909152600781527f4c5a35303030300000000000000000000000000000000000000000000000000060208201529073ffffffffffffffffffffffffffffffffffffffff163314610718576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b60405180910390fd5b5060005b82811015610813576000848483818110610738576107386133ab565b905060200201602081019061074d919061319e565b73ffffffffffffffffffffffffffffffffffffffff8416600090815260036020908152604080832063ffffffff85168452909152812080547fffffffffffffffffffffffffffffffffffffff000000000000000000000000001681559192506107b96001830182612dcd565b6107c7600283016000612dcd565b505073ffffffffffffffffffffffffffffffffffffffff8316600090815260016020908152604080832063ffffffff85168452909152812055508061080b81613409565b91505061071c565b50505050565b60408051610100810182526000808252602080830182905282840182905260608084018390526080840183905260a0840183905260c0840181905260e0840181905284519081018552828152908101829052928301529061087a8484610890565b6108848585611305565b915091505b9250929050565b604080516101008101825260008082526020820181905291810182905260608082018390526080820183905260a082019290925260c0810182905260e081019190915273ffffffffffffffffffffffffffffffffffffffff8316600090815260036020908152604080832063ffffffff861684528252808320815161010081018352815467ffffffffffffffff8116825260ff68010000000000000000820481161515838701526901000000000000000000820481161515838601526a01000000000000000000008204811660608401526b0100000000000000000000008204811660808401526c010000000000000000000000009091041660a08201526001820180548451818702810187019095528085529194929360c08601939092908301828280156109f557602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff1681526001909101906020018083116109ca575b5050505050815260200160028201805480602002602001604051908101604052809291908181526020018280548015610a6457602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff168152600190910190602001808311610a39575b5050509190925250505063ffffffff841660009081526004602090815260409182902080548351808501909452600784527f4c5a3130303038000000000000000000000000000000000000000000000000009284019290925292935067ffffffffffffffff169081610b03576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50825167ffffffffffffffff16600003610b255767ffffffffffffffff811683525b8260200151610bb65781600101805480602002602001604051908101604052809291908181526020018280548015610b9357602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff168152600190910190602001808311610b68575b505050505060c084015281546a0100000000000000000000900460ff1660608401525b8260400151610c605781600201805480602002602001604051908101604052809291908181526020018280548015610c2457602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff168152600190910190602001808311610bf9575b505050505060e0840152815460ff6b0100000000000000000000008204811660808601526c010000000000000000000000009091041660a08401525b5090949350505050565b6060600363ffffffff831611610c8b57610c8483836123bb565b9050610682565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc63ffffffff831601610d025763ffffffff83166000908152600460209081526040918290208054835167ffffffffffffffff9091169281019290925291015b604051602081830303815290604052915050610682565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb63ffffffff831601610d595763ffffffff83166000908152600460209081526040918290209151610ceb9160018401910161348c565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa63ffffffff831601610dc95763ffffffff8316600090815260046020908152604091829020805492519092610ceb9260028501926c0100000000000000000000000090920460ff16910161349f565b604080518082018252600781527f4c5a433030303000000000000000000000000000000000000000000000000000602082015290517f08c379a000000000000000000000000000000000000000000000000000000000815261070f919060040161318b565b610e366125b3565b610e406000612634565b565b606060007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8301610f235773ffffffffffffffffffffffffffffffffffffffff8416600090815260016020908152604080832063ffffffff808a168552925282208054909291169003610ef35763ffffffff868116600090815260208181526040918290208054835194169184019190915291015b60405160208183030381529060405260019350935050506110fd565b80546040805163ffffffff9092166020830152015b604051602081830303815290604052600092509250506110fd565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe8301610ffd5773ffffffffffffffffffffffffffffffffffffffff8416600090815260016020908152604080832063ffffffff8916845290915281208054909164010000000090910467ffffffffffffffff169003610fd95763ffffffff8616600090815260208181526040918290208054835164010000000090910467ffffffffffffffff16928101929092529101610ed7565b80546040805164010000000090920467ffffffffffffffff16602083015201610f08565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd8301610dc95773ffffffffffffffffffffffffffffffffffffffff808516600090815260016020908152604080832063ffffffff8a1684529091529020805490916c01000000000000000000000000909104166110c55763ffffffff861660009081526020818152604091829020805483516c0100000000000000000000000090910473ffffffffffffffffffffffffffffffffffffffff16928101929092529101610ed7565b8054604080516c0100000000000000000000000090920473ffffffffffffffffffffffffffffffffffffffff16602083015201610f08565b935093915050565b73ffffffffffffffffffffffffffffffffffffffff8216600090815260036020818152604080842063ffffffff8089168652908352818520600490935290842060609493909186161161116e5761116387878763ffffffff16610e42565b9350935050506110fd565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc63ffffffff86160161120057815467ffffffffffffffff166000036111cb5780546040805167ffffffffffffffff909216602083015201610ed7565b81546040805167ffffffffffffffff9092166020830152015b60405160208183030381529060405260009350935050506110fd565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb63ffffffff86160161126b57815468010000000000000000900460ff161561125757816001016040516020016111e4919061348c565b80600101604051602001610ed7919061348c565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa63ffffffff861601610dc95781546901000000000000000000900460ff16156112da5781546040516111e49160028501916c0100000000000000000000000090910460ff169060200161349f565b8054604051610ed79160028401916c0100000000000000000000000090910460ff169060200161349f565b60408051606080820183526000808352602080840182905283850182905273ffffffffffffffffffffffffffffffffffffffff87811683526001825285832063ffffffff88811680865291845287852088518088018a529054808316825264010000000080820467ffffffffffffffff908116848901526c01000000000000000000000000928390048716848d0152948852878752968a90208a519889018b525492831680895296830490931687860152919004909116848701528551808701909652600786527f4c5a3130303038000000000000000000000000000000000000000000000000009186019190915292939061142e576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50815163ffffffff1660000361144957805163ffffffff1682525b816020015167ffffffffffffffff166000036114745760208082015167ffffffffffffffff16908301525b604082015173ffffffffffffffffffffffffffffffffffffffff166114b45760408082015173ffffffffffffffffffffffffffffffffffffffff16908301525b509392505050565b6114c46125b3565b60055460408051808201909152600781527f4c5a38303030300000000000000000000000000000000000000000000000000060208201529073ffffffffffffffffffffffffffffffffffffffff161561154a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50600580547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff92909216919091179055565b604080516101008101825260008082526020820181905291810182905260608082018390526080820183905260a082019290925260c0810182905260e081019190915263ffffffff8216600090815260046020908152604091829020825161010081018452815467ffffffffffffffff8116825260ff68010000000000000000820481161515838601526901000000000000000000820481161515838701526a01000000000000000000008204811660608401526b0100000000000000000000008204811660808401526c010000000000000000000000009091041660a08201526001820180548551818602810186019096528086529194929360c086019392908301828280156116d957602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff1681526001909101906020018083116116ae575b505050505081526020016002820180548060200260200160405190810160405280929190818152602001828054801561174857602002820191906000526020600020905b815473ffffffffffffffffffffffffffffffffffffffff16815260019091019060200180831161171d575b5050505050815250509050919050565b60055460408051808201909152600781527f4c5a35303030300000000000000000000000000000000000000000000000000060208201529073ffffffffffffffffffffffffffffffffffffffff1633146117df576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5060005b828110156108135760008484838181106117ff576117ff6133ab565b9050602002016020810190611814919061319e565b905060006118228483610890565b60016020808301828152604080850184815273ffffffffffffffffffffffffffffffffffffffff8a1660009081526003855282812063ffffffff8a16825285529190912085518154935192516060880151608089015160a08a015160ff9081166c01000000000000000000000000027fffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffffffff9282166b01000000000000000000000002929092167fffffffffffffffffffffffffffffffffffffff0000ffffffffffffffffffffff939091166a0100000000000000000000027fffffffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffff941515690100000000000000000002949094167fffffffffffffffffffffffffffffffffffffffffff0000ffffffffffffffffff97151568010000000000000000027fffffffffffffffffffffffffffffffffffffffffffffff00000000000000000090991667ffffffffffffffff9096169590951797909717959095169290921717169290921717815560c08401518051949550859491936119c39390850192910190612deb565b5060e082015180516119df916002840191602090910190612deb565b509050506119ed82856126ab565b505080806119fa90613409565b9150506117e3565b611a0a6125b3565b60005b81811015611fd35736838383818110611a2857611a286133ab565b9050602002810190611a3a91906134c4565b90506000611a4b60a0830183613502565b915060009050611a5e60c0840184613502565b915060009050611a7460a085016080860161356a565b67ffffffffffffffff16116040518060400160405280600781526020017f4c5a31303030300000000000000000000000000000000000000000000000000081525090611aed576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5060ff611afa8284613594565b11156040518060400160405280600781526020017f4c5a31303030390000000000000000000000000000000000000000000000000081525090611b6a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5080611b7d610100850160e086016135b8565b60ff1611156040518060400160405280600781526020017f4c5a31303030390000000000000000000000000000000000000000000000000081525090611bf0576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b506000821180611c1357506000611c0e610100850160e086016135b8565b60ff16115b6040518060400160405280600781526020017f4c5a31303031310000000000000000000000000000000000000000000000000081525090611c81576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50611ccb611c9260a0850185613502565b80806020026020016040519081016040528093929190818152602001838360200280828437600092019190915250869250612763915050565b611d14611cdb60c0850185613502565b80806020026020016040519081016040528093929190818152602001838360200280828437600092019190915250859250612763915050565b60408051610100810190915280611d3160a086016080870161356a565b67ffffffffffffffff168152600060208201819052604082015260ff80851660608301528316608082015260a001611d70610100860160e087016135b8565b60ff168152602001611d8560a0860186613502565b80806020026020016040519081016040528093929190818152602001838360200280828437600092019190915250505090825250602001611dc960c0860186613502565b808060200260200160405190810160405280939291908181526020018383602002808284376000920182905250939094525060049250611e0e9050602087018761319e565b63ffffffff16815260208082019290925260409081016000208351815485850151938601516060870151608088015160a089015167ffffffffffffffff9095167fffffffffffffffffffffffffffffffffffffffffffffff000000000000000000909416939093176801000000000000000096151596909602959095177fffffffffffffffffffffffffffffffffffffffffff0000ffffffffffffffffff166901000000000000000000911515919091027fffffffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffff16176a010000000000000000000060ff95861602177fffffffffffffffffffffffffffffffffffffff0000ffffffffffffffffffffff166b010000000000000000000000918516919091027fffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffffffff16176c01000000000000000000000000939091169290920291909117815560c083015180519192611f8592600185019290910190612deb565b5060e08201518051611fa1916002840191602090910190612deb565b50611fbf9150611fb69050602085018561319e565b8460200161283f565b50505080611fcc90613409565b9050611a0d565b505050565b60055460408051808201909152600781527f4c5a35303030300000000000000000000000000000000000000000000000000060208201529073ffffffffffffffffffffffffffffffffffffffff16331461205f576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5073ffffffffffffffffffffffffffffffffffffffff8416600090815260036020818152604080842063ffffffff808b1686529252909220918516116120b1576120ac8587868686612a75565b6123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc63ffffffff8516016121265760006120ec8385018561356a565b82547fffffffffffffffffffffffffffffffffffffffffffffffff00000000000000001667ffffffffffffffff91909116178255506123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb63ffffffff85160161221257600080612162848601866136d2565b9150915060006121728251612c13565b9050612181828260ff16612763565b83547fffffffffffffffffffffffffffffffffffffffffff00ff00ffffffffffffffff1668010000000000000000841515027fffffffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffff16176a010000000000000000000060ff83160217845581516121ff9060018601906020850190612deb565b5061220a8989612caa565b5050506123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa63ffffffff851601610dc9576000808061224f85870187613720565b92509250925060006122618351612c13565b90508060ff168260ff1611156040518060400160405280600781526020017f4c5a313030303000000000000000000000000000000000000000000000000000815250906122db576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b506122e9838260ff16612763565b84547fffffffffffffffffffffffffffffffffffffffff00ff00ffffffffffffffffff166901000000000000000000851515027fffffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffffff16176b01000000000000000000000060ff83160217855582516123699060028701906020860190612deb565b5084547fffffffffffffffffffffffffffffffffffffff00ffffffffffffffffffffffff166c0100000000000000000000000060ff8416021785556123ae8a8a612caa565b505050505b505050505050565b60607fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff63ffffffff8316016124165763ffffffff83811660009081526020818152604091829020805483519416918401919091529101610ceb565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe63ffffffff83160161247f5763ffffffff8316600090815260208181526040918290208054835164010000000090910467ffffffffffffffff16928101929092529101610ceb565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd63ffffffff831601610dc95763ffffffff831660009081526020818152604091829020805483516c0100000000000000000000000090910473ffffffffffffffffffffffffffffffffffffffff16928101929092529101610ceb565b6125046125b3565b73ffffffffffffffffffffffffffffffffffffffff81166125a7576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201527f6464726573730000000000000000000000000000000000000000000000000000606482015260840161070f565b6125b081612634565b50565b60025473ffffffffffffffffffffffffffffffffffffffff163314610e40576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015260640161070f565b6002805473ffffffffffffffffffffffffffffffffffffffff8381167fffffffffffffffffffffffff0000000000000000000000000000000000000000831681179093556040519116919082907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a35050565b6126b58183611305565b73ffffffffffffffffffffffffffffffffffffffff918216600090815260016020908152604080832063ffffffff9687168452825291829020835181549285015194909301519094166c01000000000000000000000000026bffffffffffffffffffffffff67ffffffffffffffff909416640100000000027fffffffffffffffffffffffffffffffffffffffff00000000000000000000000090921692909516919091171716919091179055565b6000805b82811015610813576000848281518110612783576127836133ab565b602002602001015190508273ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16116040518060400160405280600781526020017f4c5a3130303036000000000000000000000000000000000000000000000000008152509061282a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5091508061283781613409565b915050612767565b6000612851604083016020840161356a565b67ffffffffffffffff1611801561288e5750600061287560608301604084016132a8565b73ffffffffffffffffffffffffffffffffffffffff1614155b6040518060400160405280600781526020017f4c5a313030303000000000000000000000000000000000000000000000000000815250906128fc576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50600061290c602083018361319e565b63ffffffff16116040518060400160405280600781526020017f4c5a31303030390000000000000000000000000000000000000000000000000081525090612981576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b5063ffffffff821660009081526020819052604090819020906129aa90606084019084016132a8565b815473ffffffffffffffffffffffffffffffffffffffff919091166c01000000000000000000000000026bffffffffffffffffffffffff9091161781556129f4602083018361319e565b81547fffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000001663ffffffff91909116178155612a34604083016020840161356a565b815467ffffffffffffffff91909116640100000000027fffffffffffffffffffffffffffffffffffffffff0000000000000000ffffffff9091161790555050565b73ffffffffffffffffffffffffffffffffffffffff8516600090815260016020908152604080832063ffffffff888116855292529091209084167fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff01612b19576000612ae38385018561319e565b82547fffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000001663ffffffff91909116178255506123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe63ffffffff851601612b96576000612b548385018561356a565b825467ffffffffffffffff909116640100000000027fffffffffffffffffffffffffffffffffffffffff0000000000000000ffffffff909116178255506123b3565b7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd63ffffffff851601610dc9576000612bd1838501856132a8565b825473ffffffffffffffffffffffffffffffffffffffff9091166c01000000000000000000000000026bffffffffffffffffffffffff909116178255506123b3565b600060ff821115612ca6576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152602560248201527f53616665436173743a2076616c756520646f65736e27742066697420696e203860448201527f2062697473000000000000000000000000000000000000000000000000000000606482015260840161070f565b5090565b6000612cb68284610890565b90506000816060015160ff161180612cd5575060008160a0015160ff16115b6040518060400160405280600781526020017f4c5a44303030340000000000000000000000000000000000000000000000000081525090612d43576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b506080810151606082015160ff91612d5a91613775565b60ff1611156040518060400160405280600781526020017f4c5a31303030390000000000000000000000000000000000000000000000000081525090610813576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161070f919061318b565b50805460008255906000526020600020908101906125b09190612e6d565b828054828255906000526020600020908101928215612e65579160200282015b82811115612e6557825182547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff909116178255602090920191600190910190612e0b565b50612ca69291505b5b80821115612ca65760008155600101612e6e565b73ffffffffffffffffffffffffffffffffffffffff811681146125b057600080fd5b8035612eaf81612e82565b919050565b803563ffffffff81168114612eaf57600080fd5b60008060408385031215612edb57600080fd5b8235612ee681612e82565b9150612ef460208401612eb4565b90509250929050565b600081518084526020808501945080840160005b83811015612f4357815173ffffffffffffffffffffffffffffffffffffffff1687529582019590820190600101612f11565b509495945050505050565b600061010067ffffffffffffffff83511684526020830151151560208501526040830151612f80604086018215159052565b506060830151612f95606086018260ff169052565b506080830151612faa608086018260ff169052565b5060a0830151612fbf60a086018260ff169052565b5060c08301518160c0860152612fd782860182612efd565b91505060e083015184820360e0860152612ff18282612efd565b95945050505050565b60208152600061300d6020830184612f4e565b9392505050565b60008083601f84011261302657600080fd5b50813567ffffffffffffffff81111561303e57600080fd5b6020830191508360208260051b850101111561088957600080fd5b60008060006040848603121561306e57600080fd5b833567ffffffffffffffff81111561308557600080fd5b61309186828701613014565b90945092505060208401356130a581612e82565b809150509250925092565b6080815260006130c36080830185612f4e565b905061300d6020830184805163ffffffff16825260208082015167ffffffffffffffff169083015260409081015173ffffffffffffffffffffffffffffffffffffffff16910152565b6000806040838503121561311f57600080fd5b612ee683612eb4565b60008151808452602060005b8281101561314f578481018201518682018301528101613134565b506000858301820152601f9091017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe01690930190920192915050565b60208152600061300d6020830184613128565b6000602082840312156131b057600080fd5b61300d82612eb4565b6000806000606084860312156131ce57600080fd5b6131d784612eb4565b925060208401356131e781612e82565b929592945050506040919091013590565b60408152600061320b6040830185613128565b905082151560208301529392505050565b60008060006060848603121561323157600080fd5b61323a84612eb4565b9250602084013561324a81612e82565b915061325860408501612eb4565b90509250925092565b815163ffffffff16815260208083015167ffffffffffffffff169082015260408083015173ffffffffffffffffffffffffffffffffffffffff169082015260608101610682565b6000602082840312156132ba57600080fd5b813561300d81612e82565b600080602083850312156132d857600080fd5b823567ffffffffffffffff8111156132ef57600080fd5b6132fb85828601613014565b90969095509350505050565b60008060008060006080868803121561331f57600080fd5b61332886612eb4565b9450602086013561333881612e82565b935061334660408701612eb4565b9250606086013567ffffffffffffffff8082111561336357600080fd5b818801915088601f83011261337757600080fd5b81358181111561338657600080fd5b89602082850101111561339857600080fd5b9699959850939650602001949392505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff820361343a5761343a6133da565b5060010190565b6000815480845260208085019450836000528060002060005b83811015612f4357815473ffffffffffffffffffffffffffffffffffffffff168752958201956001918201910161345a565b60208152600061300d6020830184613441565b6040815260006134b26040830185613441565b905060ff831660208301529392505050565b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff018336030181126134f857600080fd5b9190910192915050565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe184360301811261353757600080fd5b83018035915067ffffffffffffffff82111561355257600080fd5b6020019150600581901b360382131561088957600080fd5b60006020828403121561357c57600080fd5b813567ffffffffffffffff8116811461300d57600080fd5b80820180821115610682576106826133da565b803560ff81168114612eaf57600080fd5b6000602082840312156135ca57600080fd5b61300d826135a7565b80358015158114612eaf57600080fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b600082601f83011261362357600080fd5b8135602067ffffffffffffffff80831115613640576136406135e3565b8260051b6040517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0603f83011681018181108482111715613683576136836135e3565b6040529384528581018301938381019250878511156136a157600080fd5b83870191505b848210156136c7576136b882612ea4565b835291830191908301906136a7565b979650505050505050565b600080604083850312156136e557600080fd5b6136ee836135d3565b9150602083013567ffffffffffffffff81111561370a57600080fd5b61371685828601613612565b9150509250929050565b60008060006060848603121561373557600080fd5b61373e846135d3565b9250602084013567ffffffffffffffff81111561375a57600080fd5b61376686828701613612565b925050613258604085016135a7565b60ff8181168382160190811115610682576106826133da56fea264697066735822122089c74b792c1ef0e1b98d245fe87770f3207c4bc5477174d1840d19f83893c66c64736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "getRawUlnConfig(address,uint32)": {
+        "details": "Get the uln config without the default config for the given remoteEid."
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 11236,
+        "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+        "label": "defaultOutboundConfig",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_uint32,t_struct(OutboundConfigStruct)11221_storage)"
+      },
+      {
+        "astId": 11243,
+        "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+        "label": "outboundConfig",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_struct(OutboundConfigStruct)11221_storage))"
+      },
+      {
+        "astId": 5170,
+        "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 14406,
+        "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+        "label": "ulnConfig",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_struct(UlnConfigStruct)16447_storage))"
+      },
+      {
+        "astId": 14411,
+        "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+        "label": "defaultUlnConfig",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_uint32,t_struct(UlnConfigStruct)16447_storage)"
+      },
+      {
+        "astId": 14413,
+        "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+        "label": "uln",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_mapping(t_uint32,t_struct(OutboundConfigStruct)11221_storage))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(uint32 => struct OutboundConfigStruct))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint32,t_struct(OutboundConfigStruct)11221_storage)"
+      },
+      "t_mapping(t_address,t_mapping(t_uint32,t_struct(UlnConfigStruct)16447_storage))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(uint32 => struct UlnConfigStruct))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint32,t_struct(UlnConfigStruct)16447_storage)"
+      },
+      "t_mapping(t_uint32,t_struct(OutboundConfigStruct)11221_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => struct OutboundConfigStruct)",
+        "numberOfBytes": "32",
+        "value": "t_struct(OutboundConfigStruct)11221_storage"
+      },
+      "t_mapping(t_uint32,t_struct(UlnConfigStruct)16447_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => struct UlnConfigStruct)",
+        "numberOfBytes": "32",
+        "value": "t_struct(UlnConfigStruct)16447_storage"
+      },
+      "t_struct(OutboundConfigStruct)11221_storage": {
+        "encoding": "inplace",
+        "label": "struct OutboundConfigStruct",
+        "members": [
+          {
+            "astId": 11216,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "maxMessageSize",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 11218,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "outboundConfirmations",
+            "offset": 4,
+            "slot": "0",
+            "type": "t_uint64"
+          },
+          {
+            "astId": 11220,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "executor",
+            "offset": 12,
+            "slot": "0",
+            "type": "t_address"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_struct(UlnConfigStruct)16447_storage": {
+        "encoding": "inplace",
+        "label": "struct UlnConfigStruct",
+        "members": [
+          {
+            "astId": 16430,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "inboundConfirmations",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint64"
+          },
+          {
+            "astId": 16432,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "useCustomVerifiers",
+            "offset": 8,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 16434,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "useCustomOptionalVerifiers",
+            "offset": 9,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 16436,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "verifierCount",
+            "offset": 10,
+            "slot": "0",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 16438,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "optionalVerifierCount",
+            "offset": 11,
+            "slot": "0",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 16440,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "optionalVerifierThreshold",
+            "offset": 12,
+            "slot": "0",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 16443,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "verifiers",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_address)dyn_storage"
+          },
+          {
+            "astId": 16446,
+            "contract": "contracts/uln/UlnConfig.sol:UlnConfig",
+            "label": "optionalVerifiers",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_array(t_address)dyn_storage"
+          }
+        ],
+        "numberOfBytes": "96"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      },
+      "t_uint64": {
+        "encoding": "inplace",
+        "label": "uint64",
+        "numberOfBytes": "8"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}

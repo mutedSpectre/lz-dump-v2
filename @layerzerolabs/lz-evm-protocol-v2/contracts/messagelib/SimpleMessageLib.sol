@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity 0.8.18;
+pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
@@ -9,9 +9,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "../interfaces/IPacket.sol";
 import "../interfaces/IMessageLib.sol";
 import "../interfaces/IMessageOrigin.sol";
-import "../interfaces/ILayerZeroEndpoint.sol";
+import "../interfaces/ILayerZeroEndpointV2.sol";
+import "../libs/Errors.sol";
 import "./libs/PacketV1Codec.sol";
-import "./libs/Options.sol";
 
 contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
     using SafeERC20 for IERC20;
@@ -33,17 +33,17 @@ contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
 
     // only the endpoint can call SEND() and setConfig()
     modifier onlyEndpoint() {
-        require(endpoint == msg.sender, "LZ50000");
+        require(endpoint == msg.sender, Errors.PERMISSION_DENIED);
         _;
     }
 
     constructor(address _endpoint, address _treasury) {
         endpoint = _endpoint;
         treasury = _treasury;
-        localEid = ILayerZeroEndpoint(_endpoint).eid();
+        localEid = ILayerZeroEndpointV2(_endpoint).eid();
         lzTokenFee = 99;
         nativeFee = 100;
-        defaultOption = Options.encodeSimpleOptionsType1(200000);
+        //        defaultOption = Options.encodeLegacyOptionsType1(200000);
     }
 
     function supportsInterface(bytes4 interfaceId) public view override returns (bool) {
@@ -52,30 +52,30 @@ contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
 
     // no validation logic at all
     function validatePacket(bytes calldata packetBytes) external {
-        require(whitelistCaller == address(0x0) || msg.sender == whitelistCaller, "LZ50000");
+        require(whitelistCaller == address(0x0) || msg.sender == whitelistCaller, Errors.PERMISSION_DENIED);
         MessageOrigin memory origin = MessageOrigin(packetBytes.srcEid(), packetBytes.sender(), packetBytes.nonce());
-        ILayerZeroEndpoint(endpoint).deliver(origin, packetBytes.receiverB20(), keccak256(packetBytes.payload()));
+        ILayerZeroEndpointV2(endpoint).deliver(origin, packetBytes.receiverB20(), keccak256(packetBytes.payload()));
     }
 
     // ------------------ onlyEndpoint ------------------
     function send(
-        IMessageLib.Packet calldata _packet,
+        IPacket.Packet calldata _packet,
         bytes memory _options,
         bool _payInLzToken
     )
         external
         onlyEndpoint
-        returns (ILayerZeroEndpoint.MessagingReceipt memory receipt, bytes memory encodedPacket, bytes memory options)
+        returns (ILayerZeroEndpointV2.MessagingReceipt memory receipt, bytes memory encodedPacket, bytes memory options)
     {
         encodedPacket = PacketV1Codec.encode(packetVersion, _packet);
 
         options = _options.length == 0 ? defaultOption : _options;
         _handleMessagingParamsHook(encodedPacket, options);
 
-        receipt = ILayerZeroEndpoint.MessagingReceipt(
+        receipt = ILayerZeroEndpointV2.MessagingReceipt(
             _packet.guid,
             _packet.nonce,
-            ILayerZeroEndpoint.MessagingFee(nativeFee, _payInLzToken ? lzTokenFee : 0)
+            ILayerZeroEndpointV2.MessagingFee(nativeFee, _payInLzToken ? lzTokenFee : 0)
         );
     }
 
@@ -94,9 +94,9 @@ contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
     }
 
     function withdrawFee(address _to, uint _amount) external onlyOwner {
-        require(_to != address(0x0), "LZ10000");
+        require(_to != address(0x0), Errors.INVALID_ARGUMENT);
 
-        address altTokenAddr = ILayerZeroEndpoint(endpoint).altFeeToken();
+        address altTokenAddr = ILayerZeroEndpointV2(endpoint).altFeeToken();
         bool isAltToken = altTokenAddr != address(0x0);
 
         if (isAltToken) {
@@ -107,10 +107,10 @@ contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
     }
 
     function withdrawLzTokenFee(address _to, uint _amount) external onlyOwner {
-        require(_to != address(0x0), "LZ10000");
+        require(_to != address(0x0), Errors.INVALID_ARGUMENT);
 
-        address lzToken = ILayerZeroEndpoint(endpoint).layerZeroToken();
-        require(lzToken != address(0x0), "LZD0003");
+        address lzToken = ILayerZeroEndpointV2(endpoint).layerZeroToken();
+        require(lzToken != address(0x0), Errors.TOKEN_UNAVAILABLE);
 
         IERC20(lzToken).safeTransfer(_to, _amount);
     }
@@ -120,8 +120,8 @@ contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
         IPacket.PacketForQuote calldata /*_packet*/,
         bool _payInLzToken,
         bytes calldata /*_adapterParam*/
-    ) external view returns (ILayerZeroEndpoint.MessagingFee memory) {
-        return ILayerZeroEndpoint.MessagingFee(nativeFee, _payInLzToken ? lzTokenFee : 0);
+    ) external view returns (ILayerZeroEndpointV2.MessagingFee memory) {
+        return ILayerZeroEndpointV2.MessagingFee(nativeFee, _payInLzToken ? lzTokenFee : 0);
     }
 
     function isSupportedEid(uint32) external pure returns (bool) {
@@ -136,7 +136,7 @@ contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
     function _handleMessagingParamsHook(bytes memory _encodedPacket, bytes memory _options) internal virtual {}
 
     fallback() external payable {
-        revert("LZC0000");
+        revert(Errors.NOT_IMPLEMENTED);
     }
 
     receive() external payable {}

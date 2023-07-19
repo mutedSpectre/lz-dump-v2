@@ -3,9 +3,8 @@
 pragma solidity >=0.8.0;
 
 import "./IExecutor.sol";
-import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
-interface IExecutorFeeLib is IERC165 {
+interface IExecutorFeeLib {
     struct FeeParams {
         address priceFeed;
         uint32 dstEid;
@@ -13,6 +12,12 @@ interface IExecutorFeeLib is IERC165 {
         uint calldataSize;
         uint16 defaultMultiplierBps;
     }
+
+    function getFeeOnSend(
+        FeeParams memory _params,
+        IExecutor.DstConfig memory _dstConfig,
+        bytes memory _options
+    ) external returns (uint fee);
 
     function getFee(
         FeeParams memory _params,

@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: BUSL-1.1
 
-pragma solidity 0.8.18;
+pragma solidity ^0.8.19;
 
+import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "hardhat-deploy/solc_0.8/proxy/Proxied.sol";
 import "./interfaces/ILayerZeroPriceFeed.sol";
@@ -14,13 +15,15 @@ contract PriceFeed is ILayerZeroPriceFeed, OwnableUpgradeable, Proxied {
     // sets pricing
     mapping(address updater => bool active) public priceUpdater;
 
-    mapping(uint32 dstEid => Price) public defaultModelPrice;
-    ArbitrumPriceExt public arbitrumPriceExt;
+    mapping(uint32 dstEid => Price) internal _defaultModelPrice;
+    ArbitrumPriceExt internal _arbitrumPriceExt;
 
-    uint128 public nativeTokenPriceUSD; // uses PRICE_RATIO_DENOMINATOR
+    uint128 internal _nativePriceUSD; // uses PRICE_RATIO_DENOMINATOR
 
     // upgrade: arbitrum compression - percentage of callDataSize after brotli compression
     uint128 public ARBITRUM_COMPRESSION_PERCENT;
+
+    ILayerZeroEndpointV2 public endpoint;
 
     // ============================ Constructor ===================================
 
@@ -55,6 +58,15 @@ contract PriceFeed is ILayerZeroPriceFeed, OwnableUpgradeable, Proxied {
         ARBITRUM_COMPRESSION_PERCENT = _compressionPercent;
     }
 
+    function setEndpoint(address _endpoint) external onlyOwner {
+        endpoint = ILayerZeroEndpointV2(_endpoint);
+    }
+
+    function withdrawFee(address payable _to, uint _amount) external onlyOwner {
+        (bool success, ) = _to.call{value: _amount}("");
+        require(success, "PriceFeed: withdraw failed");
+    }
+
     // ============================ OnlyPriceUpdater =====================================
 
     function setPrice(UpdatePrice[] calldata _price) external onlyPriceUpdater {
@@ -70,72 +82,68 @@ contract PriceFeed is ILayerZeroPriceFeed, OwnableUpgradeable, Proxied {
         uint64 gasPerL2Tx = _update.extend.gasPerL2Tx;
         uint32 gasPerL1CalldataByte = _update.extend.gasPerL1CallDataByte;
 
-        arbitrumPriceExt.gasPerL2Tx = gasPerL2Tx;
-        arbitrumPriceExt.gasPerL1CallDataByte = gasPerL1CalldataByte;
+        _arbitrumPriceExt.gasPerL2Tx = gasPerL2Tx;
+        _arbitrumPriceExt.gasPerL1CallDataByte = gasPerL1CalldataByte;
     }
 
     function setNativeTokenPriceUSD(uint128 _nativeTokenPriceUSD) external onlyPriceUpdater {
-        nativeTokenPriceUSD = _nativeTokenPriceUSD;
+        _nativePriceUSD = _nativeTokenPriceUSD;
     }
 
-    // ============================ Internal ==========================================
-    function _setPrice(uint32 _dstEid, Price memory _price) internal {
-        uint128 priceRatio = _price.priceRatio;
-        uint64 gasPriceInUnit = _price.gasPriceInUnit;
-        uint32 gasPerByte = _price.gasPerByte;
-        defaultModelPrice[_dstEid] = Price(priceRatio, gasPriceInUnit, gasPerByte);
-    }
+    // ============================ External =====================================
 
-    function _getL1LookupId(uint32 _l2Eid) internal pure returns (uint32) {
-        uint32 l2Eid = _l2Eid % 30_000;
-        if (l2Eid == 111) {
-            return 101;
-        } else if (l2Eid == 10132) {
-            return 10121; // ethereum-goerli
-        } else if (l2Eid == 20132) {
-            return 20121; // ethereum-goerli
-        } else {
-            revert("PriceFeed: unknown l2 chain id");
-        }
+    function estimateFeeOnSend(
+        uint32 _dstEid,
+        uint _callDataSize,
+        uint _gas
+    ) external payable returns (uint, uint128, uint128, uint128) {
+        uint fee = getFee(_dstEid, _callDataSize, _gas);
+        require(msg.value >= fee, "PriceFeed: insufficient fee");
+        return _estimateFeeByEid(_dstEid, _callDataSize, _gas);
     }
 
     // ============================ View ==========================================
 
-    function getPrice(uint32 _dstEid) external view override returns (Price memory price) {
-        price = defaultModelPrice[_dstEid];
+    // get fee for calling estimateFeeOnSend
+    function getFee(uint32 /*_dstEid*/, uint /*_callDataSize*/, uint /*_gas*/) public pure returns (uint) {
+        return 0;
     }
 
-    // NOTE: to support legacy
-    function getPrice(uint16 _dstEid) external view returns (Price memory price) {
-        price = defaultModelPrice[_dstEid];
-    }
-
-    function getPriceRatioDenominator() external view override returns (uint128) {
+    function getPriceRatioDenominator() external view returns (uint128) {
         return PRICE_RATIO_DENOMINATOR;
     }
 
+    // NOTE: to be reverted when endpoint is in sendContext
+    function nativeTokenPriceUSD() external view returns (uint128) {
+        return _nativePriceUSD;
+    }
+
+    // NOTE: to be reverted when endpoint is in sendContext
+    function arbitrumPriceExt() external view returns (ArbitrumPriceExt memory) {
+        return _arbitrumPriceExt;
+    }
+
+    // NOTE: to be reverted when endpoint is in sendContext
+    function getPrice(uint32 _dstEid) external view returns (Price memory price) {
+        price = _defaultModelPrice[_dstEid];
+    }
+
+    // NOTE: to be reverted when endpoint is in sendContext
     function estimateFeeByEid(
         uint32 _dstEid,
         uint _callDataSize,
         uint _gas
-    )
-        external
-        view
-        override
-        returns (uint fee, uint128 priceRatio, uint128 priceRatioDenominator, uint128 nativePriceUSD)
-    {
-        uint32 dstEid = _dstEid % 30_000;
-        if (dstEid == 110 || dstEid == 10143 || dstEid == 20143) {
-            (fee, priceRatio) = _estimateFeeWithArbitrumModel(dstEid, _callDataSize, _gas);
-        } else if (dstEid == 111 || dstEid == 10132 || dstEid == 20132) {
-            (fee, priceRatio) = _estimateFeeWithOptimismModel(dstEid, _callDataSize, _gas);
-        } else {
-            (fee, priceRatio) = _estimateFeeWithDefaultModel(dstEid, _callDataSize, _gas);
-        }
-        priceRatioDenominator = PRICE_RATIO_DENOMINATOR;
-        nativePriceUSD = nativeTokenPriceUSD;
+    ) external view returns (uint, uint128, uint128, uint128) {
+        return _estimateFeeByEid(_dstEid, _callDataSize, _gas);
     }
 
+    // NOTE: to be reverted when endpoint is in sendContext
+    // NOTE: to support legacy
+    function getPrice(uint16 _dstEid) external view returns (Price memory price) {
+        price = _defaultModelPrice[_dstEid];
+    }
+
+    // NOTE: to be reverted when endpoint is in sendContext
     // NOTE: to support legacy
     function estimateFeeByChain(
         uint16 _dstEid,
@@ -151,17 +159,56 @@ contract PriceFeed is ILayerZeroPriceFeed, OwnableUpgradeable, Proxied {
         }
     }
 
+    // ============================ Internal ==========================================
+
+    function _setPrice(uint32 _dstEid, Price memory _price) internal {
+        uint128 priceRatio = _price.priceRatio;
+        uint64 gasPriceInUnit = _price.gasPriceInUnit;
+        uint32 gasPerByte = _price.gasPerByte;
+        _defaultModelPrice[_dstEid] = Price(priceRatio, gasPriceInUnit, gasPerByte);
+    }
+
+    function _getL1LookupId(uint32 _l2Eid) internal pure returns (uint32) {
+        uint32 l2Eid = _l2Eid % 30_000;
+        if (l2Eid == 111) {
+            return 101;
+        } else if (l2Eid == 10132) {
+            return 10121; // ethereum-goerli
+        } else if (l2Eid == 20132) {
+            return 20121; // ethereum-goerli
+        } else {
+            revert("PriceFeed: unknown l2 chain id");
+        }
+    }
+
     function _estimateFeeWithDefaultModel(
         uint32 _dstEid,
         uint _callDataSize,
         uint _gas
     ) internal view returns (uint fee, uint128 priceRatio) {
-        Price storage remotePrice = defaultModelPrice[_dstEid];
+        Price storage remotePrice = _defaultModelPrice[_dstEid];
 
         // assuming the _gas includes (1) the 21,000 overhead and (2) not the calldata gas
         uint gasForCallData = _callDataSize * remotePrice.gasPerByte;
         uint remoteFee = (gasForCallData + _gas) * remotePrice.gasPriceInUnit;
         return ((remoteFee * remotePrice.priceRatio) / PRICE_RATIO_DENOMINATOR, remotePrice.priceRatio);
+    }
+
+    function _estimateFeeByEid(
+        uint32 _dstEid,
+        uint _callDataSize,
+        uint _gas
+    ) internal view returns (uint fee, uint128 priceRatio, uint128 priceRatioDenominator, uint128 priceUSD) {
+        uint32 dstEid = _dstEid % 30_000;
+        if (dstEid == 110 || dstEid == 10143 || dstEid == 20143) {
+            (fee, priceRatio) = _estimateFeeWithArbitrumModel(dstEid, _callDataSize, _gas);
+        } else if (dstEid == 111 || dstEid == 10132 || dstEid == 20132) {
+            (fee, priceRatio) = _estimateFeeWithOptimismModel(dstEid, _callDataSize, _gas);
+        } else {
+            (fee, priceRatio) = _estimateFeeWithDefaultModel(dstEid, _callDataSize, _gas);
+        }
+        priceRatioDenominator = PRICE_RATIO_DENOMINATOR;
+        priceUSD = _nativePriceUSD;
     }
 
     function _estimateFeeWithOptimismModel(
@@ -172,12 +219,12 @@ contract PriceFeed is ILayerZeroPriceFeed, OwnableUpgradeable, Proxied {
         uint32 ethereumId = _getL1LookupId(_dstEid);
 
         // L1 fee
-        Price storage ethereumPrice = defaultModelPrice[ethereumId];
+        Price storage ethereumPrice = _defaultModelPrice[ethereumId];
         uint gasForL1CallData = (_callDataSize * ethereumPrice.gasPerByte) + 3188; // 2100 + 68 * 16
         uint l1Fee = gasForL1CallData * ethereumPrice.gasPriceInUnit;
 
         // L2 fee
-        Price storage optimismPrice = defaultModelPrice[_dstEid];
+        Price storage optimismPrice = _defaultModelPrice[_dstEid];
         uint gasForL2CallData = _callDataSize * optimismPrice.gasPerByte;
         uint l2Fee = (gasForL2CallData + _gas) * optimismPrice.gasPriceInUnit;
 
@@ -192,14 +239,14 @@ contract PriceFeed is ILayerZeroPriceFeed, OwnableUpgradeable, Proxied {
         uint _callDataSize,
         uint _gas
     ) internal view returns (uint fee, uint128 priceRatio) {
-        Price storage arbitrumPrice = defaultModelPrice[_dstEid];
+        Price storage arbitrumPrice = _defaultModelPrice[_dstEid];
 
         // L1 fee
         uint gasForL1CallData = ((_callDataSize * ARBITRUM_COMPRESSION_PERCENT) / 100) *
-            arbitrumPriceExt.gasPerL1CallDataByte;
+            _arbitrumPriceExt.gasPerL1CallDataByte;
         // L2 Fee
         uint gasForL2CallData = _callDataSize * arbitrumPrice.gasPerByte;
-        uint gasFee = (_gas + arbitrumPriceExt.gasPerL2Tx + gasForL1CallData + gasForL2CallData) *
+        uint gasFee = (_gas + _arbitrumPriceExt.gasPerL2Tx + gasForL1CallData + gasForL2CallData) *
             arbitrumPrice.gasPriceInUnit;
 
         return ((gasFee * arbitrumPrice.priceRatio) / PRICE_RATIO_DENOMINATOR, arbitrumPrice.priceRatio);
