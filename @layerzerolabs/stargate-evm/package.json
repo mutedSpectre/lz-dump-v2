@@ -1,6 +1,6 @@
 {
   "name": "@layerzerolabs/stargate-evm",
-  "version": "1.5.25",
+  "version": "1.5.27",
   "license": "GPL-3.0-only",
   "files": [
     "artifacts/contracts/Router.sol/Router.json",
@@ -29,9 +29,9 @@
     "@ethersproject/bytes": "^5.7.0",
     "@ethersproject/hardware-wallets": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@layerzerolabs-internal/typescript-config": "^1.5.25",
-    "@layerzerolabs/hardhat-config": "^1.5.25",
-    "@layerzerolabs/lz-evm-v1-0.7": "^1.5.25",
+    "@layerzerolabs-internal/typescript-config": "^1.5.27",
+    "@layerzerolabs/hardhat-config": "^1.5.27",
+    "@layerzerolabs/lz-evm-v1-0.7": "^1.5.27",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
     "@nomiclabs/hardhat-ethers": "2.0.5",
     "@nomiclabs/hardhat-etherscan": "3.0.3",

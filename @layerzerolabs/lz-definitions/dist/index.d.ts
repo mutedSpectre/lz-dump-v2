@@ -535,6 +535,7 @@ declare function networkToEnv(network: string, version: EndpointVersion): Enviro
 declare function networkToStage(network: string): Stage;
 declare function endpointIdToNetwork(endpointId: number, env?: Environment): string;
 declare function endpointIdToVersion(endpointId: number): EndpointVersion;
+declare function endpointIdToChainKey(endpointId: number): ChainKey;
 declare function chainAndStageToEndpointId(chain: Chain, stage: Stage, version: EndpointVersion): EndpointId;
 declare function chainAndStageToNetwork(chain: Chain, stage: Stage, env?: Environment): string;
 declare function networkToChain(network: string): Chain;
@@ -558,4 +559,4 @@ declare function getNetworkForChainId(targetchainId: number): {
 
 type Network = `${Chain}-${Stage}${'-local' | ''}`;
 
-export { BRIDGE_ADDRESS, CHAIN_KEY, Chain, ChainKey, ChainType, ENVIRONMENT, EndpointId, EndpointVersion, Environment, MainnetEndpointId, MainnetV2EndpointId, MessageLibVersion, MessageLibVersionV1, MessageLibVersionV2, Network, STG_ADDRESS, SandboxEndpointId, SandboxV2EndpointId, Stage, TestnetEndpointId, TestnetV2EndpointId, ULN_V1_CHAINS, chainAndStageToEndpointId, chainAndStageToNetwork, endpointIdToChain, endpointIdToChainType, endpointIdToNetwork, endpointIdToStage, endpointIdToVersion, getChainIdForNetwork, getChainType, getEndpointVersionForUlnVersion, getNetworkForChainId, getNetworksForStage, networkToChain, networkToChainType, networkToEndpointId, networkToEnv, networkToStage };
+export { BRIDGE_ADDRESS, CHAIN_KEY, Chain, ChainKey, ChainType, ENVIRONMENT, EndpointId, EndpointVersion, Environment, MainnetEndpointId, MainnetV2EndpointId, MessageLibVersion, MessageLibVersionV1, MessageLibVersionV2, Network, STG_ADDRESS, SandboxEndpointId, SandboxV2EndpointId, Stage, TestnetEndpointId, TestnetV2EndpointId, ULN_V1_CHAINS, chainAndStageToEndpointId, chainAndStageToNetwork, endpointIdToChain, endpointIdToChainKey, endpointIdToChainType, endpointIdToNetwork, endpointIdToStage, endpointIdToVersion, getChainIdForNetwork, getChainType, getEndpointVersionForUlnVersion, getNetworkForChainId, getNetworksForStage, networkToChain, networkToChainType, networkToEndpointId, networkToEnv, networkToStage };

@@ -1,6 +1,6 @@
 {
   "name": "@layerzerolabs/lz-evm-oapp-v2",
-  "version": "1.5.25",
+  "version": "1.5.27",
   "license": "MIT",
   "files": [
     "contracts/**/*",
@@ -17,8 +17,8 @@
     "test-static-analyze": "$npm_execpath hardhat clean && $npm_execpath build-hardhat && python3 -m slither . --ignore-compile --compile-force-framework hardhat --npx-disable"
   },
   "dependencies": {
-    "@layerzerolabs/lz-evm-messagelib-v2": "^1.5.25",
-    "@layerzerolabs/lz-evm-protocol-v2": "^1.5.25",
+    "@layerzerolabs/lz-evm-messagelib-v2": "^1.5.27",
+    "@layerzerolabs/lz-evm-protocol-v2": "^1.5.27",
     "@openzeppelin/contracts": "^4.8.0",
     "@openzeppelin/contracts-upgradeable": "^4.8.0",
     "solidity-bytes-utils": "^0.8.0"
@@ -26,9 +26,9 @@
   "devDependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@layerzerolabs-internal/typescript-config": "^1.5.25",
-    "@layerzerolabs/hardhat-collect-outcomes": "^1.5.25",
-    "@layerzerolabs/hardhat-config": "^1.5.25",
+    "@layerzerolabs-internal/typescript-config": "^1.5.27",
+    "@layerzerolabs/hardhat-collect-outcomes": "^1.5.27",
+    "@layerzerolabs/hardhat-config": "^1.5.27",
     "@nomiclabs/hardhat-ethers": "^2.2.2",
     "@typechain/ethers-v5": "^10.2.0",
     "@typechain/hardhat": "^6.1.5",

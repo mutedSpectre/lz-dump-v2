@@ -1,5 +1,6 @@
 import { ChainId, ChainStage } from '@layerzerolabs/lz-sdk';
 export { getChainStage } from '@layerzerolabs/lz-sdk';
+import { ChainKey, ChainType as ChainType$1 } from '@layerzerolabs/lz-definitions';
 import { utils, BigNumber, Signer } from 'ethers';
 
 declare enum IconTheme {
@@ -110,8 +111,11 @@ interface Network {
     name: string;
     symbol: string;
     chainId: ChainId;
+    chainKey: ChainKey;
+    chainType: ChainType$1;
     nativeChainId: number;
     nativeCurrency: Currency;
+    averageBlockTime: number;
     blockExplorers: BlockExplorer[];
     rpcs: {
         url: string;
@@ -121,9 +125,12 @@ interface Network {
 }
 type NetworkInfo = {
     chainId: ChainId;
+    chainKey: ChainKey;
+    chainType: ChainType$1;
     nativeChainId: number;
     name: string;
     symbol: string;
+    averageBlockTime: number;
     nativeCurrency: {
         name: string;
         symbol: string;

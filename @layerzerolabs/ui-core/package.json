@@ -1,6 +1,6 @@
 {
   "name": "@layerzerolabs/ui-core",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -29,6 +29,7 @@
   "author": "",
   "license": "BUSL-1.1",
   "dependencies": {
+    "@layerzerolabs/lz-definitions": "^1.5.26",
     "big.js": "^5.2.2",
     "decimal.js-light": "^2.5.0",
     "toformat": "^2.0.0"

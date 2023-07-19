@@ -1,6 +1,6 @@
 {
   "name": "@layerzerolabs/lz-sdk",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "license": "BUSL-1.1",
   "description": "LayerZero SDK",
   "type": "module",
@@ -36,5 +36,5 @@
   "engines": {
     "node": ">=10"
   },
-  "gitHead": "a6f76da906131156ec2614f6edd09a3604b63eb1"
+  "gitHead": "90b354a9c6cbdd4d88e00e90d39294efd360ad30"
 }

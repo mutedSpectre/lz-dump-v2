@@ -157,6 +157,8 @@ var NETWORK_INFO = [
     "name": "Solana",
     "symbol": "solana",
     "chainId": 168,
+    "chainKey": "solana",
+    "chainType": "solana",
     "nativeChainId": 1,
     "nativeCurrency": {
       "name": "SOL",
@@ -164,6 +166,7 @@ var NETWORK_INFO = [
       "decimals": 9
     },
     "blockExplorers": [],
+    "averageBlockTime": 0.4,
     "rpcs": [
       {
         "url": "https://api.mainnet-beta.solana.com"
@@ -174,6 +177,8 @@ var NETWORK_INFO = [
     "name": "Solana",
     "symbol": "solana",
     "chainId": 10168,
+    "chainKey": "solana-testnet",
+    "chainType": "solana",
     "nativeChainId": 2,
     "nativeCurrency": {
       "name": "SOL",
@@ -181,6 +186,7 @@ var NETWORK_INFO = [
       "decimals": 9
     },
     "blockExplorers": [],
+    "averageBlockTime": 0.4,
     "rpcs": [
       {
         "url": "https://api.devnet.solana.com"
@@ -191,6 +197,8 @@ var NETWORK_INFO = [
     "name": "Ethereum",
     "symbol": "Ethereum",
     "chainId": 101,
+    "chainKey": "ethereum",
+    "chainType": "evm",
     "nativeChainId": 1,
     "nativeCurrency": {
       "name": "ETH",
@@ -203,6 +211,7 @@ var NETWORK_INFO = [
         "url": "https://etherscan.io"
       }
     ],
+    "averageBlockTime": 12.1152,
     "rpcs": [
       {
         "url": "https://eth-mainnet.gateway.pokt.network/v1/5f3453978e354ab992c4da79",
@@ -235,6 +244,14 @@ var NETWORK_INFO = [
       {
         "url": "https://eth-mainnet.alchemyapi.io/v2/VsPzIezK0AtqsnrWAuV0Gew-MS7H_E5E",
         "weight": 100
+      },
+      {
+        "url": "https://eth.llamarpc.com/rpc/${LLAMANODES_API_KEY}",
+        "weight": 1e4
+      },
+      {
+        "url": "https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}",
+        "weight": 100
       }
     ]
   },
@@ -242,6 +259,8 @@ var NETWORK_INFO = [
     "name": "Rinkeby Testnet",
     "symbol": "Rinkeby",
     "chainId": 10101,
+    "chainKey": "rinkeby",
+    "chainType": "evm",
     "nativeChainId": 4,
     "nativeCurrency": {
       "name": "ETH",
@@ -264,6 +283,8 @@ var NETWORK_INFO = [
     "name": "Goerli",
     "symbol": "goerli",
     "chainId": 10121,
+    "chainKey": "goerli",
+    "chainType": "evm",
     "nativeChainId": 5,
     "nativeCurrency": {
       "name": "GoerliETH",
@@ -276,6 +297,7 @@ var NETWORK_INFO = [
         "url": "https://goerli.etherscan.io"
       }
     ],
+    "averageBlockTime": 16.6968,
     "rpcs": [
       {
         "url": "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
@@ -286,6 +308,8 @@ var NETWORK_INFO = [
     "name": "BNB Chain",
     "symbol": "BNB",
     "chainId": 102,
+    "chainKey": "bsc",
+    "chainType": "evm",
     "nativeChainId": 56,
     "nativeCurrency": {
       "symbol": "BNB",
@@ -298,6 +322,7 @@ var NETWORK_INFO = [
         "url": "https://bscscan.com"
       }
     ],
+    "averageBlockTime": 3.01,
     "rpcs": [
       {
         "url": "https://bscrpc.com"
@@ -326,6 +351,8 @@ var NETWORK_INFO = [
     "name": "Binance Test Chain",
     "symbol": "BNB",
     "chainId": 10102,
+    "chainKey": "bsc-testnet",
+    "chainType": "evm",
     "nativeChainId": 97,
     "nativeCurrency": {
       "symbol": "BNB",
@@ -338,6 +365,7 @@ var NETWORK_INFO = [
         "url": "https://testnet.bscscan.com"
       }
     ],
+    "averageBlockTime": 3,
     "rpcs": [
       {
         "url": "https://data-seed-prebsc-1-s3.binance.org:8545"
@@ -360,6 +388,8 @@ var NETWORK_INFO = [
     "name": "Polygon",
     "symbol": "Matic",
     "chainId": 109,
+    "chainKey": "polygon",
+    "chainType": "evm",
     "nativeChainId": 137,
     "nativeCurrency": {
       "name": "MATIC",
@@ -372,6 +402,7 @@ var NETWORK_INFO = [
         "url": "https://polygonscan.com"
       }
     ],
+    "averageBlockTime": 2.192,
     "rpcs": [
       {
         "url": "https://poly-rpc.gateway.pokt.network",
@@ -399,6 +430,14 @@ var NETWORK_INFO = [
       {
         "url": "https://polygon-mainnet.g.alchemy.com/v2/q3f-QpPeM_g7rL3G21Cr9tFeuYAquyYl",
         "weight": 100
+      },
+      {
+        "url": "https://polygon.llamarpc.com/rpc/${LLAMANODES_API_KEY}",
+        "weight": 1e3
+      },
+      {
+        "url": "https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+        "weight": 100
       }
     ]
   },
@@ -406,6 +445,8 @@ var NETWORK_INFO = [
     "name": "Mumbai",
     "symbol": "Matic",
     "chainId": 10109,
+    "chainKey": "mumbai",
+    "chainType": "evm",
     "nativeChainId": 80001,
     "nativeCurrency": {
       "symbol": "MATIC",
@@ -431,6 +472,8 @@ var NETWORK_INFO = [
     "name": "Avalanche",
     "symbol": "Avalanche",
     "chainId": 106,
+    "chainKey": "avalanche",
+    "chainType": "evm",
     "nativeChainId": 43114,
     "nativeCurrency": {
       "name": "Avalanche Token",
@@ -443,6 +486,7 @@ var NETWORK_INFO = [
         "url": "https://snowtrace.io"
       }
     ],
+    "averageBlockTime": 2.0259,
     "rpcs": [
       {
         "url": "https://api.avax.network/ext/bc/C/rpc",
@@ -451,6 +495,10 @@ var NETWORK_INFO = [
       {
         "url": "https://avalanche--mainnet--rpc.datahub.figment.io/apikey/b1a0d59ba8a5d08049bbfdc174dca1b1/ext/bc/C/rpc",
         "weight": 100
+      },
+      {
+        "url": "https://avalanche-mainnet.infura.io/v3/${INFURA_API_KEY}",
+        "weight": 1
       }
     ]
   },
@@ -458,6 +506,8 @@ var NETWORK_INFO = [
     "name": "Fuji",
     "symbol": "Avalanche",
     "chainId": 10106,
+    "chainKey": "fuji",
+    "chainType": "evm",
     "nativeChainId": 43113,
     "nativeCurrency": {
       "name": "Avalanche Token",
@@ -470,6 +520,7 @@ var NETWORK_INFO = [
         "url": "https://testnet.snowtrace.io"
       }
     ],
+    "averageBlockTime": 2.8825,
     "rpcs": [
       {
         "url": "https://api.avax-test.network/ext/bc/C/rpc"
@@ -483,6 +534,8 @@ var NETWORK_INFO = [
     "name": "Fantom",
     "symbol": "Fantom",
     "chainId": 112,
+    "chainKey": "fantom",
+    "chainType": "evm",
     "nativeChainId": 250,
     "nativeCurrency": {
       "name": "Fantom",
@@ -495,6 +548,7 @@ var NETWORK_INFO = [
         "url": "https://ftmscan.com"
       }
     ],
+    "averageBlockTime": 2.3619,
     "rpcs": [
       {
         "url": "https://rpc.ftm.tools",
@@ -514,6 +568,8 @@ var NETWORK_INFO = [
     "name": "Fantom Testnet",
     "symbol": "Fantom",
     "chainId": 10112,
+    "chainKey": "fantom-testnet",
+    "chainType": "evm",
     "nativeChainId": 4002,
     "nativeCurrency": {
       "name": "Fantom",
@@ -526,6 +582,7 @@ var NETWORK_INFO = [
         "url": "https://testnet.ftmscan.com"
       }
     ],
+    "averageBlockTime": 1.6661,
     "rpcs": [
       {
         "url": "https://rpc.testnet.fantom.network/"
@@ -542,6 +599,8 @@ var NETWORK_INFO = [
     "name": "Arbitrum",
     "symbol": "Arbitrum",
     "chainId": 110,
+    "chainKey": "arbitrum",
+    "chainType": "evm",
     "nativeChainId": 42161,
     "nativeCurrency": {
       "name": "ETH",
@@ -558,6 +617,7 @@ var NETWORK_INFO = [
         "url": "https://explorer.arbitrum.io"
       }
     ],
+    "averageBlockTime": 0.2505,
     "rpcs": [
       {
         "url": "https://arb1.arbitrum.io/rpc",
@@ -574,6 +634,10 @@ var NETWORK_INFO = [
       {
         "url": "https://arb-mainnet.g.alchemy.com/v2/KhVdIItVH0ttiQvBYYO5NPL-De-gLWoW",
         "weight": 100
+      },
+      {
+        "url": "https://arbitrum-mainnet.infura.io/v3/${INFURA_API_KEY}",
+        "weight": 1
       }
     ]
   },
@@ -581,6 +645,8 @@ var NETWORK_INFO = [
     "name": "Arbitrum Goerli",
     "symbol": "Arbitrum",
     "chainId": 10143,
+    "chainKey": "arbitrum-goerli",
+    "chainType": "evm",
     "nativeChainId": 421613,
     "nativeCurrency": {
       "name": "ETH",
@@ -593,6 +659,7 @@ var NETWORK_INFO = [
         "url": "https://goerli-rollup-explorer.arbitrum.io"
       }
     ],
+    "averageBlockTime": 0.5823,
     "rpcs": [
       {
         "url": "https://goerli-rollup.arbitrum.io/rpc"
@@ -606,6 +673,8 @@ var NETWORK_INFO = [
     "name": "Arbitrum Rinkeby",
     "symbol": "Arbitrum",
     "chainId": 10110,
+    "chainKey": "arbitrum-rinkeby",
+    "chainType": "evm",
     "nativeChainId": 421611,
     "nativeCurrency": {
       "name": "ETH",
@@ -635,6 +704,8 @@ var NETWORK_INFO = [
     "name": "Optimism",
     "symbol": "Optimism",
     "chainId": 111,
+    "chainKey": "optimism",
+    "chainType": "evm",
     "nativeChainId": 10,
     "nativeCurrency": {
       "symbol": "ETH",
@@ -647,6 +718,7 @@ var NETWORK_INFO = [
         "url": "https://optimistic.etherscan.io"
       }
     ],
+    "averageBlockTime": 2,
     "rpcs": [
       {
         "url": "https://mainnet.optimism.io",
@@ -673,6 +745,8 @@ var NETWORK_INFO = [
     "name": "Optimism Kovan",
     "symbol": "Optimism",
     "chainId": 10111,
+    "chainKey": "optimism-kovan",
+    "chainType": "evm",
     "nativeChainId": 69,
     "nativeCurrency": {
       "symbol": "ETH",
@@ -698,6 +772,8 @@ var NETWORK_INFO = [
     "name": "Optimism Goerli",
     "symbol": "Optimism",
     "chainId": 10132,
+    "chainKey": "optimism-goerli",
+    "chainType": "evm",
     "nativeChainId": 420,
     "nativeCurrency": {
       "symbol": "ETH",
@@ -710,6 +786,7 @@ var NETWORK_INFO = [
         "name": "Optimism Goerli block explorer"
       }
     ],
+    "averageBlockTime": 2,
     "rpcs": [
       {
         "url": "https://goerli.optimism.io"
@@ -720,6 +797,8 @@ var NETWORK_INFO = [
     "name": "Swimmer",
     "symbol": "swimmer",
     "chainId": 114,
+    "chainKey": "swimmer",
+    "chainType": "evm",
     "nativeChainId": 0,
     "nativeCurrency": {
       "symbol": "TUS",
@@ -737,6 +816,8 @@ var NETWORK_INFO = [
     "name": "DFK",
     "symbol": "dfk",
     "chainId": 115,
+    "chainKey": "dfk",
+    "chainType": "evm",
     "nativeChainId": 53935,
     "nativeCurrency": {
       "symbol": "JEWEL",
@@ -749,6 +830,7 @@ var NETWORK_INFO = [
         "url": "https://explorer.dfkchain.com"
       }
     ],
+    "averageBlockTime": 2.1221,
     "rpcs": [
       {
         "url": "https://subnets.avax.network/defi-kingdoms/dfk-chain/rpc"
@@ -759,6 +841,8 @@ var NETWORK_INFO = [
     "name": "Harmony",
     "symbol": "harmony",
     "chainId": 116,
+    "chainKey": "harmony",
+    "chainType": "evm",
     "nativeChainId": 16666e5,
     "nativeCurrency": {
       "symbol": "ONE",
@@ -771,6 +855,7 @@ var NETWORK_INFO = [
         "url": "https://explorer.harmony.one"
       }
     ],
+    "averageBlockTime": 2.0007,
     "rpcs": [
       {
         "url": "https://harmony-mainnet.chainstacklabs.com"
@@ -796,6 +881,8 @@ var NETWORK_INFO = [
     "name": "Aptos",
     "symbol": "APTOS",
     "chainId": 108,
+    "chainKey": "aptos",
+    "chainType": "aptos",
     "nativeChainId": 1,
     "nativeCurrency": {
       "symbol": "APT",
@@ -811,19 +898,7 @@ var NETWORK_INFO = [
     ],
     "rpcs": [
       {
-        "url": "https://mainnet.infura.io/v3/${INFURA_API_KEY}"
-      },
-      {
-        "url": "wss://mainnet.infura.io/ws/v3/${INFURA_API_KEY}"
-      },
-      {
-        "url": "https://api.mycryptoapi.com/eth"
-      },
-      {
-        "url": "https://cloudflare-eth.com"
-      },
-      {
-        "url": "https://ethereum.publicnode.com"
+        "url": "https://mainnet.aptoslabs.com/v1"
       }
     ]
   },
@@ -831,6 +906,8 @@ var NETWORK_INFO = [
     "name": "Aptos Testnet",
     "symbol": "APTOS",
     "chainId": 10108,
+    "chainKey": "aptos-testnet",
+    "chainType": "aptos",
     "nativeChainId": 2,
     "nativeCurrency": {
       "symbol": "APT",
@@ -846,7 +923,7 @@ var NETWORK_INFO = [
     ],
     "rpcs": [
       {
-        "url": "https://node.expanse.tech"
+        "url": "https://fullnode.testnet.aptoslabs.com/v1"
       }
     ]
   },
@@ -854,6 +931,8 @@ var NETWORK_INFO = [
     "name": "MOONBEAM",
     "symbol": "moonbeam",
     "chainId": 126,
+    "chainKey": "moonbeam",
+    "chainType": "evm",
     "nativeChainId": 1284,
     "nativeCurrency": {
       "symbol": "GLMR",
@@ -866,6 +945,7 @@ var NETWORK_INFO = [
         "url": "https://moonbeam.moonscan.io"
       }
     ],
+    "averageBlockTime": 12.2082,
     "rpcs": [
       {
         "url": "https://rpc.api.moonbeam.network"
@@ -879,6 +959,8 @@ var NETWORK_INFO = [
     "name": "Metis",
     "symbol": "Metis",
     "chainId": 151,
+    "chainKey": "metis",
+    "chainType": "evm",
     "nativeChainId": 1088,
     "nativeCurrency": {
       "symbol": "METIS",
@@ -891,6 +973,7 @@ var NETWORK_INFO = [
         "url": "https://andromeda-explorer.metis.io"
       }
     ],
+    "averageBlockTime": 3.138,
     "rpcs": [
       {
         "url": "https://andromeda.metis.io/?owner=1088"
@@ -901,6 +984,8 @@ var NETWORK_INFO = [
     "name": "Metis",
     "symbol": "Metis",
     "chainId": 10151,
+    "chainKey": "metis-goerli",
+    "chainType": "evm",
     "nativeChainId": 599,
     "nativeCurrency": {
       "symbol": "METIS",
@@ -913,6 +998,7 @@ var NETWORK_INFO = [
         "url": "https://goerli.explorer.metisdevops.link"
       }
     ],
+    "averageBlockTime": 18.1852,
     "rpcs": [
       {
         "url": "https://goerli.gateway.metisdevops.link"
@@ -923,6 +1009,8 @@ var NETWORK_INFO = [
     "name": "DFK Chain Test",
     "symbol": "DFK",
     "chainId": 10115,
+    "chainKey": "dfk-testnet",
+    "chainType": "evm",
     "nativeChainId": 335,
     "nativeCurrency": {
       "decimals": 18,
@@ -935,6 +1023,7 @@ var NETWORK_INFO = [
         "url": "https://explorer-test.dfkchain.com"
       }
     ],
+    "averageBlockTime": 33.968,
     "rpcs": [
       {
         "url": "https://subnets.avax.network/defi-kingdoms/dfk-chain-testnet/rpc"
@@ -945,6 +1034,8 @@ var NETWORK_INFO = [
     "name": "Harmony Testnet Shard 0",
     "symbol": "Harmony",
     "chainId": 10133,
+    "chainKey": "harmony-testnet",
+    "chainType": "evm",
     "nativeChainId": 16667e5,
     "nativeCurrency": {
       "decimals": 18,
@@ -957,6 +1048,7 @@ var NETWORK_INFO = [
         "url": "https://explorer.pops.one"
       }
     ],
+    "averageBlockTime": 2.0006,
     "rpcs": [
       {
         "url": "https://api.s0.b.hmny.io"
@@ -967,6 +1059,8 @@ var NETWORK_INFO = [
     "name": "Dexalot Subnet Testnet",
     "symbol": "DEXALOT",
     "chainId": 10118,
+    "chainKey": "dexalot-testnet",
+    "chainType": "evm",
     "nativeChainId": 432201,
     "nativeCurrency": {
       "decimals": 18,
@@ -979,6 +1073,7 @@ var NETWORK_INFO = [
         "url": "https://subnets-test.avax.network/dexalot"
       }
     ],
+    "averageBlockTime": 647.0881,
     "rpcs": [
       {
         "url": "https://subnets.avax.network/dexalot/testnet/rpc"
@@ -989,6 +1084,8 @@ var NETWORK_INFO = [
     "name": "Kovan",
     "symbol": "kov",
     "chainId": 10120,
+    "chainKey": "kovan",
+    "chainType": "evm",
     "nativeChainId": 42,
     "nativeCurrency": {
       "decimals": 18,
@@ -1023,6 +1120,8 @@ var NETWORK_INFO = [
     "name": "Optimism on Gnosis",
     "symbol": "OGC",
     "chainId": 10145,
+    "chainKey": "chiado",
+    "chainType": "evm",
     "nativeChainId": 300,
     "nativeCurrency": {
       "decimals": 18,
@@ -1048,6 +1147,8 @@ var NETWORK_INFO = [
     "name": "Celo Mainnet",
     "symbol": "CELO",
     "chainId": 125,
+    "chainKey": "celo",
+    "chainType": "evm",
     "nativeChainId": 42220,
     "nativeCurrency": {
       "decimals": 18,
@@ -1077,6 +1178,8 @@ var NETWORK_INFO = [
     "name": "Celo Alfajores Testnet",
     "symbol": "CELO",
     "chainId": 10125,
+    "chainKey": "alfajores",
+    "chainType": "evm",
     "nativeChainId": 44787,
     "nativeCurrency": {
       "decimals": 18,
@@ -1102,6 +1205,8 @@ var NETWORK_INFO = [
     "name": "Moonbase Alpha",
     "symbol": "MOON",
     "chainId": 10126,
+    "chainKey": "moonbase",
+    "chainType": "evm",
     "nativeChainId": 1287,
     "nativeCurrency": {
       "decimals": 18,
@@ -1114,6 +1219,7 @@ var NETWORK_INFO = [
         "url": "https://moonbase.moonscan.io"
       }
     ],
+    "averageBlockTime": 13.7574,
     "rpcs": [
       {
         "url": "https://rpc.api.moonbase.moonbeam.network"
@@ -1127,6 +1233,8 @@ var NETWORK_INFO = [
     "name": "Boba Network",
     "symbol": "Boba",
     "chainId": 127,
+    "chainKey": "boba",
+    "chainType": "evm",
     "nativeChainId": 288,
     "nativeCurrency": {
       "decimals": 18,
@@ -1143,6 +1251,7 @@ var NETWORK_INFO = [
         "url": "https://blockexplorer.boba.network"
       }
     ],
+    "averageBlockTime": 260.6602,
     "rpcs": [
       {
         "url": "https://mainnet.boba.network/"
@@ -1153,6 +1262,8 @@ var NETWORK_INFO = [
     "name": "Boba Network Rinkeby Testnet",
     "symbol": "BobaRinkeby",
     "chainId": 10144,
+    "chainKey": "boba-rinkeby",
+    "chainType": "evm",
     "nativeChainId": 28,
     "nativeCurrency": {
       "decimals": 18,
@@ -1175,6 +1286,8 @@ var NETWORK_INFO = [
     "name": "Portal Fantasy Chain Test",
     "symbol": "PF",
     "chainId": 10128,
+    "chainKey": "portal-fantasy-testnet",
+    "chainType": "evm",
     "nativeChainId": 808,
     "nativeCurrency": {
       "decimals": 18,
@@ -1192,6 +1305,8 @@ var NETWORK_INFO = [
     "name": "Aurora Mainnet",
     "symbol": "NEAR",
     "chainId": 129,
+    "chainKey": "aurora",
+    "chainType": "evm",
     "nativeChainId": 1313161554,
     "nativeCurrency": {
       "decimals": 18,
@@ -1204,6 +1319,7 @@ var NETWORK_INFO = [
         "url": "https://aurorascan.dev"
       }
     ],
+    "averageBlockTime": 1.1204,
     "rpcs": [
       {
         "url": "https://mainnet.aurora.dev"
@@ -1214,6 +1330,8 @@ var NETWORK_INFO = [
     "name": "Aurora Testnet",
     "symbol": "NEAR",
     "chainId": 10129,
+    "chainKey": "aurora-testnet",
+    "chainType": "evm",
     "nativeChainId": 1313161555,
     "nativeCurrency": {
       "decimals": 18,
@@ -1226,6 +1344,7 @@ var NETWORK_INFO = [
         "url": "https://testnet.aurorascan.dev"
       }
     ],
+    "averageBlockTime": 1.3079,
     "rpcs": [
       {
         "url": "https://testnet.aurora.dev/"
@@ -1236,6 +1355,8 @@ var NETWORK_INFO = [
     "name": "Astar",
     "symbol": "ASTR",
     "chainId": 146,
+    "chainKey": "astar",
+    "chainType": "evm",
     "nativeChainId": 592,
     "nativeCurrency": {
       "decimals": 18,
@@ -1258,6 +1379,8 @@ var NETWORK_INFO = [
     "name": "Core Blockchain Mainnet",
     "symbol": "Core",
     "chainId": 153,
+    "chainKey": "coredao",
+    "chainType": "evm",
     "nativeChainId": 1116,
     "nativeCurrency": {
       "decimals": 18,
@@ -1270,6 +1393,7 @@ var NETWORK_INFO = [
         "url": "https://scan.coredao.org"
       }
     ],
+    "averageBlockTime": 3.011,
     "rpcs": [
       {
         "url": "https://rpc.coredao.org/"
@@ -1283,6 +1407,8 @@ var NETWORK_INFO = [
     "name": "Core Blockchain Testnet",
     "symbol": "Core",
     "chainId": 10153,
+    "chainKey": "coredao-testnet",
+    "chainType": "evm",
     "nativeChainId": 1115,
     "nativeCurrency": {
       "decimals": 18,
@@ -1295,6 +1421,7 @@ var NETWORK_INFO = [
         "url": "https://scan.test.btcs.network"
       }
     ],
+    "averageBlockTime": 3,
     "rpcs": [
       {
         "url": "https://rpc.test.btcs.network/"
@@ -1305,6 +1432,8 @@ var NETWORK_INFO = [
     "name": "Dexalot Subnet",
     "symbol": "DEXALOT",
     "chainId": 118,
+    "chainKey": "dexalot",
+    "chainType": "evm",
     "nativeChainId": 432204,
     "nativeCurrency": {
       "decimals": 18,
@@ -1317,6 +1446,7 @@ var NETWORK_INFO = [
         "url": "https://subnets.avax.network/dexalot"
       }
     ],
+    "averageBlockTime": 2.6426,
     "rpcs": [
       {
         "url": "https://subnets.avax.network/dexalot/mainnet/rpc"
@@ -1327,6 +1457,8 @@ var NETWORK_INFO = [
     "name": "DOS Chain",
     "symbol": "DOS",
     "chainId": 149,
+    "chainKey": "dos",
+    "chainType": "evm",
     "nativeChainId": 7979,
     "nativeCurrency": {
       "decimals": 18,
@@ -1339,6 +1471,7 @@ var NETWORK_INFO = [
         "url": "https://doscan.io"
       }
     ],
+    "averageBlockTime": 97.471,
     "rpcs": [
       {
         "url": "https://main.doschain.com"
@@ -1349,6 +1482,8 @@ var NETWORK_INFO = [
     "name": "DOS Tesnet",
     "symbol": "DOS",
     "chainId": 10162,
+    "chainKey": "dos-testnet",
+    "chainType": "evm",
     "nativeChainId": 3939,
     "nativeCurrency": {
       "decimals": 18,
@@ -1361,6 +1496,7 @@ var NETWORK_INFO = [
         "url": "https://test.doscan.io"
       }
     ],
+    "averageBlockTime": 355.0791,
     "rpcs": [
       {
         "url": "https://test.doschain.com"
@@ -1371,6 +1507,8 @@ var NETWORK_INFO = [
     "name": "Fuse Mainnet",
     "symbol": "FUSE",
     "chainId": 138,
+    "chainKey": "fuse",
+    "chainType": "evm",
     "nativeChainId": 122,
     "nativeCurrency": {
       "decimals": 18,
@@ -1378,6 +1516,7 @@ var NETWORK_INFO = [
       "name": "Fuse"
     },
     "blockExplorers": [],
+    "averageBlockTime": 5.0005,
     "rpcs": [
       {
         "url": "https://rpc.fuse.io"
@@ -1388,6 +1527,8 @@ var NETWORK_INFO = [
     "name": "Gnosis",
     "symbol": "GNO",
     "chainId": 145,
+    "chainKey": "gnosis",
+    "chainType": "evm",
     "nativeChainId": 100,
     "nativeCurrency": {
       "decimals": 18,
@@ -1404,6 +1545,7 @@ var NETWORK_INFO = [
         "url": "https://blockscout.com/xdai/mainnet"
       }
     ],
+    "averageBlockTime": 5.2005,
     "rpcs": [
       {
         "url": "https://rpc.gnosischain.com"
@@ -1454,6 +1596,8 @@ var NETWORK_INFO = [
     "name": "Klaytn Mainnet Cypress",
     "symbol": "KLAY",
     "chainId": 150,
+    "chainKey": "klaytn",
+    "chainType": "evm",
     "nativeChainId": 8217,
     "nativeCurrency": {
       "decimals": 18,
@@ -1466,6 +1610,7 @@ var NETWORK_INFO = [
         "url": "https://scope.klaytn.com"
       }
     ],
+    "averageBlockTime": 1.0035,
     "rpcs": [
       {
         "url": "https://public-node-api.klaytnapi.com/v1/cypress"
@@ -1476,6 +1621,8 @@ var NETWORK_INFO = [
     "name": "Klaytn Testnet Baobab",
     "symbol": "KLAY",
     "chainId": 10150,
+    "chainKey": "klaytn-baobab",
+    "chainType": "evm",
     "nativeChainId": 1001,
     "nativeCurrency": {
       "decimals": 18,
@@ -1483,6 +1630,7 @@ var NETWORK_INFO = [
       "name": "KLAY"
     },
     "blockExplorers": [],
+    "averageBlockTime": 0.9999,
     "rpcs": [
       {
         "url": "https://api.baobab.klaytn.net:8651"
@@ -1493,6 +1641,8 @@ var NETWORK_INFO = [
     "name": "Meter Mainnet",
     "symbol": "METER",
     "chainId": 156,
+    "chainKey": "meter",
+    "chainType": "evm",
     "nativeChainId": 82,
     "nativeCurrency": {
       "decimals": 18,
@@ -1505,6 +1655,7 @@ var NETWORK_INFO = [
         "url": "https://scan.meter.io"
       }
     ],
+    "averageBlockTime": 1.9469,
     "rpcs": [
       {
         "url": "https://rpc.meter.io"
@@ -1515,6 +1666,8 @@ var NETWORK_INFO = [
     "name": "Meter Testnet",
     "symbol": "METER Testnet",
     "chainId": 10156,
+    "chainKey": "meter-testnet",
+    "chainType": "evm",
     "nativeChainId": 83,
     "nativeCurrency": {
       "decimals": 18,
@@ -1527,6 +1680,7 @@ var NETWORK_INFO = [
         "url": "https://scan-warringstakes.meter.io"
       }
     ],
+    "averageBlockTime": 1.0322,
     "rpcs": [
       {
         "url": "https://rpctest.meter.io"
@@ -1537,6 +1691,8 @@ var NETWORK_INFO = [
     "name": "Moonriver",
     "symbol": "MOON",
     "chainId": 167,
+    "chainKey": "moonriver",
+    "chainType": "evm",
     "nativeChainId": 1285,
     "nativeCurrency": {
       "decimals": 18,
@@ -1549,6 +1705,7 @@ var NETWORK_INFO = [
         "url": "https://moonriver.moonscan.io"
       }
     ],
+    "averageBlockTime": 12.1601,
     "rpcs": [
       {
         "url": "https://rpc.api.moonriver.moonbeam.network"
@@ -1562,6 +1719,8 @@ var NETWORK_INFO = [
     "name": "OKXChain Mainnet",
     "symbol": "okxchain",
     "chainId": 155,
+    "chainKey": "okx",
+    "chainType": "evm",
     "nativeChainId": 66,
     "nativeCurrency": {
       "decimals": 18,
@@ -1574,6 +1733,7 @@ var NETWORK_INFO = [
         "url": "https://www.oklink.com/en/okc"
       }
     ],
+    "averageBlockTime": 3.8006,
     "rpcs": [
       {
         "url": "https://exchainrpc.okex.org"
@@ -1587,6 +1747,8 @@ var NETWORK_INFO = [
     "name": "Sepolia",
     "symbol": "sep",
     "chainId": 161,
+    "chainKey": "sepolia",
+    "chainType": "evm",
     "nativeChainId": 11155111,
     "nativeCurrency": {
       "decimals": 18,
@@ -1603,6 +1765,7 @@ var NETWORK_INFO = [
         "url": "https://sepolia.otterscan.io"
       }
     ],
+    "averageBlockTime": 13.1904,
     "rpcs": [
       {
         "url": "https://rpc.sepolia.org"
@@ -1619,6 +1782,8 @@ var NETWORK_INFO = [
     "name": "zkSync Era Mainnet",
     "symbol": "zksync",
     "chainId": 165,
+    "chainKey": "zksync",
+    "chainType": "evm",
     "nativeChainId": 324,
     "nativeCurrency": {
       "decimals": 18,
@@ -1631,6 +1796,7 @@ var NETWORK_INFO = [
         "url": "https://explorer.zksync.io"
       }
     ],
+    "averageBlockTime": 1.0125,
     "rpcs": [
       {
         "url": "https://mainnet.era.zksync.io"
@@ -1641,6 +1807,8 @@ var NETWORK_INFO = [
     "name": "zkSync Era Testnet",
     "symbol": "zksync-goerli",
     "chainId": 10165,
+    "chainKey": "zksync-testnet",
+    "chainType": "evm",
     "nativeChainId": 280,
     "nativeCurrency": {
       "decimals": 18,
@@ -1653,6 +1821,7 @@ var NETWORK_INFO = [
         "url": "https://goerli.explorer.zksync.io"
       }
     ],
+    "averageBlockTime": 2.2915,
     "rpcs": [
       {
         "url": "https://testnet.era.zksync.dev"
@@ -1663,6 +1832,8 @@ var NETWORK_INFO = [
     "name": "Base Testnet",
     "symbol": "base",
     "chainId": 10160,
+    "chainKey": "base-goerli",
+    "chainType": "evm",
     "nativeChainId": 84531,
     "nativeCurrency": {
       "name": "Ether",
@@ -1679,6 +1850,7 @@ var NETWORK_INFO = [
         "url": "https://base-goerli.blockscout.com"
       }
     ],
+    "averageBlockTime": 2,
     "rpcs": [
       {
         "url": "https://goerli.base.org"
@@ -1689,6 +1861,8 @@ var NETWORK_INFO = [
     "name": "Shrapnel Subnet",
     "symbol": "Shrapnel",
     "chainId": 148,
+    "chainKey": "shrapnel",
+    "chainType": "evm",
     "nativeChainId": 2044,
     "nativeCurrency": {
       "decimals": 18,
@@ -1696,6 +1870,7 @@ var NETWORK_INFO = [
       "name": "Shrapnel Gas Token"
     },
     "blockExplorers": [],
+    "averageBlockTime": 563.5993,
     "rpcs": [
       {
         "url": "https://subnets.avax.network/shrapnel/mainnet/rpc"
@@ -1706,6 +1881,8 @@ var NETWORK_INFO = [
     "name": "Tenet",
     "symbol": "tenet",
     "chainId": 173,
+    "chainKey": "tenet",
+    "chainType": "evm",
     "nativeChainId": 1559,
     "nativeCurrency": {
       "decimals": 18,
@@ -1718,6 +1895,7 @@ var NETWORK_INFO = [
         "url": "https://tenetscan.io"
       }
     ],
+    "averageBlockTime": 3.5574,
     "rpcs": [
       {
         "url": "https://rpc.tenet.org"
@@ -1728,6 +1906,8 @@ var NETWORK_INFO = [
     "name": "Tenet Testnet",
     "symbol": "tenet-testnet",
     "chainId": 10173,
+    "chainKey": "tenet-testnet",
+    "chainType": "evm",
     "nativeChainId": 155,
     "nativeCurrency": {
       "decimals": 18,
@@ -1740,6 +1920,7 @@ var NETWORK_INFO = [
         "url": "https://testnet.tenetscan.io"
       }
     ],
+    "averageBlockTime": 3.7351,
     "rpcs": [
       {
         "url": "https://rpc.testnet.tenet.org"
@@ -1750,6 +1931,8 @@ var NETWORK_INFO = [
     "name": "Polygon zkEVM",
     "symbol": "zkevm",
     "chainId": 158,
+    "chainKey": "zkevm",
+    "chainType": "evm",
     "nativeChainId": 1101,
     "nativeCurrency": {
       "decimals": 18,
@@ -1762,6 +1945,7 @@ var NETWORK_INFO = [
         "url": "https://zkevm.polygonscan.com"
       }
     ],
+    "averageBlockTime": 1.8378,
     "rpcs": [
       {
         "url": "https://zkevm-rpc.com"
@@ -1772,6 +1956,8 @@ var NETWORK_INFO = [
     "name": "Polygon zkEVM Testnet",
     "symbol": "testnet-zkEVM-mango",
     "chainId": 10158,
+    "chainKey": "zkevm-testnet",
+    "chainType": "evm",
     "nativeChainId": 1442,
     "nativeCurrency": {
       "decimals": 18,
@@ -1784,6 +1970,7 @@ var NETWORK_INFO = [
         "url": "https://explorer.public.zkevm-test.net"
       }
     ],
+    "averageBlockTime": 2.9651,
     "rpcs": [
       {
         "url": "https://rpc.public.zkevm-test.net"
@@ -1794,6 +1981,8 @@ var NETWORK_INFO = [
     "name": "Canto",
     "symbol": "canto",
     "chainId": 159,
+    "chainKey": "canto",
+    "chainType": "evm",
     "nativeChainId": 7700,
     "nativeCurrency": {
       "decimals": 18,
@@ -1814,6 +2003,7 @@ var NETWORK_INFO = [
         "url": "https://tuber.build"
       }
     ],
+    "averageBlockTime": 6.1253,
     "rpcs": [
       {
         "url": "https://canto.slingshot.finance"
@@ -1830,6 +2020,8 @@ var NETWORK_INFO = [
     "name": "Canto Testnet",
     "symbol": "tcanto",
     "chainId": 10159,
+    "chainKey": "canto-testnet",
+    "chainType": "evm",
     "nativeChainId": 740,
     "nativeCurrency": {
       "decimals": 18,
@@ -1852,6 +2044,8 @@ var NETWORK_INFO = [
     "name": "Arbitrum Nova",
     "symbol": "arb-nova",
     "chainId": 175,
+    "chainKey": "nova",
+    "chainType": "evm",
     "nativeChainId": 42170,
     "nativeCurrency": {
       "decimals": 18,
@@ -1864,6 +2058,7 @@ var NETWORK_INFO = [
         "url": "https://nova-explorer.arbitrum.io"
       }
     ],
+    "averageBlockTime": 1.0011,
     "rpcs": [
       {
         "url": "https://nova.arbitrum.io/rpc"

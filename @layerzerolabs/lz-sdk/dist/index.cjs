@@ -23,6 +23,7 @@ var ChainId = /* @__PURE__ */ ((ChainId2) => {
   ChainId2[ChainId2["AURORA_TESTNET"] = 10129] = "AURORA_TESTNET";
   ChainId2[ChainId2["AURORA_TESTNET_SANDBOX"] = 20129] = "AURORA_TESTNET_SANDBOX";
   ChainId2[ChainId2["AVALANCHE"] = 106] = "AVALANCHE";
+  ChainId2[ChainId2["BASE"] = 184] = "BASE";
   ChainId2[ChainId2["BASE_TESTNET"] = 10160] = "BASE_TESTNET";
   ChainId2[ChainId2["BOBA"] = 127] = "BOBA";
   ChainId2[ChainId2["BOBA_TESTNET"] = 10144] = "BOBA_TESTNET";
@@ -69,6 +70,8 @@ var ChainId = /* @__PURE__ */ ((ChainId2) => {
   ChainId2[ChainId2["INTAIN"] = 152] = "INTAIN";
   ChainId2[ChainId2["INTAIN_TESTNET"] = 10152] = "INTAIN_TESTNET";
   ChainId2[ChainId2["INTAIN_TESTNET_SANDBOX"] = 20152] = "INTAIN_TESTNET_SANDBOX";
+  ChainId2[ChainId2["KAVA"] = 177] = "KAVA";
+  ChainId2[ChainId2["KAVA_TESTNET"] = 10172] = "KAVA_TESTNET";
   ChainId2[ChainId2["KLAYTN"] = 150] = "KLAYTN";
   ChainId2[ChainId2["KLAYTN_TESTNET"] = 10150] = "KLAYTN_TESTNET";
   ChainId2[ChainId2["KOVAN"] = 10120] = "KOVAN";
@@ -109,6 +112,7 @@ var ChainId = /* @__PURE__ */ ((ChainId2) => {
   ChainId2[ChainId2["SWIMMER_TESTNET_SANDBOX"] = 20130] = "SWIMMER_TESTNET_SANDBOX";
   ChainId2[ChainId2["TENET"] = 173] = "TENET";
   ChainId2[ChainId2["TENET_TESTNET"] = 10173] = "TENET_TESTNET";
+  ChainId2[ChainId2["ZKCONSENSYS"] = 183] = "ZKCONSENSYS";
   ChainId2[ChainId2["ZKCONSENSYS_TESTNET"] = 10157] = "ZKCONSENSYS_TESTNET";
   ChainId2[ChainId2["ZKPOLYGON"] = 158] = "ZKPOLYGON";
   ChainId2[ChainId2["ZKPOLYGON_TESTNET"] = 10158] = "ZKPOLYGON_TESTNET";
@@ -186,6 +190,8 @@ var ChainKey = /* @__PURE__ */ ((ChainKey2) => {
   ChainKey2["INTAIN"] = "intain";
   ChainKey2["INTAIN_TESTNET"] = "intain-testnet";
   ChainKey2["INTAIN_TESTNET_SANDBOX"] = "intain-testnet-sandbox";
+  ChainKey2["KAVA"] = "kava";
+  ChainKey2["KAVA_TESTNET"] = "kava-testnet";
   ChainKey2["KLAYTN"] = "klaytn";
   ChainKey2["KLAYTN_TESTNET"] = "klaytn-testnet";
   ChainKey2["KOVAN"] = "kovan";
@@ -227,6 +233,7 @@ var ChainKey = /* @__PURE__ */ ((ChainKey2) => {
   ChainKey2["SWIMMER_TESTNET_SANDBOX"] = "swimmer-testnet-sandbox";
   ChainKey2["TENET"] = "tenet";
   ChainKey2["TENET_TESTNET"] = "tenet-testnet";
+  ChainKey2["ZKCONSENSYS"] = "zkconsensys";
   ChainKey2["ZKCONSENSYS_TESTNET"] = "zkconsensys-testnet";
   ChainKey2["ZKPOLYGON"] = "zkpolygon";
   ChainKey2["ZKPOLYGON_TESTNET"] = "zkpolygon-testnet";
@@ -292,6 +299,8 @@ var ChainListId = /* @__PURE__ */ ((ChainListId2) => {
   ChainListId2[ChainListId2["HARMONY"] = 16666e5] = "HARMONY";
   ChainListId2[ChainListId2["HARMONY_TESTNET"] = 16667e5] = "HARMONY_TESTNET";
   ChainListId2[ChainListId2["HARMONY_TESTNET_SANDBOX"] = 16667e5] = "HARMONY_TESTNET_SANDBOX";
+  ChainListId2[ChainListId2["KAVA"] = 2222] = "KAVA";
+  ChainListId2[ChainListId2["KAVA_TESTNET"] = 2221] = "KAVA_TESTNET";
   ChainListId2[ChainListId2["KLAYTN"] = 8217] = "KLAYTN";
   ChainListId2[ChainListId2["KLAYTN_TESTNET"] = 1001] = "KLAYTN_TESTNET";
   ChainListId2[ChainListId2["KOVAN"] = 42] = "KOVAN";
@@ -327,6 +336,7 @@ var ChainListId = /* @__PURE__ */ ((ChainListId2) => {
   ChainListId2[ChainListId2["TENET_TESTNET"] = 155] = "TENET_TESTNET";
   ChainListId2[ChainListId2["ZKPOLYGON"] = 1101] = "ZKPOLYGON";
   ChainListId2[ChainListId2["ZKPOLYGON_TESTNET"] = 1442] = "ZKPOLYGON_TESTNET";
+  ChainListId2[ChainListId2["ZKCONSENSYS_TESTNET"] = 59140] = "ZKCONSENSYS_TESTNET";
   ChainListId2[ChainListId2["ZKSYNC"] = 324] = "ZKSYNC";
   ChainListId2[ChainListId2["ZKSYNC_TESTNET"] = 280] = "ZKSYNC_TESTNET";
   ChainListId2[ChainListId2["BASE"] = 8453] = "BASE";
@@ -353,6 +363,8 @@ var LZ_ADDRESS = {
   ["aurora-testnet" /* AURORA_TESTNET */]: "",
   ["aurora" /* AURORA */]: "",
   ["avalanche" /* AVALANCHE */]: "0x3c2269811836af69497E5F486A85D7316753cf62",
+  ["base-testnet" /* BASE_TESTNET */]: "0x6aB5Ae6822647046626e83ee6dB8187151E1d5ab",
+  ["base" /* BASE */]: "0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7",
   ["boba-testnet-sandbox" /* BOBA_TESTNET_SANDBOX */]: "",
   ["boba-testnet" /* BOBA_TESTNET */]: "",
   ["boba" /* BOBA */]: "0x9740FF91F1985D8d2B71494aE1A2f723bb3Ed9E4",
@@ -384,6 +396,8 @@ var LZ_ADDRESS = {
   ["goerli" /* GOERLI */]: "0xbfD2135BFfbb0B5378b56643c2Df8a87552Bfa23",
   ["harmony-testnet-sandbox" /* HARMONY_TESTNET_SANDBOX */]: "",
   ["harmony-testnet" /* HARMONY_TESTNET */]: "0x6098e96a28E02f27B1e6BD381f870F1C8Bd169d3",
+  ["kava" /* KAVA */]: "0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7",
+  ["kava-testnet" /* KAVA_TESTNET */]: "0x8b14D287B4150Ff22Ac73DF8BE720e933f659abc",
   ["harmony" /* HARMONY */]: "0x9740FF91F1985D8d2B71494aE1A2f723bb3Ed9E4",
   ["metis-testnet" /* METIS_TESTNET */]: "0xae92d5aD7583AD66E49A0c67BAd18F6ba52dDDc1",
   ["metis" /* METIS */]: "0x9740FF91F1985D8d2B71494aE1A2f723bb3Ed9E4",
@@ -407,7 +421,9 @@ var LZ_ADDRESS = {
   ["swimmer-testnet" /* SWIMMER_TESTNET */]: "0x9DFdB0FC5b3454f43Bc76B693b75CFf2eccfAd13",
   ["swimmer" /* SWIMMER */]: "0x9740FF91F1985D8d2B71494aE1A2f723bb3Ed9E4",
   ["tenet" /* TENET */]: "0x2D61DCDD36F10b22176E0433B86F74567d529aAa",
-  ["tenet-testnet" /* TENET_TESTNET */]: "0x6aB5Ae6822647046626e83ee6dB8187151E1d5ab"
+  ["tenet-testnet" /* TENET_TESTNET */]: "0x6aB5Ae6822647046626e83ee6dB8187151E1d5ab",
+  ["zkconsensys" /* ZKCONSENSYS */]: "0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7",
+  ["zkconsensys-testnet" /* ZKCONSENSYS_TESTNET */]: "0x6aB5Ae6822647046626e83ee6dB8187151E1d5ab"
 };
 var LZ_RELAYER = {
   ["arbitrum-goerli" /* ARBITRUM_GOERLI */]: "0x3aCAAf60502791D199a5a5F0B173D78229eBFe32",
@@ -468,6 +484,7 @@ var LZ_RELAYER_V2 = {
   ["arbitrum" /* ARBITRUM */]: "0x177d36dBE2271A4DdB2Ad8304d82628eb921d790",
   ["arcana-testnet" /* ARCANA_TESTNET */]: "0xEc7Ee1f9e9060e08dF969Dc08EE72674AfD5E14D",
   ["avalanche" /* AVALANCHE */]: "0xCD2E3622d483C7Dc855F72e5eafAdCD577ac78B4",
+  ["base" /* BASE */]: "0xcb566e3B6934Fa77258d68ea18E931fa75e1aaAa",
   ["base-testnet" /* BASE_TESTNET */]: "0xd682ECF100f6F4284138AA925348633B0611Ae21",
   ["bsc-testnet-sandbox" /* BSC_TESTNET_SANDBOX */]: "0x5ee216774720a3C26ebcBE0f0c373E8D5e69Ff63",
   ["bsc-testnet" /* BSC_TESTNET */]: "0xc0eb57BF242f8DD78a1AAA0684b15FAda79B6F85",
@@ -501,6 +518,8 @@ var LZ_RELAYER_V2 = {
   ["harmony" /* HARMONY */]: "0x7Cbd185f21bEf4D87310d0171aD5f740BC240e26",
   ["intain-testnet" /* INTAIN_TESTNET */]: "0xb23b28012ee92E8dE39DEb57Af31722223034747",
   ["intain" /* INTAIN */]: "0x5B19bd330A84c049b62D5B0FC2bA120217a18C1C",
+  ["kava" /* KAVA */]: "0xcb566e3B6934Fa77258d68ea18E931fa75e1aaAa",
+  ["kava-testnet" /* KAVA_TESTNET */]: "0x35AdD9321507A87471a11EBd4aE4f592d531e620",
   ["klaytn-testnet" /* KLAYTN_TESTNET */]: "0xb23b28012ee92E8dE39DEb57Af31722223034747",
   ["klaytn" /* KLAYTN */]: "0x5B19bd330A84c049b62D5B0FC2bA120217a18C1C",
   ["meter-testnet" /* METER_TESTNET */]: "0xf35848b061f7b0A4F69BCA8804947e1EE29Ff734",
@@ -527,6 +546,7 @@ var LZ_RELAYER_V2 = {
   ["shrapnel" /* SHRAPNEL */]: "0xFe7C30860D01e28371D40434806F4A8fcDD3A098",
   ["swimmer-testnet" /* SWIMMER_TESTNET */]: "0x7F417F2192B89Cf93b8c4Ee01d558883A0AD7B47",
   ["swimmer" /* SWIMMER */]: "0x174F2bA26f8ADeAfA82663bcf908288d5DbCa649",
+  ["zkconsensys" /* ZKCONSENSYS */]: "0xA658742d33ebd2ce2F0bdFf73515Aa797Fd161D9",
   ["zkconsensys-testnet" /* ZKCONSENSYS_TESTNET */]: "0x145C041566B21Bec558B2A37F1a5Ff261aB55998",
   ["zkpolygon-testnet" /* ZKPOLYGON_TESTNET */]: "0x145C041566B21Bec558B2A37F1a5Ff261aB55998",
   ["zkpolygon" /* ZKPOLYGON */]: "0xA658742d33ebd2ce2F0bdFf73515Aa797Fd161D9",
@@ -618,7 +638,8 @@ var LZ_ULTRA_LIGHT_NODE_V2 = {
   ["aurora-testnet" /* AURORA_TESTNET */]: "",
   ["aurora" /* AURORA */]: "",
   ["avalanche" /* AVALANCHE */]: "",
-  ["base-testnet" /* BASE_TESTNET */]: "",
+  ["base" /* BASE */]: "0x38dE71124f7a447a01D67945a51eDcE9FF491251",
+  ["base-testnet" /* BASE_TESTNET */]: "0x145C041566B21Bec558B2A37F1a5Ff261aB55998",
   ["boba-testnet-sandbox" /* BOBA_TESTNET_SANDBOX */]: "",
   ["boba-testnet" /* BOBA_TESTNET */]: "",
   ["boba" /* BOBA */]: "",
@@ -664,6 +685,8 @@ var LZ_ULTRA_LIGHT_NODE_V2 = {
   ["intain-testnet-sandbox" /* INTAIN_TESTNET_SANDBOX */]: "",
   ["intain-testnet" /* INTAIN_TESTNET */]: "",
   ["intain" /* INTAIN */]: "",
+  ["kava" /* KAVA */]: "0x38dE71124f7a447a01D67945a51eDcE9FF491251",
+  ["kava-testnet" /* KAVA_TESTNET */]: "0x6098e96a28E02f27B1e6BD381f870F1C8Bd169d3",
   ["klaytn-testnet" /* KLAYTN_TESTNET */]: "",
   ["klaytn" /* KLAYTN */]: "",
   ["kovan-sandbox" /* KOVAN_SANDBOX */]: "",
@@ -702,7 +725,8 @@ var LZ_ULTRA_LIGHT_NODE_V2 = {
   ["swimmer" /* SWIMMER */]: "",
   ["tenet" /* TENET */]: "0xFe7C30860D01e28371D40434806F4A8fcDD3A098",
   ["tenet-testnet" /* TENET_TESTNET */]: "0x2cA20802fd1Fd9649bA8Aa7E50F0C82b479f35fe",
-  ["zkconsensys-testnet" /* ZKCONSENSYS_TESTNET */]: "",
+  ["zkconsensys" /* ZKCONSENSYS */]: "0x38dE71124f7a447a01D67945a51eDcE9FF491251",
+  ["zkconsensys-testnet" /* ZKCONSENSYS_TESTNET */]: "0x6C7Ab2202C98C4227C5c46f1417D81144DA716Ff",
   ["zkpolygon-testnet" /* ZKPOLYGON_TESTNET */]: "",
   ["zkpolygon" /* ZKPOLYGON */]: "",
   ["zksync-testnet" /* ZKSYNC_TESTNET */]: "",
@@ -923,6 +947,7 @@ var AVERAGE_BLOCK_TIME = {
   [10129 /* AURORA_TESTNET */]: 2,
   [129 /* AURORA */]: 2,
   [106 /* AVALANCHE */]: 2.1,
+  [184 /* BASE */]: 1,
   [10160 /* BASE_TESTNET */]: 1,
   [20144 /* BOBA_TESTNET_SANDBOX */]: 2,
   [10144 /* BOBA_TESTNET */]: 2,
@@ -969,6 +994,8 @@ var AVERAGE_BLOCK_TIME = {
   [20152 /* INTAIN_TESTNET_SANDBOX */]: 1,
   [10152 /* INTAIN_TESTNET */]: 1,
   [152 /* INTAIN */]: 1,
+  [177 /* KAVA */]: 1,
+  [10172 /* KAVA_TESTNET */]: 1,
   [10150 /* KLAYTN_TESTNET */]: 1,
   [150 /* KLAYTN */]: 1,
   [20120 /* KOVAN_SANDBOX */]: 4.2,
@@ -1009,6 +1036,7 @@ var AVERAGE_BLOCK_TIME = {
   [114 /* SWIMMER */]: 5,
   [173 /* TENET */]: 3.5,
   [10173 /* TENET_TESTNET */]: 3.7,
+  [183 /* ZKCONSENSYS */]: 1,
   [10157 /* ZKCONSENSYS_TESTNET */]: 1,
   [10158 /* ZKPOLYGON_TESTNET */]: 2,
   [158 /* ZKPOLYGON */]: 2,
