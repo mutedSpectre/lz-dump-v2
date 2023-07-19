@@ -1,0 +1,70 @@
+{
+  "address": "0x4E02a2A8F613720BdB8Df41C88786660200f1591",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getBlockNumber",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xb9a5dfce0e7aa5f1a5a98a10fdd71fb74a7dde336624e6a46a677952a505562e",
+  "receipt": {
+    "to": null,
+    "from": "0x732BC218Ea380B93081c7dfeb362A13e28b7A8d6",
+    "contractAddress": "0x4E02a2A8F613720BdB8Df41C88786660200f1591",
+    "transactionIndex": 4,
+    "gasUsed": "80879",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000800000000000000000000100000000004000000000000000000000000000000000000800000000000080000000000000000000000000000000000000000000000000000000000080020000000000000000200000000000000000000000000000000000000000000000000000000000004000000000000000000001000000000000000000000000000000100040000000000000000000000000000000000000000000000000000000000000000000100100",
+    "blockHash": "0x04cbd304f3fafd102d4a611c530a9dcb4c7a78d34aa60acdc590c02c426c7f69",
+    "transactionHash": "0xb9a5dfce0e7aa5f1a5a98a10fdd71fb74a7dde336624e6a46a677952a505562e",
+    "logs": [
+      {
+        "transactionIndex": 4,
+        "blockNumber": 27450350,
+        "transactionHash": "0xb9a5dfce0e7aa5f1a5a98a10fdd71fb74a7dde336624e6a46a677952a505562e",
+        "address": "0x0000000000000000000000000000000000001010",
+        "topics": [
+          "0x4dfe1bbbcf077ddc3e01291eea2d5c70c2b422b415d95645b9adcfd678cb1d63",
+          "0x0000000000000000000000000000000000000000000000000000000000001010",
+          "0x000000000000000000000000732bc218ea380b93081c7dfeb362a13e28b7a8d6",
+          "0x000000000000000000000000be188d6641e8b680743a4815dfa0f6208038960f"
+        ],
+        "data": "0x000000000000000000000000000000000000000000000000000b802a700f442800000000000000000000000000000000000000000000000d4c18d2a20d59408800000000000000000000000000000000000000000000216032a44a1642c52f4e00000000000000000000000000000000000000000000000d4c0d52779d49fc6000000000000000000000000000000000000000000000216032afca40b2d47376",
+        "logIndex": 12,
+        "blockHash": "0x04cbd304f3fafd102d4a611c530a9dcb4c7a78d34aa60acdc590c02c426c7f69"
+      }
+    ],
+    "blockNumber": 27450350,
+    "cumulativeGasUsed": "391816",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "7f84568ae1a38a5f8e6c6d3cfad19e46",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getBlockNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/BlockNumber.sol\":\"BlockNumber\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/mocks/BlockNumber.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity 0.7.6;\\n\\ncontract BlockNumber {\\n    function getBlockNumber() external view returns (uint256) {\\n        return block.number;\\n    }\\n}\\n\",\"keccak256\":\"0x6c6b5f4764b773d9db6260e4385ccbafd7b3862a67fc9a9894b479b63c9d829e\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50607f8061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806342cbb15c14602d575b600080fd5b60336045565b60408051918252519081900360200190f35b439056fea2646970667358221220be75f0d910f7df649933f8ad169e510d48595ae3b9cb067fea37dc468c7c5ab564736f6c63430007060033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806342cbb15c14602d575b600080fd5b60336045565b60408051918252519081900360200190f35b439056fea2646970667358221220be75f0d910f7df649933f8ad169e510d48595ae3b9cb067fea37dc468c7c5ab564736f6c63430007060033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

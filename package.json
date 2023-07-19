@@ -1,0 +1,21 @@
+{
+  "name": "lz-dump-v2",
+  "version": "1.0.0",
+  "description": "Dump from all v2 packages layer-zero",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nikita Volkov",
+  "license": "ISC",
+  "dependencies": {
+    "@layerzerolabs/lz-definitions": "^1.5.20",
+    "@layerzerolabs/lz-evm-messagelib-v2": "^1.5.18",
+    "@layerzerolabs/lz-evm-oapp-v2": "^1.5.20",
+    "@layerzerolabs/lz-evm-protocol-v2": "^1.5.20",
+    "@layerzerolabs/lz-sdk": "^0.0.30",
+    "@layerzerolabs/lz-utility-v2": "^1.5.20",
+    "@layerzerolabs/stargate-evm": "^1.5.20",
+    "@layerzerolabs/ui-core": "^0.1.2"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "address": "0x45f1A95A4D3f3836523F5c83673c797f4d4d263B",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getBlockNumber",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x3df65006cfcbdba24f8c86212e5956850e57c9ee1cb95b13d2d4b7ef71ce1c7a",
+  "receipt": {
+    "to": null,
+    "from": "0x1D7C6783328C145393e84fb47a7f7C548f5Ee28d",
+    "contractAddress": "0x45f1A95A4D3f3836523F5c83673c797f4d4d263B",
+    "transactionIndex": 51,
+    "gasUsed": "80879",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x8fb32c8f421919918bdf68a406b05e9dc109667f0fc178923ae40700a04668b2",
+    "transactionHash": "0x3df65006cfcbdba24f8c86212e5956850e57c9ee1cb95b13d2d4b7ef71ce1c7a",
+    "logs": [],
+    "blockNumber": 12215156,
+    "cumulativeGasUsed": "7986493",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "9fe1546c272220fc6c394a3b8e14b07a",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getBlockNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/BlockNumber.sol\":\"BlockNumber\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/mocks/BlockNumber.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity 0.7.6;\\n\\ncontract BlockNumber {\\n\\n    function getBlockNumber() external view returns (uint256) {\\n        return block.number;\\n    }\\n\\n}\",\"keccak256\":\"0x4f44080acf3ff6d32b9e6ce3b362ad189169ace1565530ac99bf37b071b5f0b1\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50607f8061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806342cbb15c14602d575b600080fd5b60336045565b60408051918252519081900360200190f35b439056fea2646970667358221220be67b4cb826f9a14107afab6d0bef8401a06cceda424b02453bfbb5a24e69d2864736f6c63430007060033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806342cbb15c14602d575b600080fd5b60336045565b60408051918252519081900360200190f35b439056fea2646970667358221220be67b4cb826f9a14107afab6d0bef8401a06cceda424b02453bfbb5a24e69d2864736f6c63430007060033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

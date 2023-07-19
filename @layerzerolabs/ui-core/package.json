@@ -1,0 +1,47 @@
+{
+  "name": "@layerzerolabs/ui-core",
+  "version": "0.1.2",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.mjs"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "chains": "ts-node ./scripts/chains.ts",
+    "test": "vitest",
+    "build": "npx tsup",
+    "dev": "npx tsup --watch",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "BUSL-1.1",
+  "dependencies": {
+    "big.js": "^5.2.2",
+    "decimal.js-light": "^2.5.0",
+    "toformat": "^2.0.0"
+  },
+  "devDependencies": {
+    "@layerzerolabs/lz-sdk": "*",
+    "@layerzerolabs/tsup-config": "~0.0.3",
+    "@types/big.js": "^4.0.5",
+    "ethers": "^5.6.9",
+    "vitest": "^0.31.2"
+  },
+  "peerDependencies": {
+    "@layerzerolabs/lz-sdk": "~0.0.26",
+    "ethers": "^5.0.0"
+  }
+}
