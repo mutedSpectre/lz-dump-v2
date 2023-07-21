@@ -164,9 +164,9 @@
         {
           "components": [
             {
-              "internalType": "uint256",
-              "name": "executionType",
-              "type": "uint256"
+              "internalType": "uint16",
+              "name": "msgType",
+              "type": "uint16"
             },
             {
               "internalType": "uint32",
@@ -180,7 +180,7 @@
             }
           ],
           "indexed": false,
-          "internalType": "struct IOFT.EnforcedOptionParam[]",
+          "internalType": "struct IOApp.EnforcedOptionParam[]",
           "name": "_enforcedOptions",
           "type": "tuple[]"
         }
@@ -215,12 +215,6 @@
           "internalType": "bytes32",
           "name": "peer",
           "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "internalType": "bool",
-          "name": "active",
-          "type": "bool"
         }
       ],
       "name": "SetPeer",
@@ -238,6 +232,19 @@
       ],
       "name": "SetPrecrime",
       "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_callData",
+          "type": "bytes"
+        }
+      ],
+      "name": "callEndpoint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "inputs": [],
@@ -285,7 +292,7 @@
               "type": "uint64"
             }
           ],
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "_origin",
           "type": "tuple"
         },
@@ -337,7 +344,7 @@
                   "type": "uint64"
                 }
               ],
-              "internalType": "struct IMessageOrigin.MessageOrigin",
+              "internalType": "struct Origin",
               "name": "origin",
               "type": "tuple"
             },
@@ -626,7 +633,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+          "internalType": "struct MessagingFee",
           "name": "_msgFee",
           "type": "tuple"
         },
@@ -663,12 +670,12 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+              "internalType": "struct MessagingFee",
               "name": "fee",
               "type": "tuple"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingReceipt",
+          "internalType": "struct MessagingReceipt",
           "name": "msgReceipt",
           "type": "tuple"
         }
@@ -723,7 +730,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+          "internalType": "struct MessagingFee",
           "name": "_msgFee",
           "type": "tuple"
         },
@@ -765,12 +772,12 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+              "internalType": "struct MessagingFee",
               "name": "fee",
               "type": "tuple"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingReceipt",
+          "internalType": "struct MessagingReceipt",
           "name": "msgReceipt",
           "type": "tuple"
         }
@@ -781,24 +788,11 @@
     {
       "inputs": [
         {
-          "internalType": "bytes",
-          "name": "_config",
-          "type": "bytes"
-        }
-      ],
-      "name": "setEndpointConfig",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
           "components": [
             {
-              "internalType": "uint256",
-              "name": "executionType",
-              "type": "uint256"
+              "internalType": "uint16",
+              "name": "msgType",
+              "type": "uint16"
             },
             {
               "internalType": "uint32",
@@ -811,7 +805,7 @@
               "type": "bytes"
             }
           ],
-          "internalType": "struct IOFT.EnforcedOptionParam[]",
+          "internalType": "struct IOApp.EnforcedOptionParam[]",
           "name": "_enforcedOptions",
           "type": "tuple[]"
         }
@@ -845,11 +839,6 @@
           "internalType": "bytes32",
           "name": "_peer",
           "type": "bytes32"
-        },
-        {
-          "internalType": "bool",
-          "name": "_active",
-          "type": "bool"
         }
       ],
       "name": "setPeer",

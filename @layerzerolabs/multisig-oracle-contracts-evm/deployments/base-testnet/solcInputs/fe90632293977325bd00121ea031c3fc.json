@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/mocks/IsContract.sol": {
+      "content": "// SPDX-License-Identifier: BUSL-1.1\n\npragma solidity ^0.7.6;\n\ncontract IsContract {\n\n    function isAddressContract(address addr) external view returns (bool) {\n        // check if the toAddress is a contract. We are not concerned about addresses that pretend to be wallets. because worst case we just delete their payload if being malicious\n        // we can guarantee that if a size > 0, then the contract is definitely a contract address in this context\n        uint size;\n        assembly {\n            size := extcodesize(addr)\n        }\n        return size != 0;\n    }\n\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 30000
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

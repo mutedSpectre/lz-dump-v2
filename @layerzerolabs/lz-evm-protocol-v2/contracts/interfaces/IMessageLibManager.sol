@@ -2,12 +2,12 @@
 
 pragma solidity >=0.8.0;
 
-interface IMessageLibManager {
-    struct SetConfigParam {
-        uint32 configType;
-        bytes config;
-    }
+struct SetConfigParam {
+    uint32 configType;
+    bytes config;
+}
 
+interface IMessageLibManager {
     struct Timeout {
         address lib;
         uint expiry;

@@ -1,6 +1,6 @@
 // src/enums/ChainId.ts
 var ChainId = /* @__PURE__ */ ((ChainId2) => {
-  ChainId2[ChainId2["AAVEGOTCHI_TESTNET"] = 10180] = "AAVEGOTCHI_TESTNET";
+  ChainId2[ChainId2["AAVEGOTCHI_TESTNET"] = 10191] = "AAVEGOTCHI_TESTNET";
   ChainId2[ChainId2["BLOCKGEN_TESTNET"] = 10177] = "BLOCKGEN_TESTNET";
   ChainId2[ChainId2["MERITCIRCLE_TESTNET"] = 10178] = "MERITCIRCLE_TESTNET";
   ChainId2[ChainId2["APTOS"] = 108] = "APTOS";
@@ -352,7 +352,7 @@ var ChainStage = /* @__PURE__ */ ((ChainStage2) => {
 
 // src/constants/addresses.ts
 var LZ_ADDRESS = {
-  ["aavegotchi-testnet" /* AAVEGOTCHI_TESTNET */]: "0x83c73Da98cf733B03315aFa8758834b36a195b87",
+  ["aavegotchi-testnet" /* AAVEGOTCHI_TESTNET */]: "0xfeBE4c839EFA9f506C092a32fD0BB546B76A1d38",
   ["arbitrum-goerli" /* ARBITRUM_GOERLI */]: "0x6aB5Ae6822647046626e83ee6dB8187151E1d5ab",
   ["arbitrum-rinkeby-sandbox" /* ARBITRUM_RINKEBY_SANDBOX */]: "0x207f970Fbc193386D9d3a95163bD569ab1d10c0c",
   ["arbitrum-rinkeby" /* ARBITRUM_RINKEBY */]: "0x4D747149A57923Beb89f22E6B7B97f7D8c087A00",
@@ -476,7 +476,7 @@ var LZ_RELAYER = {
   ["swimmer" /* SWIMMER */]: "0x66A71Dcef29A0fFBDBE3c6a460a3B5BC225Cd675"
 };
 var LZ_RELAYER_V2 = {
-  ["aavegotchi-testnet" /* AAVEGOTCHI_TESTNET */]: "0x6C7Ab2202C98C4227C5c46f1417D81144DA716Ff",
+  ["aavegotchi-testnet" /* AAVEGOTCHI_TESTNET */]: "0x9Fc33fBBDEA0e188baA1770aF6Ca2bC38bDA65d6",
   ["arbitrum-goerli" /* ARBITRUM_GOERLI */]: "0x79c2127C2cF1c41cdd0E24e6Ba70b6F3308B7B79",
   ["arbitrum-rinkeby" /* ARBITRUM_RINKEBY */]: "0xb225e20e0E9c0e9DDCb63b58b0289F8f0B949165",
   ["arbitrum" /* ARBITRUM */]: "0x177d36dBE2271A4DdB2Ad8304d82628eb921d790",
@@ -617,7 +617,7 @@ var LZ_ULTRA_LIGHT_NODE_V1 = {
   ["swimmer" /* SWIMMER */]: "0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7"
 };
 var LZ_ULTRA_LIGHT_NODE_V2 = {
-  ["aavegotchi-testnet" /* AAVEGOTCHI_TESTNET */]: "0x55370E0fBB5f5b8dAeD978BA1c075a499eB107B8",
+  ["aavegotchi-testnet" /* AAVEGOTCHI_TESTNET */]: "0xCEd04bDbe89441458398c7f9d228Ca9C62b8A8BA",
   ["aptos-testnet-sandbox" /* APTOS_TESTNET_SANDBOX */]: "",
   ["aptos-testnet" /* APTOS_TESTNET */]: "",
   ["aptos" /* APTOS */]: "",
@@ -887,7 +887,7 @@ var RPCS = {
   ],
   [10153 /* COREDAO_TESTNET */]: ["https://rpc.test.btcs.network"],
   [153 /* COREDAO */]: ["https://rpc.coredao.org"],
-  [10180 /* AAVEGOTCHI_TESTNET */]: ["https://edge.testnet-rc.gotchichain.com/"],
+  [10191 /* AAVEGOTCHI_TESTNET */]: ["https://edge.testnet-rc.gotchichain.com/"],
   [173 /* TENET */]: ["https://rpc.tenet.org"],
   [10173 /* TENET_TESTNET */]: ["https://rpc.testnet.tenet.org"],
   [158 /* ZKPOLYGON */]: [
@@ -926,7 +926,7 @@ var RPCS = {
 
 // src/constants/blockTime.ts
 var AVERAGE_BLOCK_TIME = {
-  [10180 /* AAVEGOTCHI_TESTNET */]: 5,
+  [10191 /* AAVEGOTCHI_TESTNET */]: 5,
   [20308 /* APTOS_TESTNET_SANDBOX */]: 1,
   [10108 /* APTOS_TESTNET */]: 1,
   [108 /* APTOS */]: 1,

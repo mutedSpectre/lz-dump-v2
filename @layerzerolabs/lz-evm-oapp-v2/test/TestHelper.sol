@@ -25,9 +25,9 @@ import "@layerzerolabs/lz-evm-protocol-v2/contracts/EndpointV2.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/BlockedMessageLib.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/ExecutorOptions.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/PacketV1Codec.sol";
-import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageOrigin.sol";
+import {Origin} from "@layerzerolabs/lz-evm-protocol-v2/contracts/MessagingStructs.sol";
 
-contract TestHelper is Test, OptionsHelper, IMessageOrigin {
+contract TestHelper is Test, OptionsHelper {
     using OptionsBuilder for bytes;
 
     enum LibraryType {
@@ -235,7 +235,7 @@ contract TestHelper is Test, OptionsHelper, IMessageOrigin {
                 if (i == j) continue;
                 OApp remoteOApp = OApp(payable(oapps[j]));
                 uint32 remoteEid = (remoteOApp.endpoint()).eid();
-                localOApp.setPeer(remoteEid, addressToBytes32(address(remoteOApp)), true);
+                localOApp.setPeer(remoteEid, addressToBytes32(address(remoteOApp)));
             }
         }
     }
@@ -321,7 +321,7 @@ contract TestHelper is Test, OptionsHelper, IMessageOrigin {
         EndpointV2 endpoint = EndpointV2(endpoints[_packetBytes.dstEid()]);
         (uint gas, uint value) = OptionsHelper._parseExecutorLzReceiveOption(_options);
 
-        MessageOrigin memory origin = MessageOrigin(_packetBytes.srcEid(), _packetBytes.sender(), _packetBytes.nonce());
+        Origin memory origin = Origin(_packetBytes.srcEid(), _packetBytes.sender(), _packetBytes.nonce());
         endpoint.lzReceive{value: value, gas: gas}(
             origin,
             _packetBytes.receiverB20(),

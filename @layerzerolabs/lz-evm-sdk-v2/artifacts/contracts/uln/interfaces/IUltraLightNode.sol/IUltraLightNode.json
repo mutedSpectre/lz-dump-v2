@@ -37,7 +37,7 @@
       "name": "deliverable",
       "outputs": [
         {
-          "internalType": "enum IMessageLibBase.DeliveryState",
+          "internalType": "enum DeliveryState",
           "name": "",
           "type": "uint8"
         }

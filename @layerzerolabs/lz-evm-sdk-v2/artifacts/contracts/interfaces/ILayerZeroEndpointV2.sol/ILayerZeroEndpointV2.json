@@ -157,7 +157,7 @@
             }
           ],
           "indexed": false,
-          "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+          "internalType": "struct MessagingFee",
           "name": "fee",
           "type": "tuple"
         }
@@ -287,7 +287,7 @@
             }
           ],
           "indexed": false,
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "origin",
           "type": "tuple"
         },
@@ -329,7 +329,7 @@
             }
           ],
           "indexed": false,
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "origin",
           "type": "tuple"
         },
@@ -371,7 +371,7 @@
             }
           ],
           "indexed": false,
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "origin",
           "type": "tuple"
         },
@@ -530,7 +530,7 @@
               "type": "uint64"
             }
           ],
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "_origin",
           "type": "tuple"
         },
@@ -661,7 +661,7 @@
               "type": "uint64"
             }
           ],
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "_origin",
           "type": "tuple"
         },
@@ -724,7 +724,7 @@
               "type": "uint64"
             }
           ],
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "_origin",
           "type": "tuple"
         },
@@ -1135,7 +1135,7 @@
               "type": "uint64"
             }
           ],
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "_origin",
           "type": "tuple"
         },
@@ -1277,7 +1277,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+          "internalType": "struct MessagingFee",
           "name": "",
           "type": "tuple"
         }
@@ -1370,7 +1370,7 @@
               "type": "bytes"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingParams",
+          "internalType": "struct MessagingParams",
           "name": "_params",
           "type": "tuple"
         },
@@ -1412,12 +1412,12 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+              "internalType": "struct MessagingFee",
               "name": "fee",
               "type": "tuple"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingReceipt",
+          "internalType": "struct MessagingReceipt",
           "name": "",
           "type": "tuple"
         }
@@ -1450,7 +1450,7 @@
               "type": "bytes"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingParams",
+          "internalType": "struct MessagingParams",
           "name": "_params",
           "type": "tuple"
         },
@@ -1492,12 +1492,12 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+              "internalType": "struct MessagingFee",
               "name": "fee",
               "type": "tuple"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingReceipt",
+          "internalType": "struct MessagingReceipt",
           "name": "",
           "type": "tuple"
         }
@@ -1530,7 +1530,7 @@
               "type": "bytes"
             }
           ],
-          "internalType": "struct IMessageLibManager.SetConfigParam[]",
+          "internalType": "struct SetConfigParam[]",
           "name": "_params",
           "type": "tuple[]"
         }

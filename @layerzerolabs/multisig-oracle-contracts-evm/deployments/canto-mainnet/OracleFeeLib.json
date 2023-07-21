@@ -1,0 +1,90 @@
+{
+  "address": "0xc1B621b18187F74c8F6D52a6F709Dd2780C09821",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract ILayerZeroPriceFeed",
+          "name": "_priceFeed",
+          "type": "address"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_dstChainId",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint64",
+          "name": "_baseGas",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "_quorum",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint128",
+          "name": "_defaultMultiplier",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "_multiplier",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "_floorMarginUSD",
+          "type": "uint128"
+        }
+      ],
+      "name": "getFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x7ed1283d60fcec591aae5f2cfe75e2d761e61b683ebc3357ca8065a264c9a86f",
+  "receipt": {
+    "to": null,
+    "from": "0x9F403140Bc0574D7d36eA472b82DAa1Bbd4eF327",
+    "contractAddress": "0xc1B621b18187F74c8F6D52a6F709Dd2780C09821",
+    "transactionIndex": 2,
+    "gasUsed": "355810",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x32cf18a7d91b78bafdfb39602ceef1677791237b6ec2f985c4089b7704982081",
+    "transactionHash": "0x7ed1283d60fcec591aae5f2cfe75e2d761e61b683ebc3357ca8065a264c9a86f",
+    "logs": [],
+    "blockNumber": 4356209,
+    "cumulativeGasUsed": "424539",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "e6ca2b9c6fa8ee462ed0424e2d42e86d",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract ILayerZeroPriceFeed\",\"name\":\"_priceFeed\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"_dstChainId\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"_baseGas\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"_quorum\",\"type\":\"uint64\"},{\"internalType\":\"uint128\",\"name\":\"_defaultMultiplier\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"_multiplier\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"_floorMarginUSD\",\"type\":\"uint128\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/OracleFeeLib.sol\":\"OracleFeeLib\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"@layerzerolabs/lz-evm-v1-0.8/contracts/interfaces/ILayerZeroPriceFeed.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity >=0.8.0;\\n\\ninterface ILayerZeroPriceFeed {\\n    /**\\n     * @dev\\n     * priceRatio: (USD price of 1 unit of remote native token in unit of local native token) * PRICE_RATIO_DENOMINATOR\\n     */\\n\\n    struct Price {\\n        uint128 priceRatio; // float value * 10 ^ 10, decimal awared. for aptos to evm, the basis would be (10^18 / 10^8) * 10 ^10 = 10 ^ 20.\\n        uint64 gasPriceInUnit; // for evm, it is in wei, for aptos, it is in octas.\\n        uint32 gasPerByte;\\n    }\\n\\n    struct UpdatePrice {\\n        uint16 chainId;\\n        Price price;\\n    }\\n\\n    /**\\n     * @dev\\n     *    ArbGasInfo.go:GetPricesInArbGas\\n     *\\n     */\\n    struct ArbitrumPriceExt {\\n        uint64 gasPerL2Tx; // L2 overhead\\n        uint32 gasPerL1CallDataByte;\\n    }\\n\\n    struct UpdatePriceExt {\\n        uint16 chainId;\\n        Price price;\\n        ArbitrumPriceExt extend;\\n    }\\n\\n    function getPrice(uint16 _dstChainId) external view returns (Price memory);\\n\\n    function getPriceRatioDenominator() external view returns (uint128);\\n\\n    function estimateFeeByChain(\\n        uint16 _dstChainId,\\n        uint _callDataSize,\\n        uint _gas\\n    ) external view returns (uint fee, uint128 priceRatio);\\n\\n    function nativeTokenPriceUSD() external view returns (uint128);\\n}\\n\",\"keccak256\":\"0xa9ca0cd91305436f53e3ff6758d1802c092d7cf5a0e13c87399aff15af0bc17d\",\"license\":\"BUSL-1.1\"},\"contracts/OracleFeeLib.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity 0.8.17;\\n\\nimport \\\"@layerzerolabs/lz-evm-v1-0.8/contracts/interfaces/ILayerZeroPriceFeed.sol\\\";\\nimport \\\"./interfaces/IOracleFeeLib.sol\\\";\\n\\ncontract OracleFeeLib is IOracleFeeLib {\\n    uint16 constant executeFixedBytes = 68; // encoded: funcSigHash + params -> 4  + (32 * 2)\\n    uint16 constant signatureRawBytes = 65; // not encoded\\n    // callData(updateHash) = 132 (4 + 32 * 4), padded to 32 = 160 and encoded as bytes with an 64 byte overhead = 224\\n    uint16 constant updateHashBytes = 224;\\n\\n    function getFee(\\n        ILayerZeroPriceFeed _priceFeed,\\n        uint16 _dstChainId,\\n        uint64 _baseGas,\\n        uint64 _quorum,\\n        uint128 _defaultMultiplier,\\n        uint128 _multiplier,\\n        uint128 _floorMarginUSD\\n    ) external view returns (uint) {\\n        uint totalSignatureBytes = uint(_quorum) * signatureRawBytes;\\n        uint totalSignatureBytesPadded = totalSignatureBytes;\\n        if (totalSignatureBytes % 32 != 0) {\\n            totalSignatureBytesPadded = totalSignatureBytes - (totalSignatureBytes % 32) + 32;\\n        }\\n        // getFee should charge on execute(updateHash)\\n        // totalSignatureBytesPadded also has 64 overhead for bytes\\n        uint callDataSize = uint(executeFixedBytes) + updateHashBytes + totalSignatureBytesPadded + 64;\\n        (uint fee, ) = _priceFeed.estimateFeeByChain(_dstChainId, callDataSize, _baseGas);\\n\\n        if (_multiplier == 0) {\\n            _multiplier = _defaultMultiplier;\\n        }\\n\\n        uint feeWithMultiplier = (fee * _multiplier) / 10000;\\n        uint128 nativeTokenPriceUSD = _priceFeed.nativeTokenPriceUSD();\\n\\n        if (nativeTokenPriceUSD == 0 || _floorMarginUSD == 0) {\\n            return feeWithMultiplier;\\n        }\\n\\n        uint feeWithFloorMargin = fee + (_floorMarginUSD * 1e18) / nativeTokenPriceUSD;\\n\\n        return feeWithFloorMargin > feeWithMultiplier ? feeWithFloorMargin : feeWithMultiplier;\\n    }\\n}\\n\",\"keccak256\":\"0xc209379b9ec2a750caf677112eaedffbb57b40b7ec78d7f7a967aeb579ed2e58\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IOracleFeeLib.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity >=0.8.0;\\n\\nimport \\\"@layerzerolabs/lz-evm-v1-0.8/contracts/interfaces/ILayerZeroPriceFeed.sol\\\";\\n\\ninterface IOracleFeeLib {\\n    function getFee(\\n        ILayerZeroPriceFeed _priceFeed,\\n        uint16 _dstChainId,\\n        uint64 _baseGas,\\n        uint64 _quorum,\\n        uint128 _defaultMultiplier,\\n        uint128 _multiplier,\\n        uint128 _floorMarginUSD\\n    ) external view returns (uint);\\n}\\n\",\"keccak256\":\"0xb90f82f727a1a09b58c18bcd0b004f1d4ff362c8cc88745a0ff90167a3eb63b6\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061057e806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063dc60028014610030575b600080fd5b61004361003e366004610316565b610055565b60405190815260200160405180910390f35b60008061006d604167ffffffffffffffff88166103f7565b90508061007b602082610443565b156100a35761008b602083610443565b6100959083610457565b6100a090602061046a565b90505b6000816100b260e0604461046a565b6100bc919061046a565b6100c790604061046a565b6040517f7bc3c9ab00000000000000000000000000000000000000000000000000000000815261ffff8c1660048201526024810182905267ffffffffffffffff8b16604482015290915060009073ffffffffffffffffffffffffffffffffffffffff8d1690637bc3c9ab906064016040805180830381865afa158015610151573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610175919061047d565b509050866fffffffffffffffffffffffffffffffff16600003610196578796505b60006127106101b76fffffffffffffffffffffffffffffffff8a16846103f7565b6101c191906104ad565b905060008d73ffffffffffffffffffffffffffffffffffffffff166392807f586040518163ffffffff1660e01b8152600401602060405180830381865afa158015610210573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061023491906104c1565b90506fffffffffffffffffffffffffffffffff8116158061026557506fffffffffffffffffffffffffffffffff8816155b15610277575094506102cd9350505050565b60008161028c8a670de0b6b3a76400006104e5565b6102969190610519565b6102b2906fffffffffffffffffffffffffffffffff168561046a565b90508281116102c157826102c3565b805b9750505050505050505b979650505050505050565b803567ffffffffffffffff811681146102f057600080fd5b919050565b6fffffffffffffffffffffffffffffffff8116811461031357600080fd5b50565b600080600080600080600060e0888a03121561033157600080fd5b873573ffffffffffffffffffffffffffffffffffffffff8116811461035557600080fd5b9650602088013561ffff8116811461036c57600080fd5b955061037a604089016102d8565b9450610388606089016102d8565b93506080880135610398816102f5565b925060a08801356103a8816102f5565b915060c08801356103b8816102f5565b8091505092959891949750929550565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b808202811582820484141761040e5761040e6103c8565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60008261045257610452610414565b500690565b8181038181111561040e5761040e6103c8565b8082018082111561040e5761040e6103c8565b6000806040838503121561049057600080fd5b8251915060208301516104a2816102f5565b809150509250929050565b6000826104bc576104bc610414565b500490565b6000602082840312156104d357600080fd5b81516104de816102f5565b9392505050565b6fffffffffffffffffffffffffffffffff818116838216028082169190828114610511576105116103c8565b505092915050565b60006fffffffffffffffffffffffffffffffff8084168061053c5761053c610414565b9216919091049291505056fea2646970667358221220334557367a781fdfb5add2298668b459ea947ae4fd49004efec054dc8e61951064736f6c63430008110033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c8063dc60028014610030575b600080fd5b61004361003e366004610316565b610055565b60405190815260200160405180910390f35b60008061006d604167ffffffffffffffff88166103f7565b90508061007b602082610443565b156100a35761008b602083610443565b6100959083610457565b6100a090602061046a565b90505b6000816100b260e0604461046a565b6100bc919061046a565b6100c790604061046a565b6040517f7bc3c9ab00000000000000000000000000000000000000000000000000000000815261ffff8c1660048201526024810182905267ffffffffffffffff8b16604482015290915060009073ffffffffffffffffffffffffffffffffffffffff8d1690637bc3c9ab906064016040805180830381865afa158015610151573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610175919061047d565b509050866fffffffffffffffffffffffffffffffff16600003610196578796505b60006127106101b76fffffffffffffffffffffffffffffffff8a16846103f7565b6101c191906104ad565b905060008d73ffffffffffffffffffffffffffffffffffffffff166392807f586040518163ffffffff1660e01b8152600401602060405180830381865afa158015610210573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061023491906104c1565b90506fffffffffffffffffffffffffffffffff8116158061026557506fffffffffffffffffffffffffffffffff8816155b15610277575094506102cd9350505050565b60008161028c8a670de0b6b3a76400006104e5565b6102969190610519565b6102b2906fffffffffffffffffffffffffffffffff168561046a565b90508281116102c157826102c3565b805b9750505050505050505b979650505050505050565b803567ffffffffffffffff811681146102f057600080fd5b919050565b6fffffffffffffffffffffffffffffffff8116811461031357600080fd5b50565b600080600080600080600060e0888a03121561033157600080fd5b873573ffffffffffffffffffffffffffffffffffffffff8116811461035557600080fd5b9650602088013561ffff8116811461036c57600080fd5b955061037a604089016102d8565b9450610388606089016102d8565b93506080880135610398816102f5565b925060a08801356103a8816102f5565b915060c08801356103b8816102f5565b8091505092959891949750929550565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b808202811582820484141761040e5761040e6103c8565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60008261045257610452610414565b500690565b8181038181111561040e5761040e6103c8565b8082018082111561040e5761040e6103c8565b6000806040838503121561049057600080fd5b8251915060208301516104a2816102f5565b809150509250929050565b6000826104bc576104bc610414565b500490565b6000602082840312156104d357600080fd5b81516104de816102f5565b9392505050565b6fffffffffffffffffffffffffffffffff818116838216028082169190828114610511576105116103c8565b505092915050565b60006fffffffffffffffffffffffffffffffff8084168061053c5761053c610414565b9216919091049291505056fea2646970667358221220334557367a781fdfb5add2298668b459ea947ae4fd49004efec054dc8e61951064736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

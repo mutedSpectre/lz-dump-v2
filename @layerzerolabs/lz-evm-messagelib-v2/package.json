@@ -1,6 +1,6 @@
 {
   "name": "@layerzerolabs/lz-evm-messagelib-v2",
-  "version": "1.5.27",
+  "version": "1.5.31",
   "license": "BUSL-1.1",
   "files": [
     "contracts/**/*"
@@ -15,20 +15,20 @@
     "test-static-analyze": "$npm_execpath hardhat clean && $npm_execpath build-hardhat && python3 -m slither . --ignore-compile --compile-force-framework hardhat --npx-disable"
   },
   "dependencies": {
-    "@layerzerolabs/lz-evm-protocol-v2": "^1.5.27",
+    "@layerzerolabs/lz-evm-protocol-v2": "^1.5.31",
     "@openzeppelin/contracts": "^4.8.0",
     "@openzeppelin/contracts-upgradeable": "^4.8.0",
     "solidity-bytes-utils": "^0.8.0"
   },
   "devDependencies": {
     "@ethersproject/providers": "^5.7.2",
-    "@layerzerolabs-internal/typescript-config": "^1.5.27",
-    "@layerzerolabs/hardhat-collect-outcomes": "^1.5.27",
-    "@layerzerolabs/hardhat-config": "^1.5.27",
-    "@layerzerolabs/hardhat-zksync-collect-outcomes": "^1.5.27",
-    "@layerzerolabs/lz-definitions": "^1.5.27",
-    "@layerzerolabs/lz-evm-v1-0.7": "^1.5.27",
-    "@layerzerolabs/lz-evm-v1-0.8": "^1.5.27",
+    "@layerzerolabs-internal/typescript-config": "^1.5.31",
+    "@layerzerolabs/hardhat-collect-outcomes": "^1.5.31",
+    "@layerzerolabs/hardhat-config": "^1.5.31",
+    "@layerzerolabs/hardhat-zksync-collect-outcomes": "^1.5.31",
+    "@layerzerolabs/lz-definitions": "^1.5.31",
+    "@layerzerolabs/lz-evm-v1-0.7": "^1.5.31",
+    "@layerzerolabs/lz-evm-v1-0.8": "^1.5.31",
     "@matterlabs/hardhat-zksync-deploy": "^0.6.3",
     "@matterlabs/hardhat-zksync-solc": "^0.3.14",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",

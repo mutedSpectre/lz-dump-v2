@@ -41,7 +41,7 @@
                   "type": "uint64"
                 }
               ],
-              "internalType": "struct IMessageOrigin.MessageOrigin",
+              "internalType": "struct Origin",
               "name": "origin",
               "type": "tuple"
             },
@@ -99,7 +99,7 @@
                   "type": "uint64"
                 }
               ],
-              "internalType": "struct IMessageOrigin.MessageOrigin",
+              "internalType": "struct Origin",
               "name": "origin",
               "type": "tuple"
             },
@@ -180,7 +180,7 @@
                   "type": "uint64"
                 }
               ],
-              "internalType": "struct IMessageOrigin.MessageOrigin",
+              "internalType": "struct Origin",
               "name": "origin",
               "type": "tuple"
             },
@@ -243,7 +243,7 @@
                   "type": "uint64"
                 }
               ],
-              "internalType": "struct IMessageOrigin.MessageOrigin",
+              "internalType": "struct Origin",
               "name": "origin",
               "type": "tuple"
             },

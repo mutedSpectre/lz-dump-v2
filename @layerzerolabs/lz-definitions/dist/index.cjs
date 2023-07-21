@@ -153,7 +153,7 @@ var TestnetEndpointId = /* @__PURE__ */ ((TestnetEndpointId2) => {
   TestnetEndpointId2[TestnetEndpointId2["MERITCIRCLE_TESTNET"] = 10178] = "MERITCIRCLE_TESTNET";
   TestnetEndpointId2[TestnetEndpointId2["MANTLE_TESTNET"] = 10181] = "MANTLE_TESTNET";
   TestnetEndpointId2[TestnetEndpointId2["HUBBLE_TESTNET"] = 10182] = "HUBBLE_TESTNET";
-  TestnetEndpointId2[TestnetEndpointId2["AAVEGOTCHI_TESTNET"] = 10190] = "AAVEGOTCHI_TESTNET";
+  TestnetEndpointId2[TestnetEndpointId2["AAVEGOTCHI_TESTNET"] = 10191] = "AAVEGOTCHI_TESTNET";
   return TestnetEndpointId2;
 })(TestnetEndpointId || {});
 var SandboxEndpointId = /* @__PURE__ */ ((SandboxEndpointId2) => {

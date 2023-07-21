@@ -2,12 +2,12 @@
 
 pragma solidity >=0.8.0;
 
+import {Origin} from "@layerzerolabs/lz-evm-protocol-v2/contracts/MessagingStructs.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroReceiver.sol";
-import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageOrigin.sol";
 import "./IWorker.sol";
 import "./ILayerZeroExecutor.sol";
 
-interface IExecutor is IWorker, ILayerZeroExecutor, IMessageOrigin {
+interface IExecutor is IWorker, ILayerZeroExecutor {
     struct DstConfigParam {
         uint32 dstEid;
         uint64 baseGas;
@@ -25,7 +25,7 @@ interface IExecutor is IWorker, ILayerZeroExecutor, IMessageOrigin {
 
     struct ExecutionParams {
         address receiver;
-        MessageOrigin origin;
+        Origin origin;
         bytes32 guid;
         bytes message;
         bytes extraData;

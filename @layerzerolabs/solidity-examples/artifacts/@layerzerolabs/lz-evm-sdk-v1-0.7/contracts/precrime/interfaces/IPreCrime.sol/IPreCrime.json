@@ -1,0 +1,162 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IPreCrime",
+  "sourceName": "@layerzerolabs/lz-evm-sdk-v1-0.7/contracts/precrime/interfaces/IPreCrime.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "srcChainId",
+              "type": "uint16"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "srcAddress",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "nonce",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bytes",
+              "name": "payload",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct IPreCrimeBase.Packet[]",
+          "name": "_packets",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "getConfig",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "srcChainId",
+              "type": "uint16"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "srcAddress",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "nonce",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bytes",
+              "name": "payload",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct IPreCrimeBase.Packet[]",
+          "name": "_packets",
+          "type": "tuple[]"
+        },
+        {
+          "internalType": "bytes[]",
+          "name": "_simulation",
+          "type": "bytes[]"
+        }
+      ],
+      "name": "precrime",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "code",
+          "type": "uint16"
+        },
+        {
+          "internalType": "bytes",
+          "name": "reason",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "srcChainId",
+              "type": "uint16"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "srcAddress",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "nonce",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bytes",
+              "name": "payload",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct IPreCrimeBase.Packet[]",
+          "name": "_packets",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "simulate",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "code",
+          "type": "uint16"
+        },
+        {
+          "internalType": "bytes",
+          "name": "result",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

@@ -1,0 +1,118 @@
+{
+  "address": "0x35AdD9321507A87471a11EBd4aE4f592d531e620",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "defaultMultiplier",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ILayerZeroPriceFeed",
+          "name": "_priceFeed",
+          "type": "address"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_dstChainId",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint64",
+          "name": "_baseGas",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "_quorum",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint128",
+          "name": "_defaultMultiplier",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "_multiplier",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "_floorMarginUSD",
+          "type": "uint128"
+        }
+      ],
+      "name": "getFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xd2f84867b310863ed1fa651a86e19ea424b3c19f08bba7aae274869048cd2b08",
+  "receipt": {
+    "to": null,
+    "from": "0xc13b65f7c53Cd6db2EA205a4b574b4a0858720A6",
+    "contractAddress": "0x35AdD9321507A87471a11EBd4aE4f592d531e620",
+    "transactionIndex": 0,
+    "gasUsed": "392717",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x761a8a17ed2dc26a63f94899e6ad2e6648bdda30f069cb8ad6ce5ef1ca3df206",
+    "transactionHash": "0xd2f84867b310863ed1fa651a86e19ea424b3c19f08bba7aae274869048cd2b08",
+    "logs": [],
+    "blockNumber": 425,
+    "cumulativeGasUsed": "392717",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "696c619fb92566880cc4018e27cbe1d4",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"defaultMultiplier\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"\",\"type\":\"uint128\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ILayerZeroPriceFeed\",\"name\":\"_priceFeed\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"_dstChainId\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"_baseGas\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"_quorum\",\"type\":\"uint64\"},{\"internalType\":\"uint128\",\"name\":\"_defaultMultiplier\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"_multiplier\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"_floorMarginUSD\",\"type\":\"uint128\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/OracleFeeLib.sol\":\"OracleFeeLib\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"@layerzerolabs/lz-evm-v1-0.8/contracts/interfaces/ILayerZeroPriceFeed.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity >=0.8.0;\\n\\ninterface ILayerZeroPriceFeed {\\n    /**\\n     * @dev\\n     * priceRatio: (USD price of 1 unit of remote native token in unit of local native token) * PRICE_RATIO_DENOMINATOR\\n     */\\n\\n    struct Price {\\n        uint128 priceRatio; // float value * 10 ^ 10, decimal awared. for aptos to evm, the basis would be (10^18 / 10^8) * 10 ^10 = 10 ^ 20.\\n        uint64 gasPriceInUnit; // for evm, it is in wei, for aptos, it is in octas.\\n        uint32 gasPerByte;\\n    }\\n\\n    struct UpdatePrice {\\n        uint16 chainId;\\n        Price price;\\n    }\\n\\n    /**\\n     * @dev\\n     *    ArbGasInfo.go:GetPricesInArbGas\\n     *\\n     */\\n    struct ArbitrumPriceExt {\\n        uint64 gasPerL2Tx; // L2 overhead\\n        uint32 gasPerL1CallDataByte;\\n    }\\n\\n    struct UpdatePriceExt {\\n        uint16 chainId;\\n        Price price;\\n        ArbitrumPriceExt extend;\\n    }\\n\\n    function getPrice(uint16 _dstChainId) external view returns (Price memory);\\n\\n    function getPriceRatioDenominator() external view returns (uint128);\\n\\n    function estimateFeeByChain(\\n        uint16 _dstChainId,\\n        uint _callDataSize,\\n        uint _gas\\n    ) external view returns (uint fee, uint128 priceRatio);\\n\\n    function nativeTokenPriceUSD() external view returns (uint128);\\n}\\n\",\"keccak256\":\"0xa9ca0cd91305436f53e3ff6758d1802c092d7cf5a0e13c87399aff15af0bc17d\",\"license\":\"BUSL-1.1\"},\"contracts/OracleFeeLib.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity 0.8.17;\\n\\nimport \\\"@layerzerolabs/lz-evm-v1-0.8/contracts/interfaces/ILayerZeroPriceFeed.sol\\\";\\nimport \\\"./interfaces/IOracleFeeLib.sol\\\";\\n\\ncontract OracleFeeLib is IOracleFeeLib {\\n    uint16 constant executeFixedBytes = 68; // encoded: funcSigHash + params -> 4  + (32 * 2)\\n    uint16 constant signatureRawBytes = 65; // not encoded\\n    // callData(updateHash) = 132 (4 + 32 * 4), padded to 32 = 160 and encoded as bytes with an 64 byte overhead = 224\\n    uint16 constant updateHashBytes = 224;\\n    uint128 public defaultMultiplier = 12000; // 20%\\n\\n    function getFee(\\n        ILayerZeroPriceFeed _priceFeed,\\n        uint16 _dstChainId,\\n        uint64 _baseGas,\\n        uint64 _quorum,\\n        uint128 _defaultMultiplier,\\n        uint128 _multiplier,\\n        uint128 _floorMarginUSD\\n    ) external view returns (uint) {\\n        uint totalSignatureBytes = uint(_quorum) * signatureRawBytes;\\n        uint totalSignatureBytesPadded = totalSignatureBytes;\\n        if (totalSignatureBytes % 32 != 0) {\\n            totalSignatureBytesPadded = totalSignatureBytes - (totalSignatureBytes % 32) + 32;\\n        }\\n        // getFee should charge on execute(updateHash)\\n        // totalSignatureBytesPadded also has 64 overhead for bytes\\n        uint callDataSize = uint(executeFixedBytes) + updateHashBytes + totalSignatureBytesPadded + 64;\\n        (uint fee, ) = _priceFeed.estimateFeeByChain(_dstChainId, callDataSize, _baseGas);\\n\\n        if (_multiplier == 0) {\\n            _multiplier = _defaultMultiplier;\\n        }\\n\\n        uint feeWithMultiplier = (fee * _multiplier) / 10000;\\n        uint128 nativeTokenPriceUSD = _priceFeed.nativeTokenPriceUSD();\\n\\n        if (nativeTokenPriceUSD == 0 || _floorMarginUSD == 0) {\\n            return feeWithMultiplier;\\n        }\\n\\n        uint feeWithFloorMargin = fee + (_floorMarginUSD * 1e18) / nativeTokenPriceUSD;\\n\\n        return feeWithFloorMargin > feeWithMultiplier ? feeWithFloorMargin : feeWithMultiplier;\\n    }\\n}\\n\",\"keccak256\":\"0x5bf184285545adf6955a93703828c19df3086dcf6084f370c750dbe0243b83f1\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IOracleFeeLib.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n\\npragma solidity >=0.8.0;\\n\\nimport \\\"@layerzerolabs/lz-evm-v1-0.8/contracts/interfaces/ILayerZeroPriceFeed.sol\\\";\\n\\ninterface IOracleFeeLib {\\n    function getFee(\\n        ILayerZeroPriceFeed _priceFeed,\\n        uint16 _dstChainId,\\n        uint64 _baseGas,\\n        uint64 _quorum,\\n        uint128 _defaultMultiplier,\\n        uint128 _multiplier,\\n        uint128 _floorMarginUSD\\n    ) external view returns (uint);\\n}\\n\",\"keccak256\":\"0xb90f82f727a1a09b58c18bcd0b004f1d4ff362c8cc88745a0ff90167a3eb63b6\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x6080604052600080546001600160801b031916612ee017905534801561002457600080fd5b506105c7806100346000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063dc6002801461003b578063e489182514610061575b600080fd5b61004e61004936600461035f565b61009e565b6040519081526020015b60405180910390f35b60005461007d906fffffffffffffffffffffffffffffffff1681565b6040516fffffffffffffffffffffffffffffffff9091168152602001610058565b6000806100b6604167ffffffffffffffff8816610440565b9050806100c460208261048c565b156100ec576100d460208361048c565b6100de90836104a0565b6100e99060206104b3565b90505b6000816100fb60e060446104b3565b61010591906104b3565b6101109060406104b3565b6040517f7bc3c9ab00000000000000000000000000000000000000000000000000000000815261ffff8c1660048201526024810182905267ffffffffffffffff8b16604482015290915060009073ffffffffffffffffffffffffffffffffffffffff8d1690637bc3c9ab906064016040805180830381865afa15801561019a573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101be91906104c6565b509050866fffffffffffffffffffffffffffffffff166000036101df578796505b60006127106102006fffffffffffffffffffffffffffffffff8a1684610440565b61020a91906104f6565b905060008d73ffffffffffffffffffffffffffffffffffffffff166392807f586040518163ffffffff1660e01b8152600401602060405180830381865afa158015610259573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061027d919061050a565b90506fffffffffffffffffffffffffffffffff811615806102ae57506fffffffffffffffffffffffffffffffff8816155b156102c0575094506103169350505050565b6000816102d58a670de0b6b3a764000061052e565b6102df9190610562565b6102fb906fffffffffffffffffffffffffffffffff16856104b3565b905082811161030a578261030c565b805b9750505050505050505b979650505050505050565b803567ffffffffffffffff8116811461033957600080fd5b919050565b6fffffffffffffffffffffffffffffffff8116811461035c57600080fd5b50565b600080600080600080600060e0888a03121561037a57600080fd5b873573ffffffffffffffffffffffffffffffffffffffff8116811461039e57600080fd5b9650602088013561ffff811681146103b557600080fd5b95506103c360408901610321565b94506103d160608901610321565b935060808801356103e18161033e565b925060a08801356103f18161033e565b915060c08801356104018161033e565b8091505092959891949750929550565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b808202811582820484141761045757610457610411565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60008261049b5761049b61045d565b500690565b8181038181111561045757610457610411565b8082018082111561045757610457610411565b600080604083850312156104d957600080fd5b8251915060208301516104eb8161033e565b809150509250929050565b6000826105055761050561045d565b500490565b60006020828403121561051c57600080fd5b81516105278161033e565b9392505050565b6fffffffffffffffffffffffffffffffff81811683821602808216919082811461055a5761055a610411565b505092915050565b60006fffffffffffffffffffffffffffffffff808416806105855761058561045d565b9216919091049291505056fea26469706673582212202b3a942b83adb3611877f81fc1d748c90ce692ab8d46a0ff8835c2d98f2f845064736f6c63430008110033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c8063dc6002801461003b578063e489182514610061575b600080fd5b61004e61004936600461035f565b61009e565b6040519081526020015b60405180910390f35b60005461007d906fffffffffffffffffffffffffffffffff1681565b6040516fffffffffffffffffffffffffffffffff9091168152602001610058565b6000806100b6604167ffffffffffffffff8816610440565b9050806100c460208261048c565b156100ec576100d460208361048c565b6100de90836104a0565b6100e99060206104b3565b90505b6000816100fb60e060446104b3565b61010591906104b3565b6101109060406104b3565b6040517f7bc3c9ab00000000000000000000000000000000000000000000000000000000815261ffff8c1660048201526024810182905267ffffffffffffffff8b16604482015290915060009073ffffffffffffffffffffffffffffffffffffffff8d1690637bc3c9ab906064016040805180830381865afa15801561019a573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101be91906104c6565b509050866fffffffffffffffffffffffffffffffff166000036101df578796505b60006127106102006fffffffffffffffffffffffffffffffff8a1684610440565b61020a91906104f6565b905060008d73ffffffffffffffffffffffffffffffffffffffff166392807f586040518163ffffffff1660e01b8152600401602060405180830381865afa158015610259573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061027d919061050a565b90506fffffffffffffffffffffffffffffffff811615806102ae57506fffffffffffffffffffffffffffffffff8816155b156102c0575094506103169350505050565b6000816102d58a670de0b6b3a764000061052e565b6102df9190610562565b6102fb906fffffffffffffffffffffffffffffffff16856104b3565b905082811161030a578261030c565b805b9750505050505050505b979650505050505050565b803567ffffffffffffffff8116811461033957600080fd5b919050565b6fffffffffffffffffffffffffffffffff8116811461035c57600080fd5b50565b600080600080600080600060e0888a03121561037a57600080fd5b873573ffffffffffffffffffffffffffffffffffffffff8116811461039e57600080fd5b9650602088013561ffff811681146103b557600080fd5b95506103c360408901610321565b94506103d160608901610321565b935060808801356103e18161033e565b925060a08801356103f18161033e565b915060c08801356104018161033e565b8091505092959891949750929550565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b808202811582820484141761045757610457610411565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60008261049b5761049b61045d565b500690565b8181038181111561045757610457610411565b8082018082111561045757610457610411565b600080604083850312156104d957600080fd5b8251915060208301516104eb8161033e565b809150509250929050565b6000826105055761050561045d565b500490565b60006020828403121561051c57600080fd5b81516105278161033e565b9392505050565b6fffffffffffffffffffffffffffffffff81811683821602808216919082811461055a5761055a610411565b505092915050565b60006fffffffffffffffffffffffffffffffff808416806105855761058561045d565b9216919091049291505056fea26469706673582212202b3a942b83adb3611877f81fc1d748c90ce692ab8d46a0ff8835c2d98f2f845064736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1480,
+        "contract": "contracts/OracleFeeLib.sol:OracleFeeLib",
+        "label": "defaultMultiplier",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint128"
+      }
+    ],
+    "types": {
+      "t_uint128": {
+        "encoding": "inplace",
+        "label": "uint128",
+        "numberOfBytes": "16"
+      }
+    }
+  }
+}

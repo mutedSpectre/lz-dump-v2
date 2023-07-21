@@ -139,7 +139,7 @@ declare enum TestnetEndpointId {
     MERITCIRCLE_TESTNET = 10178,
     MANTLE_TESTNET = 10181,
     HUBBLE_TESTNET = 10182,
-    AAVEGOTCHI_TESTNET = 10190
+    AAVEGOTCHI_TESTNET = 10191
 }
 declare enum SandboxEndpointId {
     BSC_SANDBOX = 20102,

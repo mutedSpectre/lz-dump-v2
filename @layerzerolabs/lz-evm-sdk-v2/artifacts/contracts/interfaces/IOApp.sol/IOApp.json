@@ -56,6 +56,36 @@
       "anonymous": false,
       "inputs": [
         {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "msgType",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "options",
+              "type": "bytes"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IOApp.EnforcedOptionParam[]",
+          "name": "_enforcedOptions",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "SetEnforcedOption",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
           "indexed": false,
           "internalType": "uint32",
           "name": "remoteEid",
@@ -66,12 +96,6 @@
           "internalType": "bytes32",
           "name": "peer",
           "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "internalType": "bool",
-          "name": "active",
-          "type": "bool"
         }
       ],
       "name": "SetPeer",
@@ -93,6 +117,19 @@
     {
       "inputs": [
         {
+          "internalType": "bytes",
+          "name": "_callData",
+          "type": "bytes"
+        }
+      ],
+      "name": "callEndpoint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "components": [
             {
               "internalType": "uint32",
@@ -110,7 +147,7 @@
               "type": "uint64"
             }
           ],
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "_origin",
           "type": "tuple"
         },
@@ -162,7 +199,7 @@
                   "type": "uint64"
                 }
               ],
-              "internalType": "struct IMessageOrigin.MessageOrigin",
+              "internalType": "struct Origin",
               "name": "origin",
               "type": "tuple"
             },
@@ -214,19 +251,6 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes",
-          "name": "_config",
-          "type": "bytes"
-        }
-      ],
-      "name": "setEndpointConfig",
-      "outputs": [],
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {

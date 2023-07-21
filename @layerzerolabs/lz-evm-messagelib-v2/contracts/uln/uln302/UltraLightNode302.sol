@@ -22,13 +22,9 @@ contract UltraLightNode302 is IUltraLightNode, UlnBase, MessageLibBaseE2 {
 
     // ============================ OnlyEndpoint ===================================
 
-    function setConfig(
-        address _oapp,
-        uint32 _eid,
-        ILayerZeroEndpointV2.SetConfigParam[] calldata _params
-    ) external override onlyEndpoint {
+    function setConfig(address _oapp, uint32 _eid, SetConfigParam[] calldata _params) external override onlyEndpoint {
         for (uint i = 0; i < _params.length; i++) {
-            ILayerZeroEndpointV2.SetConfigParam calldata param = _params[i];
+            SetConfigParam calldata param = _params[i];
             ulnConfig.setConfigByType(_eid, _oapp, param.configType, param.config);
         }
     }
@@ -51,11 +47,7 @@ contract UltraLightNode302 is IUltraLightNode, UlnBase, MessageLibBaseE2 {
             Errors.INVALID_ARGUMENT
         );
 
-        IMessageOrigin.MessageOrigin memory origin = IMessageOrigin.MessageOrigin(
-            _packetHeader.srcEid(),
-            _packetHeader.sender(),
-            _packetHeader.nonce()
-        );
+        Origin memory origin = Origin(_packetHeader.srcEid(), _packetHeader.sender(), _packetHeader.nonce());
         ILayerZeroEndpointV2(endpoint).deliver(origin, _packetHeader.receiverB20(), _payloadHash);
     }
 

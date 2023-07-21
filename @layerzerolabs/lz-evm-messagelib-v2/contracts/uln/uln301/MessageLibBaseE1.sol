@@ -4,12 +4,12 @@ pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
+import {Origin} from "@layerzerolabs/lz-evm-protocol-v2/contracts/MessagingStructs.sol";
 import "@layerzerolabs/lz-evm-v1-0.7/contracts/interfaces/ILayerZeroEndpoint.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/libs/Errors.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/libs/AddressCast.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/ExecutorOptions.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/PacketV1Codec.sol";
-import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageOrigin.sol";
 
 import "./interfaces/IMessageLibE1.sol";
 import "./interfaces/ITreasuryFeeHandler.sol";
@@ -33,7 +33,7 @@ abstract contract MessageLibBaseE1 is MessageLibBase, IMessageLibE1 {
     mapping(uint32 dstEid => uint size) public addressSizes;
 
     // this event is the same as the PacketReceived event on EndpointV2
-    event PacketReceived(IMessageOrigin.MessageOrigin origin, address receiver);
+    event PacketReceived(Origin origin, address receiver);
     // this event should be identical to the one on Endpoint V2
     event PacketSent(bytes encodedPayload, bytes options, uint nativeFee, uint lzTokenFee);
     event NativeFeeWithdrawn(address user, address receiver, uint amount);
@@ -221,7 +221,7 @@ abstract contract MessageLibBaseE1 is MessageLibBase, IMessageLibE1 {
         bytes memory pathData = abi.encodePacked(_sender.toBytes(addressSizes[_srcEid]), _receiver);
         ILayerZeroEndpoint(endpoint).receivePayload(_srcEid, pathData, _receiver, _nonce, _gasLimit, _message);
 
-        IMessageOrigin.MessageOrigin memory origin = IMessageOrigin.MessageOrigin(_srcEid, _sender, _nonce);
+        Origin memory origin = Origin(_srcEid, _sender, _nonce);
         emit PacketReceived(origin, _receiver);
     }
 

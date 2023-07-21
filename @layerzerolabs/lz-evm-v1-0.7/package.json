@@ -1,6 +1,6 @@
 {
   "name": "@layerzerolabs/lz-evm-v1-0.7",
-  "version": "1.5.27",
+  "version": "1.5.31",
   "license": "BUSL-1.1",
   "main": "dist/index.js",
   "files": [
@@ -31,11 +31,11 @@
   "devDependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@layerzerolabs-internal/typescript-config": "^1.5.27",
-    "@layerzerolabs/hardhat-collect-outcomes": "^1.5.27",
-    "@layerzerolabs/hardhat-config": "^1.5.27",
-    "@layerzerolabs/lz-definitions": "^1.5.27",
-    "@layerzerolabs/lz-proof-utility": "^1.5.27",
+    "@layerzerolabs-internal/typescript-config": "^1.5.31",
+    "@layerzerolabs/hardhat-collect-outcomes": "^1.5.31",
+    "@layerzerolabs/hardhat-config": "^1.5.31",
+    "@layerzerolabs/lz-definitions": "^1.5.31",
+    "@layerzerolabs/lz-proof-utility": "^1.5.31",
     "@matterlabs/hardhat-zksync-deploy": "^0.6.1",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.7",

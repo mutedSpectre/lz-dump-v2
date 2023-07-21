@@ -91,6 +91,36 @@
       "anonymous": false,
       "inputs": [
         {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "msgType",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "options",
+              "type": "bytes"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IOApp.EnforcedOptionParam[]",
+          "name": "_enforcedOptions",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "SetEnforcedOption",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
           "indexed": false,
           "internalType": "uint32",
           "name": "remoteEid",
@@ -101,12 +131,6 @@
           "internalType": "bytes32",
           "name": "peer",
           "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "internalType": "bool",
-          "name": "active",
-          "type": "bool"
         }
       ],
       "name": "SetPeer",
@@ -124,6 +148,19 @@
       ],
       "name": "SetPrecrime",
       "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_callData",
+          "type": "bytes"
+        }
+      ],
+      "name": "callEndpoint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "inputs": [],
@@ -158,7 +195,7 @@
               "type": "uint64"
             }
           ],
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "_origin",
           "type": "tuple"
         },
@@ -210,7 +247,7 @@
                   "type": "uint64"
                 }
               ],
-              "internalType": "struct IMessageOrigin.MessageOrigin",
+              "internalType": "struct Origin",
               "name": "origin",
               "type": "tuple"
             },
@@ -338,12 +375,29 @@
     {
       "inputs": [
         {
-          "internalType": "bytes",
-          "name": "_config",
-          "type": "bytes"
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "msgType",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "options",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct IOApp.EnforcedOptionParam[]",
+          "name": "_enforcedOptions",
+          "type": "tuple[]"
         }
       ],
-      "name": "setEndpointConfig",
+      "name": "setEnforcedOptions",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -359,11 +413,6 @@
           "internalType": "bytes32",
           "name": "_peer",
           "type": "bytes32"
-        },
-        {
-          "internalType": "bool",
-          "name": "_active",
-          "type": "bool"
         }
       ],
       "name": "setPeer",

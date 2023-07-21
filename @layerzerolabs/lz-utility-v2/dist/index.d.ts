@@ -1,6 +1,5 @@
 import { ethers, Contract, PopulatedTransaction, BigNumberish, BytesLike } from 'ethers';
-import { IMessageLibManager } from '@layerzerolabs/lz-evm-sdk-v2';
-import { IMessageOrigin } from '@layerzerolabs/lz-evm-sdk-v2/chaintypes/EndpointV2';
+import { SetConfigParamStruct, OriginStruct } from '@layerzerolabs/lz-evm-sdk-v2/chaintypes/EndpointV2';
 import { PromiseOrValue } from '@layerzerolabs/lz-evm-sdk-v2/chaintypes/common';
 
 declare function sleep(timeout: number): Promise<void>;
@@ -153,12 +152,12 @@ declare function keccak256(message: string): string;
 
 declare function populateSetEndpointConfig(oapp: Contract, configPayload: string): Promise<PopulatedTransaction>;
 declare function populateSnapshotConfig(oapp: Contract, messageLib: PromiseOrValue<string>, eids: PromiseOrValue<BigNumberish>[]): Promise<PopulatedTransaction>;
-declare function populateSetConfig(oapp: Contract, lib: PromiseOrValue<string>, eid: PromiseOrValue<BigNumberish>, params: IMessageLibManager.SetConfigParamStruct[]): Promise<PopulatedTransaction>;
+declare function populateSetConfig(oapp: Contract, lib: PromiseOrValue<string>, eid: PromiseOrValue<BigNumberish>, params: SetConfigParamStruct[]): Promise<PopulatedTransaction>;
 declare function populateSetSendMessageLib(oapp: Contract, eid: PromiseOrValue<BigNumberish>, newLib: PromiseOrValue<string>): Promise<PopulatedTransaction>;
 declare function populateResetConfig(oapp: Contract, lib: PromiseOrValue<string>, eids: PromiseOrValue<BigNumberish>[]): Promise<PopulatedTransaction>;
 declare function populateSetReceiveLibrary(oapp: Contract, eid: PromiseOrValue<BigNumberish>, newLib: PromiseOrValue<string>, gracePeriod: PromiseOrValue<BigNumberish>): Promise<PopulatedTransaction>;
 declare function populateSetReceiveLibraryTimeout(oapp: Contract, eid: PromiseOrValue<BigNumberish>, lib: PromiseOrValue<string>, expiry: PromiseOrValue<BigNumberish>): Promise<PopulatedTransaction>;
-declare function populateClear(oapp: Contract, origin: IMessageOrigin.MessageOriginStruct, guid: PromiseOrValue<BytesLike>, message: PromiseOrValue<BytesLike>): Promise<PopulatedTransaction>;
+declare function populateClear(oapp: Contract, origin: OriginStruct, guid: PromiseOrValue<BytesLike>, message: PromiseOrValue<BytesLike>): Promise<PopulatedTransaction>;
 declare function populateSkip(oapp: Contract, srcEid: PromiseOrValue<BigNumberish>, sender: PromiseOrValue<BytesLike>, nonce: PromiseOrValue<BigNumberish>): Promise<PopulatedTransaction>;
 
 export { ExecutorOptionType, MessageOrigin, Option, Options, Packet, PacketHeader, PacketPath, PacketSerializer, PacketV1Codec, PrecrimeConfig, PrecrimeConfigV1, PrecrimePacket, VerifierOption, VerifierOptionType, WorkerId, WorkerOptions, addressToBytes32, bytes32ToEthAddress, calculateGuid, hexZeroPadTo32, isSolanaAddress, keccak256, optionsType1, optionsType2, packetToMessageOrigin, parseError, parsePrecrimeConfig, populateClear, populateResetConfig, populateSetConfig, populateSetEndpointConfig, populateSetReceiveLibrary, populateSetReceiveLibraryTimeout, populateSetSendMessageLib, populateSkip, populateSnapshotConfig, sleep, trim0x };

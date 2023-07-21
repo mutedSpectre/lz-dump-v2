@@ -4,9 +4,9 @@ pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol";
 import "hardhat-deploy/solc_0.8/proxy/Proxied.sol";
 
-import "./uln/interfaces/IUltraLightNode.sol";
 import "./uln/uln301/interfaces/IUltraLightNode301.sol";
 import "./interfaces/IExecutor.sol";
 import "./interfaces/IExecutorFeeLib.sol";

@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../../OApp.sol";
 import "./interfaces/IOFT.sol";
+import {Origin} from "@layerzerolabs/lz-evm-protocol-v2/contracts/MessagingStructs.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroComposer.sol";
 import "../../OApp.sol";
@@ -25,16 +26,9 @@ abstract contract OFTCore is IOFT, OApp {
     // ld - sd <= 57;
     uint internal immutable ld2sdRate;
 
-    // @dev These enforced options can vary as the potential options/execution on remote may differ
-    // eg. Amount of lzReceive gas necessary to deliver a composed message adds overhear you dont want to pay
-    // if you are only make a standard crosschain call (no deliver compose)
-    // enforcedOptions[eid][executionType] = enforcedOptions
-    // The "executionType" should be defined in the child contract
-    mapping(uint32 => mapping(uint => bytes)) internal enforcedOptions;
-
     // @dev execution types to handle different enforcedOptions
-    uint internal constant SEND = 1;
-    uint internal constant SEND_AND_CALL = 2;
+    uint16 internal constant SEND = 1;
+    uint16 internal constant SEND_AND_CALL = 2;
 
     // @dev optional interface for an arbitrary contract to inspect both 'message' and 'options'
     IInspector public inspector;
@@ -58,20 +52,12 @@ abstract contract OFTCore is IOFT, OApp {
         emit SetInspector(_inspector);
     }
 
-    function setEnforcedOptions(EnforcedOptionParam[] calldata _enforcedOptions) public virtual onlyOwner {
-        for (uint i = 0; i < _enforcedOptions.length; i++) {
-            enforcedOptions[_enforcedOptions[i].eid][_enforcedOptions[i].executionType] = _enforcedOptions[i].options;
-        }
-
-        emit SetEnforcedOption(_enforcedOptions);
-    }
-
     function _buildOptions(
         uint32 _eid,
-        uint _executionType,
+        uint16 _msgType,
         bytes memory _extraOptions
     ) internal view virtual returns (bytes memory options) {
-        options = bytes.concat(enforcedOptions[_eid][_executionType], _extraOptions);
+        options = bytes.concat(enforcedOptions[_eid][_msgType], _extraOptions);
     }
 
     // @dev Requests a nativeFee/lzTokenFee quote for sending the corresponding msg crosschain through the layerZero Endpoint
@@ -112,9 +98,9 @@ abstract contract OFTCore is IOFT, OApp {
     function send(
         SendParam calldata _send,
         bytes calldata _extraOptions,
-        ILayerZeroEndpointV2.MessagingFee calldata _msgFee,
+        MessagingFee calldata _msgFee,
         address payable _refundAddress
-    ) public payable virtual returns (ILayerZeroEndpointV2.MessagingReceipt memory msgReceipt) {
+    ) public payable virtual returns (MessagingReceipt memory msgReceipt) {
         msgReceipt = _sendInternal(
             _send,
             _buildOptions(_send.dstEid, SEND, _extraOptions),
@@ -128,10 +114,10 @@ abstract contract OFTCore is IOFT, OApp {
     function sendAndCall(
         SendParam calldata _send,
         bytes calldata _extraOptions,
-        ILayerZeroEndpointV2.MessagingFee calldata _msgFee,
+        MessagingFee calldata _msgFee,
         address payable _refundAddress,
         bytes calldata _composeMsg
-    ) public payable virtual returns (ILayerZeroEndpointV2.MessagingReceipt memory msgReceipt) {
+    ) public payable virtual returns (MessagingReceipt memory msgReceipt) {
         msgReceipt = _sendInternal(
             _send,
             _buildOptions(_send.dstEid, SEND_AND_CALL, _extraOptions),
@@ -147,12 +133,12 @@ abstract contract OFTCore is IOFT, OApp {
     function _sendInternal(
         SendParam calldata _send,
         bytes memory _options, // @dev a combination of enforcedOptions, and extraOptions
-        ILayerZeroEndpointV2.MessagingFee calldata _msgFee,
+        MessagingFee calldata _msgFee,
         address payable _refundAddress,
         // @dev '0x' for a regular non composed crosschain swap, OR '0x[msg.sender][composeMsg]' for composed.
         // 'composeMsg' can be an empty bytes array, but msg.sender will always be there
         bytes memory _composeMsg
-    ) internal virtual returns (ILayerZeroEndpointV2.MessagingReceipt memory msgReceipt) {
+    ) internal virtual returns (MessagingReceipt memory msgReceipt) {
         uint amountLD = _beforeDebit(_send.amountLD, _send.dstEid);
         uint amountLDSend = _debit(amountLD);
 
@@ -171,7 +157,7 @@ abstract contract OFTCore is IOFT, OApp {
         if (address(inspector) != address(0)) inspector.inspect(message, _options);
 
         msgReceipt = _lzSend(
-            ILayerZeroEndpointV2.MessagingParams(_send.dstEid, safeGetPeer(_send.dstEid), message, _options),
+            MessagingParams(_send.dstEid, safeGetPeer(_send.dstEid), message, _options),
             _msgFee,
             _refundAddress
         );
@@ -180,7 +166,7 @@ abstract contract OFTCore is IOFT, OApp {
     }
 
     function _lzReceive(
-        MessageOrigin calldata _origin,
+        Origin calldata _origin,
         bytes32 _guid,
         bytes calldata _message,
         address /*_executor*/,

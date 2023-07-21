@@ -515,7 +515,7 @@
               "type": "bytes"
             }
           ],
-          "internalType": "struct IMessageLibManager.SetConfigParam[]",
+          "internalType": "struct SetConfigParam[]",
           "name": "_params",
           "type": "tuple[]"
         }

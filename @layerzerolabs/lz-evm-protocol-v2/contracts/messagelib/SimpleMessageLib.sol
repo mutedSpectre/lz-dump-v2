@@ -6,14 +6,13 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "../interfaces/IPacket.sol";
 import "../interfaces/IMessageLib.sol";
-import "../interfaces/IMessageOrigin.sol";
 import "../interfaces/ILayerZeroEndpointV2.sol";
 import "../libs/Errors.sol";
 import "./libs/PacketV1Codec.sol";
+import "../MessagingStructs.sol";
 
-contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
+contract SimpleMessageLib is Ownable, ERC165 {
     using SafeERC20 for IERC20;
     using PacketV1Codec for bytes;
 
@@ -53,29 +52,29 @@ contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
     // no validation logic at all
     function validatePacket(bytes calldata packetBytes) external {
         require(whitelistCaller == address(0x0) || msg.sender == whitelistCaller, Errors.PERMISSION_DENIED);
-        MessageOrigin memory origin = MessageOrigin(packetBytes.srcEid(), packetBytes.sender(), packetBytes.nonce());
+        Origin memory origin = Origin(packetBytes.srcEid(), packetBytes.sender(), packetBytes.nonce());
         ILayerZeroEndpointV2(endpoint).deliver(origin, packetBytes.receiverB20(), keccak256(packetBytes.payload()));
     }
 
     // ------------------ onlyEndpoint ------------------
     function send(
-        IPacket.Packet calldata _packet,
+        Packet calldata _packet,
         bytes memory _options,
         bool _payInLzToken
     )
         external
         onlyEndpoint
-        returns (ILayerZeroEndpointV2.MessagingReceipt memory receipt, bytes memory encodedPacket, bytes memory options)
+        returns (MessagingReceipt memory receipt, bytes memory encodedPacket, bytes memory options)
     {
         encodedPacket = PacketV1Codec.encode(packetVersion, _packet);
 
         options = _options.length == 0 ? defaultOption : _options;
         _handleMessagingParamsHook(encodedPacket, options);
 
-        receipt = ILayerZeroEndpointV2.MessagingReceipt(
+        receipt = MessagingReceipt(
             _packet.guid,
             _packet.nonce,
-            ILayerZeroEndpointV2.MessagingFee(nativeFee, _payInLzToken ? lzTokenFee : 0)
+            MessagingFee(nativeFee, _payInLzToken ? lzTokenFee : 0)
         );
     }
 
@@ -117,11 +116,11 @@ contract SimpleMessageLib is Ownable, ERC165, IMessageOrigin {
 
     // ------------------ View ------------------
     function quote(
-        IPacket.PacketForQuote calldata /*_packet*/,
+        PacketForQuote calldata /*_packet*/,
         bool _payInLzToken,
         bytes calldata /*_adapterParam*/
-    ) external view returns (ILayerZeroEndpointV2.MessagingFee memory) {
-        return ILayerZeroEndpointV2.MessagingFee(nativeFee, _payInLzToken ? lzTokenFee : 0);
+    ) external view returns (MessagingFee memory) {
+        return MessagingFee(nativeFee, _payInLzToken ? lzTokenFee : 0);
     }
 
     function isSupportedEid(uint32) external pure returns (bool) {

@@ -7,7 +7,15 @@ import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroReceive
 import "./IPreCrime.sol";
 
 interface IOApp is ILayerZeroReceiver {
-    function setEndpointConfig(bytes calldata _config) external;
+    struct EnforcedOptionParam {
+        uint16 msgType;
+        uint32 eid;
+        bytes options;
+    }
+
+    event SetEnforcedOption(EnforcedOptionParam[] _enforcedOptions);
+
+    function callEndpoint(bytes calldata _callData) external;
 
     function nextNonce(uint32 _srcEid, bytes32 _sender) external view returns (uint64);
 
@@ -21,6 +29,6 @@ interface IOApp is ILayerZeroReceiver {
     error InvalidPeerState();
     error NoPeerSet(uint32 eid);
 
-    event SetPeer(uint32 remoteEid, bytes32 peer, bool active);
+    event SetPeer(uint32 remoteEid, bytes32 peer);
     event SetPrecrime(address precrime);
 }

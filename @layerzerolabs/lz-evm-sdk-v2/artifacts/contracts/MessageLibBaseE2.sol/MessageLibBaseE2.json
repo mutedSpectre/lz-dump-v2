@@ -239,7 +239,7 @@
               "type": "bytes"
             }
           ],
-          "internalType": "struct IPacket.PacketForQuote",
+          "internalType": "struct PacketForQuote",
           "name": "_packet",
           "type": "tuple"
         },
@@ -269,7 +269,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+          "internalType": "struct MessagingFee",
           "name": "",
           "type": "tuple"
         }
@@ -342,7 +342,7 @@
               "type": "bytes"
             }
           ],
-          "internalType": "struct IPacket.Packet",
+          "internalType": "struct Packet",
           "name": "_packet",
           "type": "tuple"
         },
@@ -384,12 +384,12 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+              "internalType": "struct MessagingFee",
               "name": "fee",
               "type": "tuple"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingReceipt",
+          "internalType": "struct MessagingReceipt",
           "name": "",
           "type": "tuple"
         },
@@ -432,7 +432,7 @@
               "type": "bytes"
             }
           ],
-          "internalType": "struct IMessageLibManager.SetConfigParam[]",
+          "internalType": "struct SetConfigParam[]",
           "name": "_config",
           "type": "tuple[]"
         }

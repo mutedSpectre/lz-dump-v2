@@ -6,40 +6,34 @@ import "./IMessageLibManager.sol";
 import "./IMessagingComposer.sol";
 import "./IMessagingChannel.sol";
 import "./IMessagingContext.sol";
-import "./IMessageOrigin.sol";
+import {Origin} from "../MessagingStructs.sol";
 
-interface ILayerZeroEndpointV2 is
-    IMessageLibManager,
-    IMessagingComposer,
-    IMessagingChannel,
-    IMessagingContext,
-    IMessageOrigin
-{
-    struct MessagingParams {
-        uint32 dstEid;
-        bytes32 receiver;
-        bytes message;
-        bytes options;
-    }
+struct MessagingParams {
+    uint32 dstEid;
+    bytes32 receiver;
+    bytes message;
+    bytes options;
+}
 
-    struct MessagingReceipt {
-        bytes32 guid;
-        uint64 nonce;
-        MessagingFee fee;
-    }
+struct MessagingReceipt {
+    bytes32 guid;
+    uint64 nonce;
+    MessagingFee fee;
+}
 
-    struct MessagingFee {
-        uint nativeFee;
-        uint lzTokenFee;
-    }
+struct MessagingFee {
+    uint nativeFee;
+    uint lzTokenFee;
+}
 
+interface ILayerZeroEndpointV2 is IMessageLibManager, IMessagingComposer, IMessagingChannel, IMessagingContext {
     event PacketSent(bytes encodedPayload, bytes options, address sendLibrary);
 
-    event PacketDelivered(MessageOrigin origin, address receiver, bytes32 payloadHash);
+    event PacketDelivered(Origin origin, address receiver, bytes32 payloadHash);
 
-    event PacketReceived(MessageOrigin origin, address receiver);
+    event PacketReceived(Origin origin, address receiver);
 
-    event LzReceiveFailed(MessageOrigin origin, address receiver, bytes reason);
+    event LzReceiveFailed(Origin origin, address receiver, bytes reason);
 
     event FeePaid(MessagingFee fee);
 
@@ -65,16 +59,12 @@ interface ILayerZeroEndpointV2 is
         uint _altTokenFee
     ) external returns (MessagingReceipt memory);
 
-    function deliver(MessageOrigin calldata _origin, address _receiver, bytes32 _payloadHash) external;
+    function deliver(Origin calldata _origin, address _receiver, bytes32 _payloadHash) external;
 
-    function deliverable(
-        MessageOrigin calldata _origin,
-        address _receiveLib,
-        address _receiver
-    ) external view returns (bool);
+    function deliverable(Origin calldata _origin, address _receiveLib, address _receiver) external view returns (bool);
 
     function lzReceive(
-        MessageOrigin calldata _origin,
+        Origin calldata _origin,
         address _receiver,
         bytes32 _guid,
         bytes calldata _message,
@@ -82,7 +72,7 @@ interface ILayerZeroEndpointV2 is
     ) external payable returns (bool, bytes memory);
 
     // oapp can burn messages partially by calling this function with its own business logic if messages are delivered in order
-    function clear(MessageOrigin calldata _origin, bytes32 _guid, bytes calldata _message) external;
+    function clear(Origin calldata _origin, bytes32 _guid, bytes calldata _message) external;
 
     function setLayerZeroToken(address _layerZeroToken) external;
 

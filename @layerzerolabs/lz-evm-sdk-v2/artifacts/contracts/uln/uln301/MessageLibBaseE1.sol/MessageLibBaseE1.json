@@ -125,7 +125,7 @@
             }
           ],
           "indexed": false,
-          "internalType": "struct IMessageOrigin.MessageOrigin",
+          "internalType": "struct Origin",
           "name": "origin",
           "type": "tuple"
         },

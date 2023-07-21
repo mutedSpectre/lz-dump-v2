@@ -2,11 +2,10 @@
 
 pragma solidity >=0.8.0;
 
-import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IPacket.sol";
 import "@layerzerolabs/lz-evm-v1-0.7/contracts/interfaces/ILayerZeroMessagingLibrary.sol";
 
 /// extends ILayerZeroMessagingLibrary instead of ILayerZeroMessagingLibraryV2 for reducing the contract size
-interface IMessageLibE1 is ILayerZeroMessagingLibrary, IPacket {
+interface IMessageLibE1 is ILayerZeroMessagingLibrary {
     function setLayerZeroToken(address _treasury) external;
 
     function setTreasury(address _treasury) external;

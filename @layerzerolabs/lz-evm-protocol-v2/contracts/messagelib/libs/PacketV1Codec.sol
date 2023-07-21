@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.0;
 
-import "../../interfaces/IPacket.sol";
 import "../../libs/AddressCast.sol";
+import {Packet} from "../../MessagingStructs.sol";
 
 library PacketV1Codec {
     using AddressCast for address;
@@ -23,10 +23,7 @@ library PacketV1Codec {
     uint private constant GUID_OFFSET = 81; // keccak256(nonce + path)
     uint private constant MESSAGE_OFFSET = 113;
 
-    function encode(
-        uint8 _version,
-        IPacket.Packet calldata _packet
-    ) internal pure returns (bytes memory encodedPacket) {
+    function encode(uint8 _version, Packet calldata _packet) internal pure returns (bytes memory encodedPacket) {
         encodedPacket = abi.encodePacked(
             _version,
             _packet.nonce,
@@ -39,7 +36,7 @@ library PacketV1Codec {
         );
     }
 
-    function encode2(uint8 _version, IPacket.Packet memory _packet) internal pure returns (bytes memory encodedPacket) {
+    function encode2(uint8 _version, Packet memory _packet) internal pure returns (bytes memory encodedPacket) {
         encodedPacket = abi.encodePacked(
             _version,
             _packet.nonce,

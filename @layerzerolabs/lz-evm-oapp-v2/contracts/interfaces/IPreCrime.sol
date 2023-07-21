@@ -2,14 +2,14 @@
 
 pragma solidity >=0.8.0;
 
+import {Origin} from "@layerzerolabs/lz-evm-protocol-v2/contracts/MessagingStructs.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroReceiver.sol";
-import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageOrigin.sol";
 
-interface IPreCrime is IMessageOrigin {
+interface IPreCrime {
     error LzReceiveRevert(uint16 code, bytes result);
 
     struct Packet {
-        MessageOrigin origin;
+        Origin origin;
         bytes32 guid;
         bytes message;
         bytes callParams;

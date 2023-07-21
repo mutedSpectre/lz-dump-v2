@@ -6,9 +6,9 @@ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
+import {Origin} from "@layerzerolabs/lz-evm-protocol-v2/contracts/MessagingStructs.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLib.sol";
-import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageOrigin.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/libs/Errors.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/ExecutorOptions.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/PacketV1Codec.sol";
@@ -39,7 +39,7 @@ abstract contract MessageLibBaseE2 is MessageLibBase, ERC165, IMessageLib {
         Packet calldata _packet,
         bytes calldata _options,
         bool _payInLzToken
-    ) external onlyEndpoint returns (ILayerZeroEndpointV2.MessagingReceipt memory, bytes memory, bytes memory) {
+    ) external onlyEndpoint returns (MessagingReceipt memory, bytes memory, bytes memory) {
         (bytes memory options, bytes memory encodedPacket, uint totalNativeFee) = _sendToWorkers(_packet, _options);
 
         // a hook to run local tests. in the implementation it should be empty
@@ -53,10 +53,10 @@ abstract contract MessageLibBaseE2 is MessageLibBase, ERC165, IMessageLib {
         );
         totalNativeFee += treasuryNativeFee;
 
-        ILayerZeroEndpointV2.MessagingReceipt memory receipt = ILayerZeroEndpointV2.MessagingReceipt(
+        MessagingReceipt memory receipt = MessagingReceipt(
             _packet.guid,
             _packet.nonce,
-            ILayerZeroEndpointV2.MessagingFee(totalNativeFee, lzTokenFee)
+            MessagingFee(totalNativeFee, lzTokenFee)
         );
         return (receipt, encodedPacket, options);
     }
@@ -103,7 +103,7 @@ abstract contract MessageLibBaseE2 is MessageLibBase, ERC165, IMessageLib {
         PacketForQuote calldata _packet,
         bool _payInLzToken,
         bytes calldata _options
-    ) external view returns (ILayerZeroEndpointV2.MessagingFee memory) {
+    ) external view returns (MessagingFee memory) {
         (uint nativeFee, uint lzTokenFee) = _quote(
             _packet.sender,
             _packet.dstEid,
@@ -111,7 +111,7 @@ abstract contract MessageLibBaseE2 is MessageLibBase, ERC165, IMessageLib {
             _payInLzToken,
             _options
         );
-        return ILayerZeroEndpointV2.MessagingFee(nativeFee, lzTokenFee);
+        return MessagingFee(nativeFee, lzTokenFee);
     }
 
     // ========================= Internal =========================
@@ -141,11 +141,7 @@ abstract contract MessageLibBaseE2 is MessageLibBase, ERC165, IMessageLib {
     ) internal view returns (DeliveryState) {
         // 1. check endpoint deliverable
         // not checking in the internal function as it would be checked by the endpoint
-        IMessageOrigin.MessageOrigin memory origin = IMessageOrigin.MessageOrigin(
-            _srcEid,
-            _packetHeader.sender(),
-            _packetHeader.nonce()
-        );
+        Origin memory origin = Origin(_srcEid, _packetHeader.sender(), _packetHeader.nonce());
 
         // if endpoint didnot revert on deliverable check, it will return true if the message is deliverable. false if the message has been delivered
         bool endpointDeliverable = ILayerZeroEndpointV2(endpoint).deliverable(origin, address(this), _receiver);

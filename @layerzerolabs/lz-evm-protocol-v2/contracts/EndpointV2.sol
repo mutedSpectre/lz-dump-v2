@@ -14,6 +14,7 @@ import "./MessagingChannel.sol";
 import "./MessagingComposer.sol";
 import "./MessageLibManager.sol";
 import "./MessagingContext.sol";
+import "./MessagingStructs.sol";
 
 contract EndpointV2 is ILayerZeroEndpointV2, MessagingChannel, MessageLibManager, MessagingComposer, MessagingContext {
     using SafeERC20 for IERC20;
@@ -54,11 +55,7 @@ contract EndpointV2 is ILayerZeroEndpointV2, MessagingChannel, MessageLibManager
         }
 
         address sendLibrary = getSendLibrary(_sender, _dstEid);
-        IPacket.PacketForQuote memory packet = IPacket.PacketForQuote({
-            sender: _sender,
-            dstEid: _dstEid,
-            message: _message
-        });
+        PacketForQuote memory packet = PacketForQuote({sender: _sender, dstEid: _dstEid, message: _message});
         return IMessageLib(sendLibrary).quote(packet, _payInLzToken, _options);
     }
 
@@ -123,7 +120,7 @@ contract EndpointV2 is ILayerZeroEndpointV2, MessagingChannel, MessageLibManager
         address sendLibrary = getSendLibrary(_sender, _params.dstEid);
 
         // construct the packet with a GUID
-        IPacket.Packet memory packet = IPacket.Packet({
+        Packet memory packet = Packet({
             nonce: nonce,
             srcEid: eid,
             sender: _sender,
@@ -150,7 +147,7 @@ contract EndpointV2 is ILayerZeroEndpointV2, MessagingChannel, MessageLibManager
     /// @param _origin the origin of the message
     /// @param _receiver the receiver of the message
     /// @param _payloadHash the payload hash of the message
-    function deliver(MessageOrigin calldata _origin, address _receiver, bytes32 _payloadHash) external {
+    function deliver(Origin calldata _origin, address _receiver, bytes32 _payloadHash) external {
         require(isValidReceiveLibrary(_receiver, _origin.srcEid, msg.sender), Errors.PERMISSION_DENIED);
         // check if it is deliverable
         require(_inboundDeliverable(_origin, _receiver), Errors.INVALID_NONCE);
@@ -162,11 +159,7 @@ contract EndpointV2 is ILayerZeroEndpointV2, MessagingChannel, MessageLibManager
     /// @dev check if a message is deliverable.
     /// @dev reverts if the receiveLibrary is not valid
     /// @return reverts if the msglib check fails. returns true if the message is deliverable. false if it has been delivered
-    function deliverable(
-        MessageOrigin calldata _origin,
-        address _receiveLib,
-        address _receiver
-    ) external view returns (bool) {
+    function deliverable(Origin calldata _origin, address _receiveLib, address _receiver) external view returns (bool) {
         require(isValidReceiveLibrary(_receiver, _origin.srcEid, _receiveLib), Errors.PERMISSION_DENIED);
         return _inboundDeliverable(_origin, _receiver);
     }
@@ -181,7 +174,7 @@ contract EndpointV2 is ILayerZeroEndpointV2, MessagingChannel, MessageLibManager
     /// @param _message the message
     /// @param _extraData the extra data provided by the executor. this data is untrusted and should be validated.
     function lzReceive(
-        MessageOrigin calldata _origin,
+        Origin calldata _origin,
         address _receiver,
         bytes32 _guid,
         bytes calldata _message,
@@ -208,7 +201,7 @@ contract EndpointV2 is ILayerZeroEndpointV2, MessagingChannel, MessageLibManager
 
     /// @dev internal function for executing lzReceive() on the receiver
     function _safeCallLzReceive(
-        MessageOrigin calldata _origin,
+        Origin calldata _origin,
         address _receiver,
         bytes32 _guid,
         bytes calldata _message,
@@ -233,7 +226,7 @@ contract EndpointV2 is ILayerZeroEndpointV2, MessagingChannel, MessageLibManager
     /// @param _origin the origin of the message
     /// @param _guid the guid of the message
     /// @param _message the message
-    function clear(MessageOrigin calldata _origin, bytes32 _guid, bytes calldata _message) external {
+    function clear(Origin calldata _origin, bytes32 _guid, bytes calldata _message) external {
         bytes memory payload = abi.encodePacked(_guid, _message);
         _clearPayload(_origin, msg.sender, payload);
         emit PacketReceived(_origin, msg.sender);

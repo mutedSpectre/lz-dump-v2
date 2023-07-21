@@ -2,8 +2,10 @@
 
 pragma solidity ^0.8.0;
 
+import {Origin} from "@layerzerolabs/lz-evm-protocol-v2/contracts/MessagingStructs.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLibManager.sol";
+import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingChannel.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./interfaces/IOApp.sol";
 import "./interfaces/IPreCrime.sol";
@@ -15,10 +17,25 @@ abstract contract OApp is IOApp, Ownable {
     ILayerZeroEndpointV2 public immutable endpoint;
     mapping(uint32 => bytes32) public peers;
 
+    // @dev These enforced options can vary as the potential options/execution on remote may differ
+    // eg. Amount of lzReceive gas necessary to deliver a composed message adds overhear you dont want to pay
+    // if you are only make a standard crosschain call (no deliver compose)
+    // enforcedOptions[eid][executionType] = enforcedOptions
+    // The "msgType" should be defined in the child contract
+    mapping(uint32 eid => mapping(uint16 msgType => bytes)) internal enforcedOptions;
+
     IPreCrime public precrime;
 
     constructor(address _endpoint) {
         endpoint = ILayerZeroEndpointV2(_endpoint);
+    }
+
+    function setEnforcedOptions(EnforcedOptionParam[] calldata _enforcedOptions) public virtual onlyOwner {
+        for (uint i = 0; i < _enforcedOptions.length; i++) {
+            enforcedOptions[_enforcedOptions[i].eid][_enforcedOptions[i].msgType] = _enforcedOptions[i].options;
+        }
+
+        emit SetEnforcedOption(_enforcedOptions);
     }
 
     /// @dev the generic send interface to interact with the LayerZero EndpointV2.quote()
@@ -28,23 +45,17 @@ abstract contract OApp is IOApp, Ownable {
         bool _useLZToken,
         bytes memory _options
     ) internal view virtual returns (uint nativeFee, uint lzTokenFee) {
-        ILayerZeroEndpointV2.MessagingFee memory fee = endpoint.quote(
-            address(this),
-            _eid,
-            _message,
-            _useLZToken,
-            _options
-        );
+        MessagingFee memory fee = endpoint.quote(address(this), _eid, _message, _useLZToken, _options);
         return (fee.nativeFee, fee.lzTokenFee);
     }
 
     /// @dev the generic send interface to interact with the LayerZero EndpointV2.send()
     function _lzSend(
-        ILayerZeroEndpointV2.MessagingParams memory _msgParams,
-        ILayerZeroEndpointV2.MessagingFee memory _fee,
+        MessagingParams memory _msgParams,
+        MessagingFee memory _fee,
         address payable _refundAddress
-    ) internal virtual returns (ILayerZeroEndpointV2.MessagingReceipt memory) {
-        ILayerZeroEndpointV2.MessagingReceipt memory receipt = endpoint.send{value: _fee.nativeFee}(
+    ) internal virtual returns (MessagingReceipt memory) {
+        MessagingReceipt memory receipt = endpoint.send{value: _fee.nativeFee}(
             _msgParams,
             _fee.lzTokenFee,
             _refundAddress
@@ -54,7 +65,7 @@ abstract contract OApp is IOApp, Ownable {
 
     /// @dev Oapp can override this interface for custom logics (e.g. more assertion)
     function lzReceive(
-        MessageOrigin calldata _origin,
+        Origin calldata _origin,
         bytes32 _guid,
         bytes calldata _message,
         address _executor,
@@ -74,7 +85,7 @@ abstract contract OApp is IOApp, Ownable {
     /// @dev needs to be implemented by the OApp
     /// @dev basic security checks are already performed
     function _lzReceive(
-        MessageOrigin calldata _origin,
+        Origin calldata _origin,
         bytes32 _guid,
         bytes calldata _message,
         address _executor,
@@ -118,12 +129,10 @@ abstract contract OApp is IOApp, Ownable {
     /// ----------------------------- OAPP Config Functions -----------------------------
 
     /// @dev set _peer to bytes32(0) (the default value) to "untrust"
-    function setPeer(uint32 _eid, bytes32 _peer, bool _active) public virtual onlyOwner {
-        bool currentlyActive = peers[_eid] != bytes32(0);
-        if (currentlyActive == _active) revert InvalidPeerState();
-
+    function setPeer(uint32 _eid, bytes32 _peer) public virtual onlyOwner {
+        if (peers[_eid] == _peer) revert InvalidPeerState();
         peers[_eid] = _peer;
-        emit SetPeer(_eid, _peer, _active);
+        emit SetPeer(_eid, _peer);
     }
 
     /// @dev check non-zero peer and return it
@@ -141,19 +150,21 @@ abstract contract OApp is IOApp, Ownable {
     /// @dev a generic interface to set the endpoint config
     /// @dev this is a low level interface, and should be used with caution
     /// @dev use our SDK to generate the properly abi.encoded config
-    function setEndpointConfig(bytes calldata _config) public virtual onlyOwner {
-        bytes4 functionSig = bytes4(_config);
+    function callEndpoint(bytes calldata _callData) public virtual onlyOwner {
+        bytes4 functionSig = bytes4(_callData);
         require(
             functionSig == IMessageLibManager.setConfig.selector ||
                 functionSig == IMessageLibManager.snapshotConfig.selector ||
                 functionSig == IMessageLibManager.resetConfig.selector ||
                 functionSig == IMessageLibManager.setReceiveLibrary.selector ||
                 functionSig == IMessageLibManager.setSendLibrary.selector ||
-                functionSig == IMessageLibManager.setReceiveLibraryTimeout.selector,
+                functionSig == IMessageLibManager.setReceiveLibraryTimeout.selector ||
+                functionSig == ILayerZeroEndpointV2.clear.selector ||
+                functionSig == IMessagingChannel.skip.selector,
             "OApp: function not allowed"
         );
 
-        (bool success, bytes memory reason) = address(endpoint).call(_config);
+        (bool success, bytes memory reason) = address(endpoint).call(_callData);
         if (!success) {
             assembly {
                 revert(add(reason, 32), mload(reason))

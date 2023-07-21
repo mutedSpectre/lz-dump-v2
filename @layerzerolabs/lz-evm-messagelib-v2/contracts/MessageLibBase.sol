@@ -4,18 +4,23 @@ pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/libs/Errors.sol";
-import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IPacket.sol";
 
 import "./interfaces/ILayerZeroExecutor.sol";
 import "./interfaces/ILayerZeroTreasury.sol";
-import "./interfaces/IMessageLibBase.sol";
 
 struct WorkerOptions {
     uint8 workerId;
     bytes options;
 }
 
-abstract contract MessageLibBase is IMessageLibBase, Ownable {
+enum DeliveryState {
+    Signing,
+    Deliverable,
+    Delivered,
+    Waiting
+}
+
+abstract contract MessageLibBase is Ownable {
     address internal immutable endpoint;
     uint32 internal immutable localEid;
     uint8 internal immutable packetVersion;

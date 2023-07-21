@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
 import "../OApp.sol";
 import "../libs/OptionsBuilder.sol";
 import "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroComposer.sol";
+import {Origin} from "@layerzerolabs/lz-evm-protocol-v2/contracts/MessagingStructs.sol";
 
 library MsgCodec {
     uint8 internal constant VANILLA_TYPE = 1;
@@ -69,8 +70,8 @@ contract OmniCounter is ILayerZeroComposer, OApp {
     // Send
     function increment(uint32 _eid, uint8 _type, bytes calldata _options) external payable {
         _lzSend(
-            ILayerZeroEndpointV2.MessagingParams(_eid, safeGetPeer(_eid), MsgCodec.encode(_type, eid), _options),
-            ILayerZeroEndpointV2.MessagingFee(msg.value, 0),
+            MessagingParams(_eid, safeGetPeer(_eid), MsgCodec.encode(_type, eid), _options),
+            MessagingFee(msg.value, 0),
             payable(msg.sender)
         );
         _incrementOutbound(_eid);
@@ -80,8 +81,8 @@ contract OmniCounter is ILayerZeroComposer, OApp {
     // so that precrime will fail
     function brokenIncrement(uint32 _eid, uint8 _type, bytes calldata _options) external payable onlyAdmin {
         _lzSend(
-            ILayerZeroEndpointV2.MessagingParams(_eid, safeGetPeer(_eid), MsgCodec.encode(_type, eid), _options),
-            ILayerZeroEndpointV2.MessagingFee(msg.value, 0),
+            MessagingParams(_eid, safeGetPeer(_eid), MsgCodec.encode(_type, eid), _options),
+            MessagingFee(msg.value, 0),
             payable(msg.sender)
         );
     }
@@ -93,18 +94,13 @@ contract OmniCounter is ILayerZeroComposer, OApp {
     ) external payable {
         require(_eids.length == _options.length && _eids.length == _types.length, "OmniCounter: length mismatch");
 
-        ILayerZeroEndpointV2.MessagingReceipt memory receipt;
+        MessagingReceipt memory receipt;
         uint providedFee = msg.value;
         for (uint i = 0; i < _eids.length; i++) {
             address refundAddress = i == _eids.length - 1 ? msg.sender : address(this);
             receipt = _lzSend(
-                ILayerZeroEndpointV2.MessagingParams(
-                    _eids[i],
-                    safeGetPeer(_eids[i]),
-                    MsgCodec.encode(_types[i], eid),
-                    _options[i]
-                ),
-                ILayerZeroEndpointV2.MessagingFee(providedFee, 0),
+                MessagingParams(_eids[i], safeGetPeer(_eids[i]), MsgCodec.encode(_types[i], eid), _options[i]),
+                MessagingFee(providedFee, 0),
                 payable(refundAddress)
             );
             _incrementOutbound(_eids[i]);
@@ -125,7 +121,7 @@ contract OmniCounter is ILayerZeroComposer, OApp {
     // -------------------------------
     // Receive
     function _lzReceive(
-        MessageOrigin calldata _origin,
+        Origin calldata _origin,
         bytes32 _guid,
         bytes calldata _message,
         address /*_executor*/,
@@ -148,13 +144,13 @@ contract OmniCounter is ILayerZeroComposer, OApp {
             _incrementOutbound(_origin.srcEid);
             bytes memory options = OptionsBuilder.newOptions().addExecutorLzReceiveOption(200000, 0);
             _lzSend(
-                ILayerZeroEndpointV2.MessagingParams(
+                MessagingParams(
                     _origin.srcEid,
                     safeGetPeer(_origin.srcEid),
                     MsgCodec.encode(MsgCodec.VANILLA_TYPE, eid),
                     options
                 ),
-                ILayerZeroEndpointV2.MessagingFee(msg.value, 0),
+                MessagingFee(msg.value, 0),
                 payable(address(this))
             );
         } else {
@@ -189,13 +185,8 @@ contract OmniCounter is ILayerZeroComposer, OApp {
             _incrementOutbound(srcEid);
             bytes memory options = OptionsBuilder.newOptions().addExecutorLzReceiveOption(200000, 0);
             _lzSend(
-                ILayerZeroEndpointV2.MessagingParams(
-                    srcEid,
-                    safeGetPeer(srcEid),
-                    MsgCodec.encode(MsgCodec.VANILLA_TYPE, eid),
-                    options
-                ),
-                ILayerZeroEndpointV2.MessagingFee(msg.value, 0),
+                MessagingParams(srcEid, safeGetPeer(srcEid), MsgCodec.encode(MsgCodec.VANILLA_TYPE, eid), options),
+                MessagingFee(msg.value, 0),
                 payable(address(this))
             );
         } else {

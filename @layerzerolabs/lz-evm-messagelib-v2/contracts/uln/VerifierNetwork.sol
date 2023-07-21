@@ -9,7 +9,7 @@ import "./MultiSig.sol";
 import "./interfaces/IVerifier.sol";
 import "./interfaces/IVerifierFeeLib.sol";
 import "./interfaces/IUltraLightNode.sol";
-import "../interfaces/IMessageLibBase.sol";
+import {DeliveryState} from "../MessageLibBase.sol";
 
 struct ExecuteParam {
     address target;
@@ -95,7 +95,7 @@ contract VerifierNetwork is Worker, MultiSig, IVerifier {
     ) external onlySelf {
         require(hasRole(MESSAGE_LIB_ROLE, address(_uln)), "Verifier: invalid uln");
         _uln.verify(_packetHeader, _payloadHash, _confirmations);
-        if (_uln.deliverable(_packetHeader, _payloadHash) == IMessageLibBase.DeliveryState.Deliverable) {
+        if (_uln.deliverable(_packetHeader, _payloadHash) == DeliveryState.Deliverable) {
             _uln.deliver(_packetHeader, _payloadHash);
         }
     }
@@ -143,20 +143,22 @@ contract VerifierNetwork is Worker, MultiSig, IVerifier {
             bytes32 hash = hashCallData(param.target, param.callData, param.expiration);
 
             // 2. skip if hash used
-            if (_shouldCheckHash(bytes4(param.callData))) {
-                if (usedHashes[hash]) {
-                    emit HashAlreadyUsed(param, hash);
-                    continue;
-                } else {
-                    usedHashes[hash] = true; // prevent reentry and replay attack
-                }
+            bool shouldCheckHash = _shouldCheckHash(bytes4(param.callData));
+            if (shouldCheckHash && usedHashes[hash]) {
+                emit HashAlreadyUsed(param, hash);
+                continue;
             }
 
             // 3. check signatures
             if (verifySignatures(hash, param.signatures)) {
                 // execute call data
                 (bool success, bytes memory rtnData) = param.target.call(param.callData);
-                if (!success) {
+                if (success) {
+                    if (shouldCheckHash) {
+                        // store usedHash only on success
+                        usedHashes[hash] = true; // prevent reentry and replay attack
+                    }
+                } else {
                     emit ExecuteFailed(i, rtnData);
                 }
             }

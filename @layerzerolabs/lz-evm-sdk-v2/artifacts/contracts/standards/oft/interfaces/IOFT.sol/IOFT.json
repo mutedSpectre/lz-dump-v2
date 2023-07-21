@@ -78,36 +78,6 @@
       "anonymous": false,
       "inputs": [
         {
-          "components": [
-            {
-              "internalType": "uint256",
-              "name": "executionType",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint32",
-              "name": "eid",
-              "type": "uint32"
-            },
-            {
-              "internalType": "bytes",
-              "name": "options",
-              "type": "bytes"
-            }
-          ],
-          "indexed": false,
-          "internalType": "struct IOFT.EnforcedOptionParam[]",
-          "name": "_enforcedOptions",
-          "type": "tuple[]"
-        }
-      ],
-      "name": "SetEnforcedOption",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
           "indexed": false,
           "internalType": "address",
           "name": "_inspector",
@@ -281,7 +251,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+          "internalType": "struct MessagingFee",
           "name": "_msgFee",
           "type": "tuple"
         },
@@ -318,12 +288,12 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+              "internalType": "struct MessagingFee",
               "name": "fee",
               "type": "tuple"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingReceipt",
+          "internalType": "struct MessagingReceipt",
           "name": "",
           "type": "tuple"
         }
@@ -378,7 +348,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+          "internalType": "struct MessagingFee",
           "name": "_msgFee",
           "type": "tuple"
         },
@@ -420,12 +390,12 @@
                   "type": "uint256"
                 }
               ],
-              "internalType": "struct ILayerZeroEndpointV2.MessagingFee",
+              "internalType": "struct MessagingFee",
               "name": "fee",
               "type": "tuple"
             }
           ],
-          "internalType": "struct ILayerZeroEndpointV2.MessagingReceipt",
+          "internalType": "struct MessagingReceipt",
           "name": "",
           "type": "tuple"
         }

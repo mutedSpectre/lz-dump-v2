@@ -9,14 +9,16 @@
   "author": "Nikita Volkov",
   "license": "ISC",
   "dependencies": {
-    "@layerzerolabs/lz-definitions": "^1.5.27",
-    "@layerzerolabs/lz-evm-messagelib-v2": "^1.5.27",
-    "@layerzerolabs/lz-evm-oapp-v1": "^1.5.26",
-    "@layerzerolabs/lz-evm-oapp-v2": "^1.5.27",
-    "@layerzerolabs/lz-evm-protocol-v2": "^1.5.27",
-    "@layerzerolabs/lz-sdk": "^0.0.31",
-    "@layerzerolabs/lz-utility-v2": "^1.5.27",
-    "@layerzerolabs/stargate-evm": "^1.5.27",
+    "@layerzerolabs/lz-definitions": "^1.5.31",
+    "@layerzerolabs/lz-evm-messagelib-v2": "^1.5.31",
+    "@layerzerolabs/lz-evm-oapp-v1": "^1.5.31",
+    "@layerzerolabs/lz-evm-oapp-v2": "^1.5.31",
+    "@layerzerolabs/lz-evm-protocol-v2": "^1.5.31",
+    "@layerzerolabs/lz-sdk": "^0.0.32",
+    "@layerzerolabs/lz-utility-v2": "^1.5.31",
+    "@layerzerolabs/multisig-oracle-contracts-evm": "^1.5.31",
+    "@layerzerolabs/solidity-examples": "^0.0.13",
+    "@layerzerolabs/stargate-evm": "^1.5.31",
     "@layerzerolabs/ui-core": "^0.1.7"
   }
 }
